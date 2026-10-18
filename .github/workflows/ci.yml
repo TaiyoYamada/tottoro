@@ -21,10 +21,11 @@ env:
   IOS_DESTINATION: platform=iOS Simulator,name=iPhone 17,OS=27.0
   MACOS_DESTINATION: platform=macOS,arch=arm64
   DERIVED_DATA: ${{ github.workspace }}/build/DerivedData
-  # protoc is built from source by the swift-protobuf build plugin, which needs to be trusted without a prompt
+  # protoc is built from source by the swift-protobuf build plugin, which needs to be trusted without a prompt.
+  # The index store is only for Xcode's search and jumps, so CI skips it
   XCODEBUILD_FLAGS: >-
     -project Tottoro.xcodeproj -scheme Tottoro -skipPackagePluginValidation
-    CODE_SIGNING_ALLOWED=NO TOTTORO_WARNINGS_AS_ERRORS=YES
+    CODE_SIGNING_ALLOWED=NO TOTTORO_WARNINGS_AS_ERRORS=YES COMPILER_INDEX_STORE_ENABLE=NO
 
 jobs:
   lint:
@@ -73,10 +74,13 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: jdx/mise-action@9b200bcecbfd6303e69a4a261b2e09e3757440a7 # v5.2.0
       - run: sudo xcode-select --switch "/Applications/Xcode_$(cat .xcode-version).app"
+      # Keeps the whole build, so protoc and the packages are not built again. Each run restores the newest build for
+      # the same dependencies and Xcode, and saves its own
       - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
-          path: build/DerivedData/SourcePackages
-          key: spm-${{ hashFiles('TottoroKit/Package.resolved', 'project.yml', '.xcode-version') }}
+          path: build/DerivedData
+          key: derived-data-app-${{ matrix.platform }}-${{ hashFiles('TottoroKit/Package.resolved', 'project.yml', '.xcode-version') }}-${{ github.sha }}
+          restore-keys: derived-data-app-${{ matrix.platform }}-${{ hashFiles('TottoroKit/Package.resolved', 'project.yml', '.xcode-version') }}-
       - run: mise run generate
       - name: Test
         run: xcodebuild test $XCODEBUILD_FLAGS -testPlan Unit -destination "$DESTINATION" -derivedDataPath "$DERIVED_DATA"
@@ -88,10 +92,13 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: jdx/mise-action@9b200bcecbfd6303e69a4a261b2e09e3757440a7 # v5.2.0
       - run: sudo xcode-select --switch "/Applications/Xcode_$(cat .xcode-version).app"
+      # Keeps the whole build, so protoc and the packages are not built again. Each run restores the newest build for
+      # the same dependencies and Xcode, and saves its own
       - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
-          path: build/DerivedData/SourcePackages
-          key: spm-${{ hashFiles('TottoroKit/Package.resolved', 'project.yml', '.xcode-version') }}
+          path: build/DerivedData
+          key: derived-data-strings-${{ hashFiles('TottoroKit/Package.resolved', 'project.yml', '.xcode-version') }}-${{ github.sha }}
+          restore-keys: derived-data-strings-${{ hashFiles('TottoroKit/Package.resolved', 'project.yml', '.xcode-version') }}-
       - run: mise run generate
       - name: Build for iOS and macOS
         run: |
@@ -115,10 +122,13 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: jdx/mise-action@9b200bcecbfd6303e69a4a261b2e09e3757440a7 # v5.2.0
       - run: sudo xcode-select --switch "/Applications/Xcode_$(cat .xcode-version).app"
+      # Keeps the whole build, so protoc and the packages are not built again. Each run restores the newest build for
+      # the same dependencies and Xcode, and saves its own
       - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
-          path: build/DerivedData/SourcePackages
-          key: spm-${{ hashFiles('TottoroKit/Package.resolved', 'project.yml', '.xcode-version') }}
+          path: build/DerivedData
+          key: derived-data-tsan-${{ hashFiles('TottoroKit/Package.resolved', 'project.yml', '.xcode-version') }}-${{ github.sha }}
+          restore-keys: derived-data-tsan-${{ hashFiles('TottoroKit/Package.resolved', 'project.yml', '.xcode-version') }}-
       - run: mise run generate
       - name: Test on iOS with Thread Sanitizer
         run: >-
@@ -136,10 +146,13 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: jdx/mise-action@9b200bcecbfd6303e69a4a261b2e09e3757440a7 # v5.2.0
       - run: sudo xcode-select --switch "/Applications/Xcode_$(cat .xcode-version).app"
+      # Keeps the whole build, so protoc and the packages are not built again. Each run restores the newest build for
+      # the same dependencies and Xcode, and saves its own
       - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
-          path: build/DerivedData/SourcePackages
-          key: spm-${{ hashFiles('TottoroKit/Package.resolved', 'project.yml', '.xcode-version') }}
+          path: build/DerivedData
+          key: derived-data-ui-${{ hashFiles('TottoroKit/Package.resolved', 'project.yml', '.xcode-version') }}-${{ github.sha }}
+          restore-keys: derived-data-ui-${{ hashFiles('TottoroKit/Package.resolved', 'project.yml', '.xcode-version') }}-
       - run: mise run generate
       - name: Run UI tests and snapshot tests
         run: >-
