@@ -5,11 +5,13 @@
 //  Created by 山田大陽 on 2026/10/18.
 //
 
+import AuthenticationServices
 import SwiftUI
 
 struct RootView: View {
     @Environment(AccountStore.self) private var store
     @Environment(AppLock.self) private var lock
+    @Environment(CredentialImportViewModel.self) private var credentialImport
     @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
@@ -39,6 +41,20 @@ struct RootView: View {
                 break
             }
         }
+        // 他のアプリが Credential Exchange で書き出したとき、OS がこの活動でアプリを開く
+        .onContinueUserActivity(ASCredentialExchangeActivity) { activity in
+            credentialImport.receive(activity)
+            if lock.state == .unlocked {
+                Task { await credentialImport.importCredentials() }
+            }
+        }
+        // ロック中に受け取ったときは、ロックが外れてから取り込む。
+        // 取り込みの状態を id に入れると、取り込みを始めた途端に id が変わって作業が取り消される
+        .task(id: lock.state == .unlocked) {
+            guard lock.state == .unlocked else { return }
+            await credentialImport.importCredentials()
+        }
+        .credentialImportAlerts(credentialImport)
         .privacyCover()
         .failureAlert(store: store)
     }

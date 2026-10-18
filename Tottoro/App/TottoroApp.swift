@@ -12,19 +12,23 @@ import TottoroStorage
 struct TottoroApp: App {
     @State private var store: AccountStore
     @State private var lock = AppLock()
+    @State private var credentialImport: CredentialImportViewModel
 
     init() {
         #if DEBUG
         if UITesting.isEnabled {
-            let repository = InMemoryAccountRepository(accounts: UITesting.sampleAccounts)
-            _store = State(initialValue: AccountStore(repository: repository))
+            let store = AccountStore(repository: InMemoryAccountRepository(accounts: UITesting.sampleAccounts))
+            _store = State(initialValue: store)
+            _credentialImport = State(initialValue: CredentialImportViewModel(store: store))
             let lock = AppLock()
             lock.unlockForUITesting()
             _lock = State(initialValue: lock)
             return
         }
         #endif
-        _store = State(initialValue: AccountStore(repository: KeychainAccountRepository()))
+        let store = AccountStore(repository: KeychainAccountRepository())
+        _store = State(initialValue: store)
+        _credentialImport = State(initialValue: CredentialImportViewModel(store: store))
     }
 
     var body: some Scene {
@@ -34,6 +38,7 @@ struct TottoroApp: App {
             RootView()
                 .environment(store)
                 .environment(lock)
+                .environment(credentialImport)
         } defaultValue: {
             SceneID.main
         }
