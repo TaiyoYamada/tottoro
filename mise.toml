@@ -11,13 +11,16 @@ description = "Install the tools and Git hooks, then generate the Xcode project"
 run = [
   "mise install",
   "lefthook install",
+  "mise run generate",
+]
+
+# The project shows Local.xcconfig, so it has to exist before generating.
+[tasks.generate]
+description = "Generate Tottoro.xcodeproj from project.yml"
+run = [
   "test -f Local.xcconfig || cp Local.xcconfig.example Local.xcconfig",
   "xcodegen generate",
 ]
-
-[tasks.generate]
-description = "Generate Tottoro.xcodeproj from project.yml"
-run = "xcodegen generate"
 
 [tasks.format]
 description = "Format all Swift files"
