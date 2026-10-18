@@ -60,7 +60,7 @@ The `Tottoro` scheme has three test plans.
 
 | Test plan | What runs | When CI runs it |
 |---|---|---|
-| `Unit` (default) | `TottoroTests` and `TottoroCoreTests`, with Thread Sanitizer | Every push and pull request, on iPhone and Mac |
+| `Unit` (default) | `TottoroTests` and `TottoroCoreTests` | Every push and pull request, on iPhone and Mac. Every night also with Thread Sanitizer, which builds everything again and is too slow for every push |
 | `UI` | `TottoroUITests` and `TottoroSnapshotTests` | Pull requests to `main`, every night, and by hand |
 | `Screenshots` | The App Store screenshots, in English and Japanese | By hand, before a release |
 

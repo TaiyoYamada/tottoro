@@ -2,12 +2,11 @@
   "configurations" : [
     {
       "id" : "B2E4BEB1-7239-5D80-94EE-A46739494038",
-      "name" : "Thread Sanitizer",
+      "name" : "Default",
       "options" : {}
     }
   ],
   "defaultOptions" : {
-    "threadSanitizerEnabled" : true,
     "codeCoverage" : true
   },
   "testTargets" : [
