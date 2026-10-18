@@ -13,7 +13,7 @@ import SwiftProtobuf
 public enum GoogleMigrationParser {
     public struct Result: Equatable, Sendable {
         public let accounts: [Account]
-        /// HOTP や MD5 など、Tottoro が扱えずに飛ばした件数。
+        /// HOTP など、Tottoro が扱えずに飛ばした件数。
         public let skippedCount: Int
     }
 
@@ -49,19 +49,11 @@ public enum GoogleMigrationParser {
     private static func account(from parameters: MigrationPayload.OtpParameters) -> Account? {
         guard parameters.type == .totp, !parameters.secret.isEmpty else { return nil }
 
-        let algorithm: HashAlgorithm
-        switch parameters.algorithm {
-        case .unspecified, .sha1: algorithm = .sha1
-        case .sha256: algorithm = .sha256
-        case .sha512: algorithm = .sha512
-        case .md5, .UNRECOGNIZED: return nil
-        }
-
-        let digits: Int
-        switch parameters.digits {
-        case .unspecified, .six: digits = 6
-        case .eight: digits = 8
-        case .UNRECOGNIZED: return nil
+        // Google Authenticator は algorithm と digits を正しく書き出さないことがあるので、
+        // Bitwarden Authenticator と同じく SHA-1 に固定し、桁数は 8 と書かれたときだけ 8 にする
+        let digits = switch parameters.digits {
+        case .eight: 8
+        case .unspecified, .six, .UNRECOGNIZED: 6
         }
 
         // name には「発行元:アカウント名」の形で発行元が重ねて入っていることがある
@@ -74,7 +66,7 @@ public enum GoogleMigrationParser {
             issuer: parameters.issuer,
             name: name.trimmingCharacters(in: .whitespaces),
             secret: parameters.secret,
-            algorithm: algorithm,
+            algorithm: .sha1,
             digits: digits,
         )
     }

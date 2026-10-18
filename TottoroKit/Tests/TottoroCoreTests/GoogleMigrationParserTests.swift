@@ -39,6 +39,53 @@ struct GoogleMigrationParserTests {
         #expect(account.digits == 6)
     }
 
+    @Test func `ignores the written algorithm and invalid digits`() throws {
+        var parameters = MigrationPayload.OtpParameters()
+        parameters.secret = Data("foobar".utf8)
+        parameters.name = "octocat"
+        parameters.issuer = "GitHub"
+        parameters.algorithm = .sha512
+        parameters.digits = .UNRECOGNIZED(5)
+        parameters.type = .totp
+
+        var payload = MigrationPayload()
+        payload.otpParameters = [parameters]
+
+        let account = try #require(try GoogleMigrationParser.parse(Self.uri(for: payload)).accounts.first)
+        #expect(account.algorithm == .sha1)
+        #expect(account.digits == 6)
+        #expect(account.period == 30)
+    }
+
+    @Test func `imports accounts marked as MD 5 as SHA 1`() throws {
+        var parameters = MigrationPayload.OtpParameters()
+        parameters.secret = Data("foobar".utf8)
+        parameters.name = "octocat"
+        parameters.algorithm = .md5
+        parameters.type = .totp
+
+        var payload = MigrationPayload()
+        payload.otpParameters = [parameters]
+
+        let result = try GoogleMigrationParser.parse(Self.uri(for: payload))
+        #expect(result.skippedCount == 0)
+        #expect(result.accounts.first?.algorithm == .sha1)
+    }
+
+    @Test func `keeps eight digits`() throws {
+        var parameters = MigrationPayload.OtpParameters()
+        parameters.secret = Data("foobar".utf8)
+        parameters.name = "octocat"
+        parameters.digits = .eight
+        parameters.type = .totp
+
+        var payload = MigrationPayload()
+        payload.otpParameters = [parameters]
+
+        let account = try #require(try GoogleMigrationParser.parse(Self.uri(for: payload)).accounts.first)
+        #expect(account.digits == 8)
+    }
+
     @Test func `rejects other schemes`() {
         #expect(throws: GoogleMigrationParser.ParseError.invalidURL) {
             try GoogleMigrationParser.parse("otpauth://totp/a?secret=MZXW6YTBOI")
