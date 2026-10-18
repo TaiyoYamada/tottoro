@@ -1,6 +1,34 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%lld accounts were already in Tottoro." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 件は、すでに Tottoro に入っていました。"
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld account was already in Tottoro."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld accounts were already in Tottoro."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "%lld accounts were not added because Tottoro does not support them, such as counter-based codes (HOTP)." : {
       "localizations" : {
         "en" : {
@@ -77,6 +105,16 @@
         }
       }
     },
+    "About" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このアプリについて"
+          }
+        }
+      }
+    },
     "Account Name" : {
       "localizations" : {
         "ja" : {
@@ -145,6 +183,26 @@
         }
       }
     },
+    "After 1 Minute" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 分後"
+          }
+        }
+      }
+    },
+    "After 5 Minutes" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5 分後"
+          }
+        }
+      }
+    },
     "Algorithm" : {
       "localizations" : {
         "ja" : {
@@ -161,6 +219,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "自動入力"
+          }
+        }
+      }
+    },
+    "Automatic" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自動"
+          }
+        }
+      }
+    },
+    "Automatic picks a logo from the domain or the issuer." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自動にすると、ドメインか発行元から合うロゴを選びます。"
           }
         }
       }
@@ -195,6 +273,16 @@
         }
       }
     },
+    "Choose a file exported from 2FAS, Aegis, Bitwarden Authenticator, or the Passwords app. Apps that support Credential Exchange can also send accounts to Tottoro from their export screen." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2FAS、Aegis、Bitwarden Authenticator、「パスワード」アプリで書き出したファイルを選びます。Credential Exchange に対応したアプリなら、そのアプリの書き出しの画面から Tottoro に送ることもできます。"
+          }
+        }
+      }
+    },
     "Choose from Photos" : {
       "localizations" : {
         "ja" : {
@@ -211,6 +299,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "色"
+          }
+        }
+      }
+    },
+    "Confirm it’s you to export your accounts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウントを書き出すために、本人であることを確かめます"
           }
         }
       }
@@ -241,6 +339,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "追加できませんでした"
+          }
+        }
+      }
+    },
+    "Couldn’t Change the Login Item" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ログイン時の起動を変えられませんでした"
+          }
+        }
+      }
+    },
+    "Couldn’t Export" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書き出せませんでした"
+          }
+        }
+      }
+    },
+    "Couldn’t Import" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取り込めませんでした"
+          }
+        }
+      }
+    },
+    "Couldn’t confirm it’s you. Try again." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本人であることを確かめられませんでした。もう一度試してください。"
           }
         }
       }
@@ -395,6 +533,64 @@
         }
       }
     },
+    "Export to Another App" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "他のアプリに書き出す"
+          }
+        }
+      }
+    },
+    "Exported %lld accounts." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 件のアカウントを書き出しました。"
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Exported %lld account."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Exported %lld accounts."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Exported Your Accounts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウントを書き出しました"
+          }
+        }
+      }
+    },
+    "Exporting sends your secret keys to the app you choose, through the system. Tottoro asks you to confirm it’s you first." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "書き出すと、選んだアプリに OS を通して秘密鍵を渡します。その前に、本人であることを確かめます。"
+          }
+        }
+      }
+    },
     "Gray" : {
       "localizations" : {
         "ja" : {
@@ -415,6 +611,46 @@
         }
       }
     },
+    "Hidden code" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "隠したコード"
+          }
+        }
+      }
+    },
+    "Hidden codes show after a tap, so people nearby can’t read them." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コードはタップするまで隠れるので、近くの人に読まれません。"
+          }
+        }
+      }
+    },
+    "Hide Codes" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コードを隠す"
+          }
+        }
+      }
+    },
+    "Icon" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アイコン"
+          }
+        }
+      }
+    },
     "If two-factor authentication is still on for the site, you will no longer be able to sign in to it. The account is removed from all your devices connected through iCloud." : {
       "localizations" : {
         "ja" : {
@@ -425,12 +661,52 @@
         }
       }
     },
+    "Immediately" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すぐ"
+          }
+        }
+      }
+    },
+    "Import from Another App" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "他のアプリから取り込む"
+          }
+        }
+      }
+    },
+    "Imported Accounts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウントを取り込みました"
+          }
+        }
+      }
+    },
     "Indigo" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "藍"
+          }
+        }
+      }
+    },
+    "Initial Letter" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "頭文字"
           }
         }
       }
@@ -455,12 +731,42 @@
         }
       }
     },
+    "License" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライセンス"
+          }
+        }
+      }
+    },
+    "Lock" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ロックまでの時間"
+          }
+        }
+      }
+    },
     "Locked" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ロック中"
+          }
+        }
+      }
+    },
+    "Mac" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac"
           }
         }
       }
@@ -495,12 +801,42 @@
         }
       }
     },
+    "Off" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オフ"
+          }
+        }
+      }
+    },
+    "On" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オン"
+          }
+        }
+      }
+    },
     "Only codes with 6 to 8 digits are supported." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "コードの桁数は 6〜8 桁にだけ対応しています"
+          }
+        }
+      }
+    },
+    "Open" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開く"
           }
         }
       }
@@ -515,12 +851,32 @@
         }
       }
     },
+    "Open at Login" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ログイン時に開く"
+          }
+        }
+      }
+    },
     "Orange" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "オレンジ"
+          }
+        }
+      }
+    },
+    "Password" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パスワード"
           }
         }
       }
@@ -541,6 +897,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ピンク"
+          }
+        }
+      }
+    },
+    "Privacy Policy" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プライバシーポリシー"
           }
         }
       }
@@ -581,6 +947,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "赤"
+          }
+        }
+      }
+    },
+    "Report a Vulnerability" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "脆弱性を報告する"
+          }
+        }
+      }
+    },
+    "Safari and other apps suggest codes from Tottoro on sites whose domain you set for an account." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウントにドメインを設定すると、そのサイトで Safari などに Tottoro のコードの候補が出ます。"
           }
         }
       }
@@ -645,6 +1031,46 @@
         }
       }
     },
+    "Security" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "セキュリティ"
+          }
+        }
+      }
+    },
+    "Services" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サービス"
+          }
+        }
+      }
+    },
+    "Set a Passcode" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パスコードを設定してください"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定"
+          }
+        }
+      }
+    },
     "Setup Key" : {
       "localizations" : {
         "ja" : {
@@ -655,12 +1081,52 @@
         }
       }
     },
+    "Show in Dock" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dock に表示"
+          }
+        }
+      }
+    },
+    "Shows the code" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コードを表示します"
+          }
+        }
+      }
+    },
+    "Source Code" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ソースコード"
+          }
+        }
+      }
+    },
     "Tap to Copy" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "タップしてコピー"
+          }
+        }
+      }
+    },
+    "Tap to Show" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タップして表示"
           }
         }
       }
@@ -705,6 +1171,26 @@
         }
       }
     },
+    "The file is damaged or incomplete." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルが壊れているか、途中までしかありません。"
+          }
+        }
+      }
+    },
+    "The password is incorrect." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パスワードが違います。"
+          }
+        }
+      }
+    },
     "This algorithm is not supported." : {
       "localizations" : {
         "ja" : {
@@ -715,8 +1201,68 @@
         }
       }
     },
+    "This file is encrypted. Enter the password you set when you exported it." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このファイルは暗号化されています。書き出したときに設定したパスワードを入れてください。"
+          }
+        }
+      }
+    },
     "Tottoro" : {
       "shouldTranslate" : false
+    },
+    "Tottoro can’t read this file. Export from 2FAS, Aegis, Bitwarden Authenticator, or the Passwords app, or choose a text file with otpauth links." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このファイルは読めません。2FAS、Aegis、Bitwarden Authenticator、「パスワード」アプリで書き出したファイルか、otpauth のリンクを並べたテキストファイルを選んでください。"
+          }
+        }
+      }
+    },
+    "Tottoro needs a device passcode to protect your codes. Set one in the Settings app, then unlock." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コードを守るために、端末のパスコードが必要です。設定アプリでパスコードを設定してから、ロックを解除してください。"
+          }
+        }
+      }
+    },
+    "Tottoro needs a login password to protect your codes. Set one in System Settings > Users & Groups, then unlock." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コードを守るために、ログインパスワードが必要です。システム設定の「ユーザとグループ」でパスワードを設定してから、ロックを解除してください。"
+          }
+        }
+      }
+    },
+    "Transfer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "引き継ぎ"
+          }
+        }
+      }
+    },
+    "Turn On AutoFill" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自動入力をオンにする"
+          }
+        }
+      }
     },
     "Unlock" : {
       "localizations" : {
@@ -744,6 +1290,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "コードを表示するためにロックを解除します"
+          }
+        }
+      }
+    },
+    "Unlocking was canceled. Unlock to see your codes." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ロックの解除が取り消されました。コードを表示するにはロックを解除してください。"
+          }
+        }
+      }
+    },
+    "Version" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バージョン"
           }
         }
       }
