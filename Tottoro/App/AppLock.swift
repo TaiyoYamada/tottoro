@@ -5,6 +5,7 @@
 //  Created by 山田大陽 on 2026/10/18.
 //
 
+import Foundation
 import Observation
 import TottoroStorage
 #if os(macOS)
@@ -25,6 +26,9 @@ final class AppLock {
 
     private(set) var state: State = .locked
 
+    /// 裏に回った時刻。端末のスリープ中も進み、時計の設定を変えても戻らない時計で測る。
+    private var backgroundedAt: ContinuousClock.Instant?
+
     init() {
         #if os(macOS)
         // Mac はアプリが裏に回っても使い続けるので、画面のスリープとユーザーの切り替えでロックする。
@@ -38,7 +42,12 @@ final class AppLock {
         #endif
     }
 
+    /// ロックが外れたままでも、裏に回ってから「ロックまでの時間」が過ぎていれば、先にロックしてから解除を求める。
+    /// Mac はメインのウインドウを閉じたあとも、メニューバーや設定のウインドウからここを通る。
     func unlock() async {
+        if state == .unlocked, let backgroundedAt, backgroundedAt.duration(to: .now) >= lockDelay.duration {
+            lock()
+        }
         switch state {
         case .locked, .failed:
             break
@@ -55,7 +64,27 @@ final class AppLock {
     }
 
     func lock() {
+        backgroundedAt = nil
         state = .locked
+    }
+
+    /// 設定の「ロックまでの時間」が過ぎるまでは、ロックしない。
+    func didEnterBackground() {
+        guard state == .unlocked else { return }
+        if lockDelay == .immediately {
+            lock()
+        } else {
+            backgroundedAt = .now
+        }
+    }
+
+    func willEnterForeground() async {
+        await unlock()
+        backgroundedAt = nil
+    }
+
+    private var lockDelay: LockDelay {
+        LockDelay(rawValue: UserDefaults.standard.integer(forKey: SettingsKey.lockDelay)) ?? .immediately
     }
 
     #if DEBUG

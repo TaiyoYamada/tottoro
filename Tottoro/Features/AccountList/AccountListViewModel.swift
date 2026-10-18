@@ -14,11 +14,13 @@ final class AccountListViewModel {
     enum Sheet: Identifiable {
         case add
         case edit(Account)
+        case settings
 
         var id: String {
             switch self {
             case .add: "add"
             case let .edit(account): account.id.uuidString
+            case .settings: "settings"
             }
         }
     }
@@ -26,6 +28,8 @@ final class AccountListViewModel {
     var sheet: Sheet?
     /// コピーした直後だけ「コピーしました」を出すために持つ。
     private(set) var copiedAccountID: Account.ID?
+    /// コードを隠す設定のときに、タップして見せているアカウント。別のアカウントを選ぶと隠し直す。
+    private(set) var revealedAccountID: Account.ID?
     private var selectedID: Account.ID?
 
     private let store: AccountStore
@@ -45,6 +49,16 @@ final class AccountListViewModel {
 
     func select(_ account: Account) {
         selectedID = account.id
+        revealedAccountID = nil
+    }
+
+    /// 隠しているコードは、1 回目のタップで見せ、2 回目でコピーする。
+    func tapCode(of account: Account, hidesCodes: Bool) async {
+        if hidesCodes, revealedAccountID != account.id {
+            revealedAccountID = account.id
+            return
+        }
+        await copyCode(of: account)
     }
 
     func code(for account: Account, at date: Date) -> String {

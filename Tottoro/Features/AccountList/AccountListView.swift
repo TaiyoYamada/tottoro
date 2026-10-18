@@ -25,6 +25,14 @@ struct AccountListView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 #endif
                 .toolbar {
+                    #if os(iOS)
+                    // Mac は標準の設定ウインドウ（⌘,）から開く
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button("Settings", systemImage: "gearshape") {
+                            viewModel.sheet = .settings
+                        }
+                    }
+                    #endif
                     ToolbarItem(placement: .primaryAction) {
                         Button("Add", systemImage: "plus") {
                             viewModel.sheet = .add
@@ -40,6 +48,8 @@ struct AccountListView: View {
                 AddAccountView(store: store)
             case let .edit(account):
                 EditAccountView(account: account, store: store)
+            case .settings:
+                SettingsView(store: store)
             }
         }
     }

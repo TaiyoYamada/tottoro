@@ -36,6 +36,10 @@ struct MenuBarView: View {
                     NSApp.activate()
                 }
                 Spacer()
+                // Dock に出さない設定では、アプリのメニューも ⌘, も使えないので、ここから設定を開けるようにする
+                SettingsLink {
+                    Text("Settings")
+                }
                 Button("Quit") {
                     NSApp.terminate(nil)
                 }

@@ -29,6 +29,11 @@ struct TottoroApp: App {
         let store = AccountStore(repository: KeychainAccountRepository())
         _store = State(initialValue: store)
         _credentialImport = State(initialValue: CredentialImportViewModel(store: store))
+        #if os(macOS)
+        // メニューバーだけで使う人のために、Dock に出さない設定がある。初めて開いたときは出す
+        let showsInDock = UserDefaults.standard.object(forKey: SettingsKey.showsInDock) as? Bool ?? true
+        NSApplication.shared.setActivationPolicy(showsInDock ? .regular : .accessory)
+        #endif
     }
 
     var body: some Scene {
@@ -52,6 +57,24 @@ struct TottoroApp: App {
                 .environment(lock)
         }
         .menuBarExtraStyle(.window)
+
+        // 設定からも書き出しや取り込みができるので、ロック中は開かせない
+        Settings {
+            Group {
+                switch lock.state {
+                case .unlocked:
+                    SettingsView(store: store)
+                case .locked, .authenticating, .failed:
+                    LockView()
+                        .frame(width: 460, height: 300)
+                }
+            }
+            // 開いたときに、ロックまでの時間が過ぎていないかを確かめる
+            .task {
+                await lock.unlock()
+            }
+            .environment(lock)
+        }
         #endif
     }
 }

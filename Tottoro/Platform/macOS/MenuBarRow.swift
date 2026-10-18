@@ -17,6 +17,8 @@ struct MenuBarRow: View {
     let onCopy: () -> Void
 
     @State private var isHovering = false
+    /// メニューバーではクリックでコピーするだけなので、隠したままでもコピーできる
+    @AppStorage(SettingsKey.hidesCodes) private var hidesCodes = false
 
     var body: some View {
         Button(action: onCopy) {
@@ -38,7 +40,7 @@ struct MenuBarRow: View {
                         .labelStyle(.iconOnly)
                         .foregroundStyle(.green)
                 }
-                OneTimeCodeText(code: code, font: Typography.rowCode)
+                OneTimeCodeText(code: code, font: Typography.rowCode, isHidden: hidesCodes)
                 CountdownRing(secondsRemaining: secondsRemaining, period: account.period, lineWidth: 2)
                     .frame(width: 22, height: 22)
             }

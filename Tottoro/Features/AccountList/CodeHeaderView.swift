@@ -12,6 +12,7 @@ import TottoroCore
 struct CodeHeaderView: View {
     let account: Account
     let viewModel: AccountListViewModel
+    @AppStorage(SettingsKey.hidesCodes) private var hidesCodes = false
 
     var body: some View {
         // 円が滑らかに減るよう、1 秒ごとではなく画面の描き直しに合わせて更新する
@@ -27,7 +28,7 @@ struct CodeHeaderView: View {
                             .opacity(0.8)
                     }
                 }
-                OneTimeCodeText(code: code, font: Typography.headerCode)
+                OneTimeCodeText(code: code, font: Typography.headerCode, isHidden: isHidden)
                     .animation(.snappy, value: code)
                 HStack(spacing: Spacing.small) {
                     CountdownRing(
@@ -35,7 +36,7 @@ struct CodeHeaderView: View {
                         period: account.period,
                     )
                     .frame(width: 32, height: 32)
-                    Text(viewModel.copiedAccountID == account.id ? "Copied" : "Tap to Copy")
+                    Text(hint)
                         .font(Typography.headerName)
                         .contentTransition(.opacity)
                 }
@@ -49,10 +50,24 @@ struct CodeHeaderView: View {
         .animation(.default, value: viewModel.copiedAccountID)
         .contentShape(.rect)
         .onTapGesture {
-            Task { await viewModel.copyCode(of: account) }
+            Task { await viewModel.tapCode(of: account, hidesCodes: hidesCodes) }
         }
         .sensoryFeedback(.success, trigger: viewModel.copiedAccountID) { _, new in new != nil }
         .accessibilityAddTraits(.isButton)
-        .accessibilityHint(Text("Copies the code"))
+        .accessibilityHint(isHidden ? Text("Shows the code") : Text("Copies the code"))
+    }
+
+    private var isHidden: Bool {
+        hidesCodes && viewModel.revealedAccountID != account.id
+    }
+
+    private var hint: LocalizedStringResource {
+        if viewModel.copiedAccountID == account.id {
+            "Copied"
+        } else if isHidden {
+            "Tap to Show"
+        } else {
+            "Tap to Copy"
+        }
     }
 }

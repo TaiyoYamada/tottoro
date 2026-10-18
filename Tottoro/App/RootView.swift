@@ -30,10 +30,10 @@ struct RootView: View {
                 // Face ID を閉じたときも inactive から active に戻る。そこで自動で求め直すと、
                 // キャンセルしても認証が出続けるので、起動時と裏から戻ったときだけにする
                 if oldPhase == phase || oldPhase == .background {
-                    Task { await lock.unlock() }
+                    Task { await lock.willEnterForeground() }
                 }
             case .background:
-                lock.lock()
+                lock.didEnterBackground()
             case .inactive:
                 // Face ID の確認中にも inactive になるので、ここではロックしない
                 break

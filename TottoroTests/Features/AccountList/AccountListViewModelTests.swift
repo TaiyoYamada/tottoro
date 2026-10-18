@@ -52,4 +52,26 @@ struct AccountListViewModelTests {
 
         #expect(viewModel.selectedAccount?.id == first.id)
     }
+
+    @Test func `shows a hidden code on the first tap instead of copying it`() async {
+        let store = AccountStore(repository: InMemoryAccountRepository())
+        store.add([first])
+        let viewModel = AccountListViewModel(store: store)
+
+        await viewModel.tapCode(of: first, hidesCodes: true)
+
+        #expect(viewModel.revealedAccountID == first.id)
+        #expect(viewModel.copiedAccountID == nil)
+    }
+
+    @Test func `hides the code again when another account is selected`() async {
+        let store = AccountStore(repository: InMemoryAccountRepository())
+        store.add([first, second])
+        let viewModel = AccountListViewModel(store: store)
+
+        await viewModel.tapCode(of: first, hidesCodes: true)
+        viewModel.select(second)
+
+        #expect(viewModel.revealedAccountID == nil)
+    }
 }

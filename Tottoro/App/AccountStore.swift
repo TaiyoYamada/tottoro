@@ -78,13 +78,15 @@ final class AccountStore {
             return
         }
         guard accounts != previous else { return }
-        let accounts = accounts
-        Task {
-            do {
-                try await CredentialIdentityRegistrar.register(accounts)
-            } catch {
-                failure = Failure(message: error.localizedDescription)
-            }
+        Task { await registerAutoFillSuggestions() }
+    }
+
+    /// 自動入力がオフの間は OS が登録を受け付けないので、オンにしたときにも呼ぶ。
+    func registerAutoFillSuggestions() async {
+        do {
+            try await CredentialIdentityRegistrar.register(accounts)
+        } catch {
+            failure = Failure(message: error.localizedDescription)
         }
     }
 }
