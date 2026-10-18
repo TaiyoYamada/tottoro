@@ -5,9 +5,10 @@ swiftformat = "0.64.0"
 xcodegen = "2.46.0"
 
 [tasks.setup]
-description = "Install the tools, then generate the Xcode project"
+description = "Install the tools, copy Local.xcconfig, then generate the Xcode project"
 run = [
   "mise install",
+  "test -f Local.xcconfig || cp Local.xcconfig.example Local.xcconfig",
   "xcodegen generate",
 ]
 

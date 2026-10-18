@@ -1,0 +1,7 @@
+// Values shared by Debug and Release. Per-contributor values go in Local.xcconfig,
+// which is not in Git. Copy Local.xcconfig.example to start.
+
+APP_BUNDLE_ID_BASE = com.taiyo.tottoro
+DEVELOPMENT_TEAM =
+
+#include? "../Local.xcconfig"

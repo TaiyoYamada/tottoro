@@ -5,3 +5,6 @@
 .build/
 .swiftpm/
 xcuserdata/
+
+# 人ごとの署名の設定。Local.xcconfig.example を写して使う
+Local.xcconfig
