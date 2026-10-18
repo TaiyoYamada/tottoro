@@ -33,6 +33,7 @@ Open `Tottoro.xcodeproj`. The first time, Xcode asks whether to trust the swift-
 |---|---|---|
 | Bundle ID | `com.taiyo.tottoro.dev` | `com.taiyo.tottoro` |
 | Name on the Home Screen | Tottoro Dev | Tottoro |
+| App icon | Orange (`AppIcon-Dev`) | Blue (`AppIcon`) |
 | Used for | Run and Test in Xcode | Archive for the App Store |
 
 The Debug build has its own bundle ID, and so its own Keychain access group. You can install it next to the App Store build without risking your real secrets. The extensions and test targets add their own suffix to the same base.
@@ -155,6 +156,20 @@ scripts/screenshots.sh
 ```
 
 It writes the PNG files to `build/screenshots/`. The Mac screenshots are of the window only. Put them on a 16:10 background for the Mac App Store.
+
+## Service icons
+
+The logos in `Tottoro/Resources/ServiceIcons.xcassets` and the index `ServiceIcons.json` are generated. Do not edit them by hand. To update them, change `SIMPLE_ICONS_VERSION` in the script if needed, and run:
+
+```sh
+python3 scripts/generate-service-icons.py
+```
+
+It downloads Simple Icons and the 2FA Directory, and keeps only CC0 icons of services that support TOTP.
+
+## App icon
+
+The app icon is `Tottoro/Resources/AppIcon.icon`, and the development build uses the orange `AppIcon-Dev.icon`. Edit them in Icon Composer. The SVG drafts of the layers are in `Design/AppIcon/`, with a README.
 
 ## New files
 

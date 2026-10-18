@@ -15,8 +15,8 @@
 
 | Library | Contents | Side effects |
 |---|---|---|
-| `TottoroCore` | Account types, TOTP computation, Base32, parsing of otpauth URLs and Google's export format, the storage protocol | None |
-| `TottoroStorage` | Saving to the Keychain, registering AutoFill suggestions with the OS | Yes |
+| `TottoroCore` | Account types, TOTP computation, Base32, parsing of otpauth URLs, Google's export format and other apps' export files (including decryption), Credential Exchange mapping, service icon matching, the storage protocol | None |
+| `TottoroStorage` | Saving to the Keychain, registering AutoFill suggestions with the OS, Face ID / passcode checks (`DeviceOwnerAuthentication`) | Yes |
 
 Code without side effects lives in `TottoroCore` so that `swift test` alone can run its tests. The Keychain does not work without entitlements, so `TottoroStorage` has no tests. It is checked on real devices.
 
@@ -48,22 +48,25 @@ Configs/                    Build settings per configuration (bundle IDs, displa
 TestPlans/                  Unit, UI, and Screenshots test plans
 mise.toml                   Tool versions and tasks (setup, lint, format)
 lefthook.yml                Git hooks
-scripts/                    String Catalog checks, App Store screenshots, commit message check
+scripts/                    String Catalog checks, App Store screenshots, commit message check, service icons
 ci_scripts/                 Xcode Cloud
+Design/AppIcon/             SVG drafts of the app icon's layers
 Tottoro/
   App/                      App entry point, AccountStore, AppLock, RootView
   Debug/                    Code for tests only, inside #if DEBUG
   Features/                 A View and a ViewModel for each screen
     AccountList/            The main screen, same as Authy
-    AddAccount/             QR scanning, manual entry, import from Google
-    EditAccount/            Editing the name, domain, and color
+    AddAccount/             QR scanning, manual entry, import from Google and from other apps' files
+    EditAccount/            Editing the name, domain, icon, and color
     Lock/                   The screen shown while locked
+    Settings/               Settings (a sheet on iPhone, the Settings window on Mac)
+    Transfer/               Receiving accounts through Credential Exchange
   Platform/
     Clipboard.swift         Copying codes (different on iPhone and Mac)
     iOS/                    VisionKit camera screen
     macOS/                  Menu bar, reading QR codes from the screen
   DesignSystem/             Spacing, type, and color tokens, and shared components
-  Resources/                Assets.xcassets, String Catalogs, PrivacyInfo.xcprivacy
+  Resources/                App icons (.icon), Assets.xcassets, ServiceIcons (generated), String Catalogs, PrivacyInfo.xcprivacy
 TottoroAutoFill/            The AutoFill extension
 TottoroKit/                 The local Swift Package
 TottoroTests/               ViewModel tests, in the same layout as Features
@@ -82,7 +85,9 @@ The screens rebuild Authy's UI in SwiftUI.
 
 - The main screen shows the selected account's code in large type at the top, and a grid of account circles below. The top background uses the selected account's color. Tap to copy the code. Long press (right-click on Mac) to edit or delete.
 - The countdown ring uses `TimelineView(.animation)` to shrink smoothly in step with screen redraws.
+- Settings has the lock delay, hiding codes, the AutoFill status, import and export, Mac options (open at login, show in Dock), and links about the app. On iPhone it opens from the gear in the main screen. On Mac it is the standard Settings window (⌘,), which shows the lock screen while the app is locked.
 - The Mac menu bar uses `MenuBarExtra` with the `.window` style and shows a search field and a list. Click to copy.
+- Each account circle shows the service's logo when one matches the account's domain or issuer, and the issuer's initial otherwise. The logos are Simple Icons for services that support TOTP, generated into `ServiceIcons.xcassets` by `scripts/generate-service-icons.py`. The person can pick another logo or the initial on the edit screen.
 - Standard OS components (`NavigationStack`, `Form`, `List`, `ContentUnavailableView`) are used as they are. They get the iOS 26 / macOS 26 Liquid Glass look on their own.
 
 ## Data flow
@@ -97,6 +102,21 @@ QR code (camera / Photos / Mac screen)
   → AccountStore.add
   → saved to the Keychain, and AutoFill suggestions registered again
 ```
+
+### Importing from other apps
+
+```text
+File (2FAS, Aegis, Bitwarden Authenticator, Apple Passwords CSV, otpauth list)
+  → ExportFileImporter decides the format from the content, and asks for a password if it is encrypted
+  → AccountStore.add, which leaves out accounts that are already there
+
+Credential Exchange (another app exports to Tottoro)
+  → the system opens Tottoro with ASCredentialExchangeActivity
+  → CredentialImportViewModel waits until the app is unlocked
+  → ASCredentialImportManager → CredentialExchange.accounts → AccountStore.add
+```
+
+See [import-formats.md](import-formats.md) for each format.
 
 ### Sync
 
