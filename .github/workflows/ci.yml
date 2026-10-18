@@ -1,0 +1,107 @@
+name: CI
+
+on:
+  push:
+    branches: [develop, main]
+  pull_request:
+    branches: [develop, main]
+  schedule:
+    # UI tests and snapshot tests are slow, so they run every night instead of on every push
+    - cron: "0 18 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  IOS_DESTINATION: platform=iOS Simulator,name=iPhone 17,OS=27.0
+  MACOS_DESTINATION: platform=macOS,arch=arm64
+  DERIVED_DATA: ${{ github.workspace }}/build/DerivedData
+  # protoc is built from source by the swift-protobuf build plugin, which needs to be trusted without a prompt
+  XCODEBUILD_FLAGS: >-
+    -project Tottoro.xcodeproj -scheme Tottoro -skipPackagePluginValidation
+    CODE_SIGNING_ALLOWED=NO TOTTORO_WARNINGS_AS_ERRORS=YES
+
+jobs:
+  lint:
+    runs-on: xcode-27
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: jdx/mise-action@9b200bcecbfd6303e69a4a261b2e09e3757440a7 # v5.2.0
+      - run: mise run lint
+      - name: Scan for secrets
+        run: mise exec -- gitleaks git --redact --no-banner
+      # Pull requests from contributors are squashed, so the title becomes the commit message
+      - name: Check the pull request title
+        if: github.event_name == 'pull_request'
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          printf '%s\n' "$TITLE" > "$RUNNER_TEMP/title"
+          scripts/check-commit-message.sh "$RUNNER_TEMP/title"
+
+  kit:
+    runs-on: xcode-27
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: sudo xcode-select --switch "/Applications/Xcode_$(cat .xcode-version).app"
+      - name: Test TottoroKit
+        working-directory: TottoroKit
+        run: swift test --force-resolved-versions
+
+  app:
+    runs-on: xcode-27
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: jdx/mise-action@9b200bcecbfd6303e69a4a261b2e09e3757440a7 # v5.2.0
+      - run: sudo xcode-select --switch "/Applications/Xcode_$(cat .xcode-version).app"
+      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: build/DerivedData/SourcePackages
+          key: spm-${{ hashFiles('TottoroKit/Package.resolved', 'project.yml', '.xcode-version') }}
+      - run: mise run generate
+      - name: Test on iOS
+        run: xcodebuild test $XCODEBUILD_FLAGS -testPlan Unit -destination "$IOS_DESTINATION" -derivedDataPath "$DERIVED_DATA"
+      - name: Test on macOS
+        run: xcodebuild test $XCODEBUILD_FLAGS -testPlan Unit -destination "$MACOS_DESTINATION" -derivedDataPath "$DERIVED_DATA"
+      - name: Check that the String Catalogs have every string in the code
+        run: |
+          scripts/sync-strings.sh "$DERIVED_DATA"
+          git diff --exit-code -- '*.xcstrings' || {
+            echo "Strings in the code and the String Catalogs differ. Build in Xcode or run scripts/sync-strings.sh, then add the translations." >&2
+            exit 1
+          }
+          scripts/check-strings.sh
+
+  ui:
+    # On pull requests to main (releases), every night, and by hand
+    if: >-
+      (github.event_name == 'pull_request' && github.base_ref == 'main')
+      || github.event_name == 'schedule'
+      || github.event_name == 'workflow_dispatch'
+    runs-on: xcode-27
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: jdx/mise-action@9b200bcecbfd6303e69a4a261b2e09e3757440a7 # v5.2.0
+      - run: sudo xcode-select --switch "/Applications/Xcode_$(cat .xcode-version).app"
+      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: build/DerivedData/SourcePackages
+          key: spm-${{ hashFiles('TottoroKit/Package.resolved', 'project.yml', '.xcode-version') }}
+      - run: mise run generate
+      - name: Run UI tests and snapshot tests
+        run: >-
+          xcodebuild test $XCODEBUILD_FLAGS -testPlan UI -destination "$IOS_DESTINATION"
+          -derivedDataPath "$DERIVED_DATA" -resultBundlePath build/UI.xcresult
+      - name: Keep the results for failed snapshots
+        if: failure()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: ui-test-results
+          path: build/UI.xcresult
