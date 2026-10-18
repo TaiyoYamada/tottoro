@@ -1,0 +1,21 @@
+# Pin the tools so that everyone and CI use the same versions.
+[tools]
+swiftlint = "0.65.1"
+swiftformat = "0.64.0"
+xcodegen = "2.46.0"
+
+[tasks.setup]
+description = "Install the tools, then generate the Xcode project"
+run = [
+  "mise install",
+  "xcodegen generate",
+]
+
+[tasks.generate]
+description = "Generate Tottoro.xcodeproj from project.yml"
+run = "xcodegen generate"
+
+[tasks.test-kit]
+description = "Run the TottoroKit tests"
+dir = "TottoroKit"
+run = "swift test"
