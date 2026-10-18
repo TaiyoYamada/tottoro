@@ -11,6 +11,8 @@ import SwiftUI
 struct AddAccountView: View {
     @State private var viewModel: AddAccountViewModel
     @State private var photoItem: PhotosPickerItem?
+    @State private var isChoosingFile = false
+    @State private var password = ""
     @Environment(\.dismiss) private var dismiss
 
     init(store: AccountStore) {
@@ -36,6 +38,10 @@ struct AddAccountView: View {
         .frame(minWidth: 420, minHeight: 460)
         #endif
         .privacyCover()
+        // .2fas のように型の決まっていない拡張子もあるので、ファイルなら何でも選べるようにし、中身で判断する
+        .fileImporter(isPresented: $isChoosingFile, allowedContentTypes: [.data]) { result in
+            viewModel.importFile(result)
+        }
         .onChange(of: photoItem) { _, item in
             guard let item else { return }
             photoItem = nil
@@ -77,6 +83,19 @@ struct AddAccountView: View {
             #endif
         case .enteringManually:
             ManualEntryForm(viewModel: viewModel)
+        case .enteringPassword:
+            Form {
+                Section {
+                    SecureField("Password", text: $password)
+                        .textContentType(.password)
+                        .onSubmit(submitPassword)
+                    Button("Open", action: submitPassword)
+                        .disabled(password.isEmpty)
+                } footer: {
+                    Text("This file is encrypted. Enter the password you set when you exported it.")
+                }
+            }
+            .formStyle(.grouped)
         case .reading:
             ProgressView("Reading…")
         case let .finished(result):
@@ -123,7 +142,22 @@ struct AddAccountView: View {
             } footer: {
                 Text("You can also scan the QR code from “Transfer accounts” in Google Authenticator.")
             }
+            Section {
+                Button("Import from Another App", systemImage: "square.and.arrow.down") {
+                    isChoosingFile = true
+                }
+            } footer: {
+                Text("""
+                Choose a file exported from 2FAS, Aegis, Bitwarden Authenticator, or the Passwords app. \
+                Apps that support Credential Exchange can also send accounts to Tottoro from their export screen.
+                """)
+            }
         }
         .formStyle(.grouped)
+    }
+
+    private func submitPassword() {
+        viewModel.submitPassword(password)
+        password = ""
     }
 }

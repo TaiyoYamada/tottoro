@@ -18,6 +18,8 @@ final class AddAccountViewModel {
         case scanningCamera
         case enteringManually
         case reading
+        /// 暗号化された書き出しを開くパスワードを聞いている。
+        case enteringPassword(Data)
         case finished(AddResult)
     }
 
@@ -103,6 +105,57 @@ final class AddAccountViewModel {
         } catch {
             errorMessage = error.localizedDescription
             phase = .choosing
+        }
+    }
+
+    /// 他のアプリの書き出しのファイルを読む。暗号化されていれば、パスワードを聞いてから submitPassword で開く。
+    func importFile(_ result: Result<URL, any Error>) {
+        let data: Data
+        do {
+            let url = try result.get()
+            // ファイルの選択で渡された URL はアプリの外の場所なので、読む間だけ許可を得る
+            let isAccessing = url.startAccessingSecurityScopedResource()
+            defer {
+                if isAccessing {
+                    url.stopAccessingSecurityScopedResource()
+                }
+            }
+            data = try Data(contentsOf: url)
+        } catch {
+            errorMessage = error.localizedDescription
+            return
+        }
+        importFile(data, password: nil)
+    }
+
+    func submitPassword(_ password: String) {
+        guard case let .enteringPassword(data) = phase else { return }
+        importFile(data, password: password)
+    }
+
+    private func importFile(_ data: Data, password: String?) {
+        do throws(ExportFileImporter.ImportError) {
+            let imported = try ExportFileImporter.importAccounts(from: data, password: password)
+            let added = store.add(imported.accounts)
+            phase = .finished(AddResult(
+                added: added,
+                alreadyAdded: imported.accounts.count - added,
+                unsupported: imported.skippedCount,
+            ))
+        } catch {
+            switch error {
+            case .passwordRequired:
+                phase = .enteringPassword(data)
+            case .wrongPassword:
+                errorMessage = String(localized: "The password is incorrect.")
+            case .unsupportedFile:
+                errorMessage = String(localized: """
+                Tottoro can’t read this file. Export from 2FAS, Aegis, Bitwarden Authenticator, \
+                or the Passwords app, or choose a text file with otpauth links.
+                """)
+            case .invalidFile:
+                errorMessage = String(localized: "The file is damaged or incomplete.")
+            }
         }
     }
 

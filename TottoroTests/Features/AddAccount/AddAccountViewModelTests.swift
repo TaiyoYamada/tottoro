@@ -76,4 +76,34 @@ struct AddAccountViewModelTests {
         #expect(viewModel.phase == .finished(AddResult(added: 0, alreadyAdded: 1, unsupported: 0)))
         #expect(store.accounts.count == 1)
     }
+
+    @Test func `imports a file exported from another app`() throws {
+        let store = AccountStore(repository: InMemoryAccountRepository())
+        let viewModel = AddAccountViewModel(store: store)
+        let url = try temporaryFile(containing: """
+        otpauth://totp/GitHub:octocat?secret=MZXW6YTBOI&issuer=GitHub
+        otpauth://hotp/Counter:me?secret=MZXW6YTBOI&counter=1
+        """)
+
+        viewModel.importFile(.success(url))
+
+        #expect(viewModel.phase == .finished(AddResult(added: 1, alreadyAdded: 0, unsupported: 1)))
+        #expect(store.accounts.map(\.issuer) == ["GitHub"])
+    }
+
+    @Test func `shows an error for a file from an unknown app`() throws {
+        let store = AccountStore(repository: InMemoryAccountRepository())
+        let viewModel = AddAccountViewModel(store: store)
+
+        try viewModel.importFile(.success(temporaryFile(containing: "hello")))
+
+        #expect(viewModel.phase == .choosing)
+        #expect(viewModel.errorMessage != nil)
+    }
+
+    private func temporaryFile(containing text: String) throws -> URL {
+        let url = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString)
+        try Data(text.utf8).write(to: url)
+        return url
+    }
 }

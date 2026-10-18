@@ -11,18 +11,12 @@ import SwiftProtobuf
 /// Google Authenticator の書き出し用 QR コード（otpauth-migration://offline?data=...）の解析。
 /// アカウントが多いと QR コードが複数枚に分かれるが、1 枚ずつ独立して読める。
 public enum GoogleMigrationParser {
-    public struct Result: Equatable, Sendable {
-        public let accounts: [Account]
-        /// HOTP など、Tottoro が扱えずに飛ばした件数。
-        public let skippedCount: Int
-    }
-
     public enum ParseError: Error, Equatable {
         case invalidURL
         case invalidPayload
     }
 
-    public static func parse(_ string: String) throws(ParseError) -> Result {
+    public static func parse(_ string: String) throws(ParseError) -> ImportedAccounts {
         guard let components = URLComponents(string: string),
               components.scheme?.lowercased() == "otpauth-migration",
               let dataText = components.queryItems?.first(where: { $0.name == "data" })?.value,
@@ -43,7 +37,7 @@ public enum GoogleMigrationParser {
             guard let account = account(from: parameters) else { continue }
             accounts.append(account)
         }
-        return Result(accounts: accounts, skippedCount: payload.otpParameters.count - accounts.count)
+        return ImportedAccounts(accounts: accounts, skippedCount: payload.otpParameters.count - accounts.count)
     }
 
     private static func account(from parameters: MigrationPayload.OtpParameters) -> Account? {
