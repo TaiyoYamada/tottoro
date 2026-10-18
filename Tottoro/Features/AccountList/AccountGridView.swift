@@ -16,7 +16,8 @@ struct AccountGridView: View {
     @State private var accountToDelete: Account?
 
     var body: some View {
-        LazyVGrid(columns: [GridItem(.adaptive(minimum: 80), spacing: Spacing.medium)], spacing: Spacing.large) {
+        // 長押しで浮かぶ形の内側に余白を入れた分、格子の間隔を詰めて、見た目の間隔を前と同じに保つ
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 88), spacing: 0)], spacing: Spacing.small) {
             ForEach(viewModel.accounts) { account in
                 Button {
                     viewModel.select(account)
@@ -25,8 +26,9 @@ struct AccountGridView: View {
                         AccountAvatar(account: account)
                             .padding(Spacing.xSmall)
                             .overlay {
+                                // stroke だと線の半分が外にはみ出し、長押しで浮かせたときに切れる
                                 if account.id == selectedID {
-                                    Circle().stroke(account.color.color, lineWidth: 3)
+                                    Circle().strokeBorder(account.color.color, lineWidth: 3)
                                 }
                             }
                         Text(account.displayName)
@@ -34,6 +36,11 @@ struct AccountGridView: View {
                             .lineLimit(1)
                             .foregroundStyle(.primary)
                     }
+                    .padding(Spacing.small)
+                    #if os(iOS)
+                    // 長押しで浮かぶ形は、指定しないと部品の外枠の四角になる
+                    .contentShape(.contextMenuPreview, .rect(cornerRadius: Spacing.medium))
+                    #endif
                 }
                 .buttonStyle(.plain)
                 .accessibilityAddTraits(account.id == selectedID ? .isSelected : [])
