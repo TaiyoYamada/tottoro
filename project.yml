@@ -35,6 +35,13 @@ packages:
     url: https://github.com/pointfreeco/swift-snapshot-testing
     exactVersion: 1.19.6
 
+# アプリを作りながら Xcode で開いて直すものだけを、一覧に出す
+fileGroups:
+  - project.yml
+  - Configs
+  - Local.xcconfig
+  - TestPlans
+
 targets:
   Tottoro:
     type: application
