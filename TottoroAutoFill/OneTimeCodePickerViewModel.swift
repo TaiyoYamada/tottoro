@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import LocalAuthentication
 import Observation
 import TottoroCore
 import TottoroStorage
@@ -23,6 +22,7 @@ final class OneTimeCodePickerViewModel {
     enum State {
         case locked
         case authenticating
+        case failed(DeviceOwnerAuthentication.Failure)
         case unlocked([Account])
     }
 
@@ -45,15 +45,17 @@ final class OneTimeCodePickerViewModel {
     }
 
     func unlock() async {
-        guard case .locked = state else { return }
+        switch state {
+        case .locked, .failed:
+            break
+        case .authenticating, .unlocked:
+            return
+        }
         state = .authenticating
-        do {
-            try await LAContext().evaluatePolicy(
-                .deviceOwnerAuthentication,
-                localizedReason: String(localized: "Unlock to enter a code"),
-            )
+        do throws(DeviceOwnerAuthentication.Failure) {
+            try await DeviceOwnerAuthentication.authenticate(reason: String(localized: "Unlock to enter a code"))
         } catch {
-            state = .locked
+            state = .failed(error)
             return
         }
 

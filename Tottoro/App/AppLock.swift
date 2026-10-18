@@ -5,8 +5,8 @@
 //  Created by 山田大陽 on 2026/10/18.
 //
 
-import LocalAuthentication
 import Observation
+import TottoroStorage
 #if os(macOS)
 import AppKit
 #endif
@@ -15,10 +15,12 @@ import AppKit
 /// これはロック解除された端末を他人が触ったときにコードを見せないための関門になる。
 @Observable
 final class AppLock {
-    enum State {
+    enum State: Equatable {
         case locked
         case authenticating
         case unlocked
+        /// 直前の解除がうまくいかなかった。理由を画面に出し、もう一度試せるようにする。
+        case failed(DeviceOwnerAuthentication.Failure)
     }
 
     private(set) var state: State = .locked
@@ -37,17 +39,18 @@ final class AppLock {
     }
 
     func unlock() async {
-        guard state == .locked else { return }
+        switch state {
+        case .locked, .failed:
+            break
+        case .authenticating, .unlocked:
+            return
+        }
         state = .authenticating
-        do {
-            // 生体認証に失敗したときに端末のパスコードで解除できるよう、deviceOwnerAuthentication を使う
-            try await LAContext().evaluatePolicy(
-                .deviceOwnerAuthentication,
-                localizedReason: String(localized: "Unlock to show your codes"),
-            )
+        do throws(DeviceOwnerAuthentication.Failure) {
+            try await DeviceOwnerAuthentication.authenticate(reason: String(localized: "Unlock to show your codes"))
             state = .unlocked
         } catch {
-            state = .locked
+            state = .failed(error)
         }
     }
 

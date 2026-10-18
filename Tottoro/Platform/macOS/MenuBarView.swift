@@ -23,7 +23,7 @@ struct MenuBarView: View {
     var body: some View {
         VStack(spacing: 0) {
             switch lock.state {
-            case .locked, .authenticating:
+            case .locked, .authenticating, .failed:
                 LockView()
                     .frame(height: 260)
             case .unlocked:

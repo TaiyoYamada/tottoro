@@ -31,14 +31,18 @@ struct OneTimeCodePickerView: View {
     private var content: some View {
         switch viewModel.state {
         case .locked, .authenticating:
-            ContentUnavailableView {
-                Label("Locked", systemImage: "lock.fill")
-            } actions: {
-                Button("Unlock") {
-                    Task { await viewModel.unlock() }
-                }
-                .buttonStyle(.borderedProminent)
-            }
+            lockedView(message: nil)
+        case .failed(.canceled):
+            lockedView(message: "Unlocking was canceled.")
+        case .failed(.failed):
+            lockedView(message: "Couldn’t confirm it’s you. Try again.")
+        case .failed(.passcodeNotSet):
+            // パスコードのない端末では、コードを渡さない。アプリの側と同じ扱い
+            ContentUnavailableView(
+                "Set a Passcode",
+                systemImage: "lock.slash",
+                description: Text("Tottoro needs a passcode on this device to protect your codes."),
+            )
         case let .unlocked(accounts):
             TimelineView(.periodic(from: .now, by: 1)) { context in
                 List(accounts) { account in
@@ -61,6 +65,21 @@ struct OneTimeCodePickerView: View {
                     }
                 }
             }
+        }
+    }
+
+    private func lockedView(message: LocalizedStringResource?) -> some View {
+        ContentUnavailableView {
+            Label("Locked", systemImage: "lock.fill")
+        } description: {
+            if let message {
+                Text(message)
+            }
+        } actions: {
+            Button("Unlock") {
+                Task { await viewModel.unlock() }
+            }
+            .buttonStyle(.borderedProminent)
         }
     }
 }

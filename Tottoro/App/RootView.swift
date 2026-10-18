@@ -15,7 +15,7 @@ struct RootView: View {
     var body: some View {
         Group {
             switch lock.state {
-            case .locked, .authenticating:
+            case .locked, .authenticating, .failed:
                 LockView()
             case .unlocked:
                 AccountListView(store: store)
