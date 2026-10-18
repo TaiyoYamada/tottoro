@@ -10,9 +10,10 @@ import Testing
 @testable import TottoroCore
 
 struct OTPAuthURITests {
-    @Test func parsesAllParameters() throws {
+    @Test func `parses all parameters`() throws {
         let account = try OTPAuthURI.account(
-            from: "otpauth://totp/ACME%20Co:john@example.com?secret=MZXW6YTBOI&issuer=ACME%20Co&algorithm=SHA256&digits=8&period=60"
+            from: "otpauth://totp/ACME%20Co:john@example.com"
+                + "?secret=MZXW6YTBOI&issuer=ACME%20Co&algorithm=SHA256&digits=8&period=60",
         )
         #expect(account.issuer == "ACME Co")
         #expect(account.name == "john@example.com")
@@ -22,7 +23,7 @@ struct OTPAuthURITests {
         #expect(account.period == 60)
     }
 
-    @Test func usesDefaultsWhenParametersAreMissing() throws {
+    @Test func `uses defaults when parameters are missing`() throws {
         let account = try OTPAuthURI.account(from: "otpauth://totp/john@example.com?secret=MZXW6YTBOI")
         #expect(account.issuer == "")
         #expect(account.name == "john@example.com")
@@ -31,13 +32,13 @@ struct OTPAuthURITests {
         #expect(account.period == 30)
     }
 
-    @Test func takesIssuerFromTheLabelWhenTheParameterIsMissing() throws {
+    @Test func `takes issuer from the label when the parameter is missing`() throws {
         let account = try OTPAuthURI.account(from: "otpauth://totp/GitHub:%20octocat?secret=MZXW6YTBOI")
         #expect(account.issuer == "GitHub")
         #expect(account.name == "octocat")
     }
 
-    @Test func keepsTheNameEmptyWhenTheLabelHasOnlyTheIssuer() throws {
+    @Test func `keeps the name empty when the label has only the issuer`() throws {
         let account = try OTPAuthURI.account(from: "otpauth://totp/GitHub:?secret=MZXW6YTBOI&issuer=GitHub")
         #expect(account.issuer == "GitHub")
         #expect(account.name == "")
@@ -52,7 +53,7 @@ struct OTPAuthURITests {
         ("otpauth://totp/a?secret=MZXW6YTBOI&digits=4", .invalidDigits),
         ("otpauth://totp/a?secret=MZXW6YTBOI&period=0", .invalidPeriod),
     ])
-    func rejectsInvalidURIs(uri: String, expected: OTPAuthURI.ParseError) {
+    func `rejects invalid URIs`(uri: String, expected: OTPAuthURI.ParseError) {
         #expect(throws: expected) {
             try OTPAuthURI.account(from: uri)
         }

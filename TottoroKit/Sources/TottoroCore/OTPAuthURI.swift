@@ -36,7 +36,7 @@ public enum OTPAuthURI {
         guard let algorithm = HashAlgorithm(otpauthName: query["algorithm"] ?? "SHA1") else {
             throw .unsupportedAlgorithm
         }
-        guard let digits = Int(query["digits"] ?? "6"), (6...8).contains(digits) else { throw .invalidDigits }
+        guard let digits = Int(query["digits"] ?? "6"), (6 ... 8).contains(digits) else { throw .invalidDigits }
         guard let period = Int(query["period"] ?? "30"), period > 0 else { throw .invalidPeriod }
 
         // ラベルは「発行元:アカウント名」か「アカウント名」だけ。issuer パラメータがあればそちらを優先する
@@ -53,7 +53,7 @@ public enum OTPAuthURI {
             secret: secret,
             algorithm: algorithm,
             digits: digits,
-            period: period
+            period: period,
         )
     }
 }

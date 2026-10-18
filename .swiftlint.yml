@@ -1,0 +1,32 @@
+# Rules are SwiftLint's defaults, with the few changes below.
+included:
+  - Tottoro
+  - TottoroAutoFill
+  - TottoroTests
+  - TottoroKit/Sources
+  - TottoroKit/Tests
+  - TottoroKit/Package.swift
+
+opt_in_rules:
+  - force_unwrapping
+
+disabled_rules:
+  # SwiftFormat adds trailing commas to multiline collections and argument lists
+  - trailing_comma
+
+force_try: warning
+
+custom_rules:
+  no_print:
+    name: "No print"
+    regex: '\bprint\s*\('
+    match_kinds: identifier
+    message: "Use os.Logger instead of print, so that logs can mark values as private."
+    severity: warning
+  logger_privacy:
+    name: "Logger privacy"
+    # Interpolated values in a Logger message must say whether they are private or public.
+    # Secrets, setup keys and codes must never be .public.
+    regex: '\blogger\.(trace|debug|info|notice|log|warning|error|critical|fault)\([^\n]*\\\((?![^)\n]*privacy:)'
+    message: "Add `privacy:` to every value interpolated into a Logger message. Never mark secrets as .public."
+    severity: warning

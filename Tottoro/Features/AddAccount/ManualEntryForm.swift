@@ -5,8 +5,8 @@
 //  Created by 山田大陽 on 2026/10/18.
 //
 
-import TottoroCore
 import SwiftUI
+import TottoroCore
 
 /// QR コードが読めないときに、サイトに表示された「セットアップキー」を打ち込む。
 struct ManualEntryForm: View {

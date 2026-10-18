@@ -17,17 +17,17 @@ struct AccountTests {
         ("notgithub.com", false),
         ("github.com.evil.example", false),
     ])
-    func matchesTheDomainAndItsSubdomains(host: String, expected: Bool) {
+    func `matches the domain and its subdomains`(host: String, expected: Bool) {
         let account = Account(issuer: "GitHub", name: "octocat", secret: Data([1]), domain: "github.com")
         #expect(account.matchesService(host: host) == expected)
     }
 
-    @Test func matchesNothingWithoutADomain() {
+    @Test func `matches nothing without A domain`() {
         let account = Account(issuer: "GitHub", name: "octocat", secret: Data([1]))
         #expect(!account.matchesService(host: "github.com"))
     }
 
-    @Test func fallsBackToTheNameWhenTheIssuerIsEmpty() {
+    @Test func `falls back to the name when the issuer is empty`() {
         let account = Account(issuer: "", name: "octocat", secret: Data([1]))
         #expect(account.displayName == "octocat")
     }

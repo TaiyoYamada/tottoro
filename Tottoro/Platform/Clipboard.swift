@@ -20,7 +20,7 @@ enum Clipboard {
         // ユニバーサルクリップボードで Mac へ流れないようにし、1 分で消す
         UIPasteboard.general.setItems(
             [[UTType.plainText.identifier: code]],
-            options: [.localOnly: true, .expirationDate: Date().addingTimeInterval(60)]
+            options: [.localOnly: true, .expirationDate: Date().addingTimeInterval(60)],
         )
         #elseif os(macOS)
         let pasteboard = NSPasteboard.general

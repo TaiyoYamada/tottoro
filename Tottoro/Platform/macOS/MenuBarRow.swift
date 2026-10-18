@@ -6,8 +6,8 @@
 //
 
 #if os(macOS)
-import TottoroCore
 import SwiftUI
+import TottoroCore
 
 struct MenuBarRow: View {
     let account: Account

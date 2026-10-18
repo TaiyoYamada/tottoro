@@ -23,7 +23,7 @@ public enum CredentialIdentityRegistrar {
                 label: account.name.isEmpty || account.name == account.displayName
                     ? account.displayName
                     : "\(account.displayName)（\(account.name)）",
-                recordIdentifier: account.id.uuidString
+                recordIdentifier: account.id.uuidString,
             )
         }
         _ = try await store.replaceCredentialIdentities(identities)

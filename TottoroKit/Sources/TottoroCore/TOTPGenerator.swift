@@ -24,11 +24,10 @@ public enum TOTPGenerator {
     static func hotp(secret: Data, counter: UInt64, algorithm: HashAlgorithm, digits: Int) -> String {
         let message = withUnsafeBytes(of: counter.bigEndian) { Data($0) }
         let key = SymmetricKey(data: secret)
-        let mac: [UInt8]
-        switch algorithm {
-        case .sha1: mac = Array(HMAC<Insecure.SHA1>.authenticationCode(for: message, using: key))
-        case .sha256: mac = Array(HMAC<SHA256>.authenticationCode(for: message, using: key))
-        case .sha512: mac = Array(HMAC<SHA512>.authenticationCode(for: message, using: key))
+        let mac: [UInt8] = switch algorithm {
+        case .sha1: Array(HMAC<Insecure.SHA1>.authenticationCode(for: message, using: key))
+        case .sha256: Array(HMAC<SHA256>.authenticationCode(for: message, using: key))
+        case .sha512: Array(HMAC<SHA512>.authenticationCode(for: message, using: key))
         }
 
         // 動的切り詰め: 最後のバイトの下位 4 ビットが、31 ビットを取り出す位置になる
@@ -39,7 +38,7 @@ public enum TOTPGenerator {
             | UInt32(mac[offset + 3])
 
         var modulus: UInt32 = 1
-        for _ in 0..<digits {
+        for _ in 0 ..< digits {
             modulus *= 10
         }
         let value = String(truncated % modulus)

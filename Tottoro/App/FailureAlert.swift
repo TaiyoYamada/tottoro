@@ -16,9 +16,13 @@ struct FailureAlert: ViewModifier {
             "エラー",
             isPresented: Binding(
                 get: { store.failure != nil },
-                set: { if !$0 { store.failure = nil } }
+                set: {
+                    if !$0 {
+                        store.failure = nil
+                    }
+                },
             ),
-            presenting: store.failure
+            presenting: store.failure,
         ) { _ in
             Button("OK") {}
         } message: { failure in

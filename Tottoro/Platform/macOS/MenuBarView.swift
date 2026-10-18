@@ -68,7 +68,7 @@ struct MenuBarView: View {
                                     account: account,
                                     code: viewModel.code(for: account, at: context.date),
                                     secondsRemaining: viewModel.secondsRemaining(for: account, at: context.date),
-                                    isCopied: viewModel.copiedAccountID == account.id
+                                    isCopied: viewModel.copiedAccountID == account.id,
                                 ) {
                                     Task { await viewModel.copyCode(of: account) }
                                 }

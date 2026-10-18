@@ -75,7 +75,7 @@ public enum GoogleMigrationParser {
             name: name.trimmingCharacters(in: .whitespaces),
             secret: parameters.secret,
             algorithm: algorithm,
-            digits: digits
+            digits: digits,
         )
     }
 }

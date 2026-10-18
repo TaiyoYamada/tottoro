@@ -36,7 +36,7 @@ struct AccountListView: View {
             switch sheet {
             case .add:
                 AddAccountView(store: store)
-            case .edit(let account):
+            case let .edit(account):
                 EditAccountView(account: account, store: store)
             }
         }

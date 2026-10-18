@@ -8,8 +8,8 @@
 import Foundation
 import Observation
 import PhotosUI
-import TottoroCore
 import SwiftUI
+import TottoroCore
 
 @Observable
 final class AddAccountViewModel {
@@ -58,7 +58,7 @@ final class AddAccountViewModel {
                 }
             } else if payload.lowercased().hasPrefix("otpauth:") {
                 do throws(OTPAuthURI.ParseError) {
-                    accounts.append(try OTPAuthURI.account(from: payload))
+                    try accounts.append(OTPAuthURI.account(from: payload))
                 } catch {
                     lastError = Self.message(for: error)
                 }
@@ -85,7 +85,7 @@ final class AddAccountViewModel {
             secret: secret,
             algorithm: manualAlgorithm,
             digits: manualDigits,
-            period: manualPeriod
+            period: manualPeriod,
         )
         store.add([account])
         phase = .finished(added: 1, skipped: 0)
@@ -99,7 +99,7 @@ final class AddAccountViewModel {
                 phase = .choosing
                 return
             }
-            handleScannedPayloads(try await QRCodeImageReader.payloads(inImageData: data))
+            try await handleScannedPayloads(QRCodeImageReader.payloads(inImageData: data))
         } catch {
             errorMessage = error.localizedDescription
             phase = .choosing
@@ -110,7 +110,7 @@ final class AddAccountViewModel {
     func readQRCodeFromScreen() async {
         phase = .reading
         do {
-            handleScannedPayloads(try await ScreenQRReader.payloads())
+            try await handleScannedPayloads(ScreenQRReader.payloads())
         } catch {
             errorMessage = String(localized: "画面を読み取れませんでした。システム設定の「プライバシーとセキュリティ」で、Tottoro に画面収録を許可してください。")
             phase = .choosing

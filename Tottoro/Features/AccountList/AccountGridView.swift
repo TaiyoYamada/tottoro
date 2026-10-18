@@ -5,8 +5,8 @@
 //  Created by 山田大陽 on 2026/10/18.
 //
 
-import TottoroCore
 import SwiftUI
+import TottoroCore
 
 /// アカウントの丸を格子に並べる。タップで上の大きな表示を切り替え、長押しで編集や削除をする。
 struct AccountGridView: View {
@@ -49,8 +49,12 @@ struct AccountGridView: View {
         }
         .confirmationDialog(
             "このアカウントを削除しますか？",
-            isPresented: Binding(get: { accountToDelete != nil }, set: { if !$0 { accountToDelete = nil } }),
-            presenting: accountToDelete
+            isPresented: Binding(get: { accountToDelete != nil }, set: {
+                if !$0 {
+                    accountToDelete = nil
+                }
+            }),
+            presenting: accountToDelete,
         ) { account in
             Button("削除", role: .destructive) {
                 viewModel.delete(account)

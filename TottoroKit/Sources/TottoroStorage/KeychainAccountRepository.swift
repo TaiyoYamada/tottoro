@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import TottoroCore
 import Security
+import TottoroCore
 
 /// アカウント 1 件を、iCloud キーチェーンで同期する項目 1 つとして保存する。
 /// 1 件ずつ分けているのは、別の端末で別のアカウントを同時に編集しても上書きし合わないようにするため。
@@ -70,8 +70,8 @@ public struct KeychainAccountRepository: AccountRepository, Sendable {
         guard status == errSecSuccess || status == errSecItemNotFound else { throw KeychainError(status: status) }
     }
 
-    // kSecAttrAccessGroup は指定しない。指定しなければ entitlements の keychain-access-groups の
-    // 先頭のグループが使われ、アプリと自動入力の拡張の両方がそこを読める。
+    /// kSecAttrAccessGroup は指定しない。指定しなければ entitlements の keychain-access-groups の
+    /// 先頭のグループが使われ、アプリと自動入力の拡張の両方がそこを読める。
     private static func baseQuery() -> [CFString: Any] {
         [
             kSecClass: kSecClassGenericPassword,

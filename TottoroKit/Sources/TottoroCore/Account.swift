@@ -30,7 +30,7 @@ public struct Account: Identifiable, Hashable, Codable, Sendable {
         period: Int = 30,
         domain: String? = nil,
         color: AccountColor? = nil,
-        createdAt: Date = Date()
+        createdAt: Date = Date(),
     ) {
         self.id = id
         self.issuer = issuer

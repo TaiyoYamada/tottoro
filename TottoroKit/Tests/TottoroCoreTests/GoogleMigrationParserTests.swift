@@ -10,7 +10,7 @@ import Testing
 @testable import TottoroCore
 
 struct GoogleMigrationParserTests {
-    @Test func parsesTOTPAccountsAndSkipsUnsupportedOnes() throws {
+    @Test func `parses TOTP accounts and skips unsupported ones`() throws {
         var github = MigrationPayload.OtpParameters()
         github.secret = Data("foobar".utf8)
         github.name = "GitHub:octocat"
@@ -39,13 +39,13 @@ struct GoogleMigrationParserTests {
         #expect(account.digits == 6)
     }
 
-    @Test func rejectsOtherSchemes() {
+    @Test func `rejects other schemes`() {
         #expect(throws: GoogleMigrationParser.ParseError.invalidURL) {
             try GoogleMigrationParser.parse("otpauth://totp/a?secret=MZXW6YTBOI")
         }
     }
 
-    @Test func rejectsBrokenPayload() {
+    @Test func `rejects broken payload`() {
         // 有効な Base64 だが protobuf としては壊れている
         #expect(throws: GoogleMigrationParser.ParseError.invalidPayload) {
             try GoogleMigrationParser.parse("otpauth-migration://offline?data=%2F%2F%2F%2F")

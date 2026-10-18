@@ -10,7 +10,7 @@ import Testing
 @testable import TottoroCore
 
 struct Base32Tests {
-    // RFC 4648 の 10 章にある検証用の値
+    /// RFC 4648 の 10 章にある検証用の値
     @Test(arguments: [
         ("", ""),
         ("MY======", "f"),
@@ -20,15 +20,15 @@ struct Base32Tests {
         ("MZXW6YTB", "fooba"),
         ("MZXW6YTBOI======", "foobar"),
     ])
-    func decodesRFCVectors(encoded: String, expected: String) {
+    func `decodes RFC vectors`(encoded: String, expected: String) {
         #expect(Base32.decode(encoded) == Data(expected.utf8))
     }
 
-    @Test func ignoresCaseSpacesAndMissingPadding() {
+    @Test func `ignores case spaces and missing padding`() {
         #expect(Base32.decode("mzxw 6ytb oi") == Data("foobar".utf8))
     }
 
-    @Test func rejectsCharactersOutsideTheAlphabet() {
+    @Test func `rejects characters outside the alphabet`() {
         #expect(Base32.decode("MZXW1") == nil)
     }
 }

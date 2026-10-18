@@ -18,7 +18,7 @@ final class AccountListViewModel {
         var id: String {
             switch self {
             case .add: "add"
-            case .edit(let account): account.id.uuidString
+            case let .edit(account): account.id.uuidString
             }
         }
     }

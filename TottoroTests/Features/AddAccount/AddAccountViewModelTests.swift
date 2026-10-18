@@ -6,12 +6,12 @@
 //
 
 import Foundation
-import TottoroCore
 import Testing
 @testable import Tottoro
+import TottoroCore
 
 struct AddAccountViewModelTests {
-    @Test func addsAnAccountFromAnOTPAuthQRCode() {
+    @Test func `adds an account from an OTP auth QR code`() {
         let store = AccountStore(repository: InMemoryAccountRepository())
         let viewModel = AddAccountViewModel(store: store)
 
@@ -21,7 +21,7 @@ struct AddAccountViewModelTests {
         #expect(store.accounts.map(\.issuer) == ["GitHub"])
     }
 
-    @Test func ignoresQRCodesThatAreNotForTwoFactorAuthentication() {
+    @Test func `ignores QR codes that are not for two factor authentication`() {
         let store = AccountStore(repository: InMemoryAccountRepository())
         let viewModel = AddAccountViewModel(store: store)
 
@@ -30,7 +30,7 @@ struct AddAccountViewModelTests {
         #expect(viewModel.phase == .finished(added: 1, skipped: 0))
     }
 
-    @Test func showsAnErrorWhenNoAccountCanBeRead() {
+    @Test func `shows an error when no account can be read`() {
         let store = AccountStore(repository: InMemoryAccountRepository())
         let viewModel = AddAccountViewModel(store: store)
 
@@ -41,7 +41,7 @@ struct AddAccountViewModelTests {
         #expect(store.accounts.isEmpty)
     }
 
-    @Test func addsAManualEntryWithSpacesInTheSetupKey() {
+    @Test func `adds A manual entry with spaces in the setup key`() {
         let store = AccountStore(repository: InMemoryAccountRepository())
         let viewModel = AddAccountViewModel(store: store)
         viewModel.manualIssuer = "GitHub"
@@ -53,7 +53,7 @@ struct AddAccountViewModelTests {
         #expect(store.accounts.first?.secret == Data("foobar".utf8))
     }
 
-    @Test func rejectsASetupKeyOutsideTheBase32Alphabet() {
+    @Test func `rejects A setup key outside the base 32 alphabet`() {
         let store = AccountStore(repository: InMemoryAccountRepository())
         let viewModel = AddAccountViewModel(store: store)
         viewModel.manualIssuer = "GitHub"

@@ -16,15 +16,15 @@ let package = Package(
         .target(
             name: "TottoroCore",
             dependencies: [.product(name: "SwiftProtobuf", package: "swift-protobuf")],
-            plugins: [.plugin(name: "SwiftProtobufPlugin", package: "swift-protobuf")]
+            plugins: [.plugin(name: "SwiftProtobufPlugin", package: "swift-protobuf")],
         ),
         .target(
             name: "TottoroStorage",
-            dependencies: ["TottoroCore"]
+            dependencies: ["TottoroCore"],
         ),
         .testTarget(
             name: "TottoroCoreTests",
-            dependencies: ["TottoroCore"]
+            dependencies: ["TottoroCore"],
         ),
-    ]
+    ],
 )

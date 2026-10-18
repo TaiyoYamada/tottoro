@@ -44,8 +44,12 @@ struct AddAccountView: View {
             "追加できませんでした",
             isPresented: Binding(
                 get: { viewModel.errorMessage != nil },
-                set: { if !$0 { viewModel.errorMessage = nil } }
-            )
+                set: {
+                    if !$0 {
+                        viewModel.errorMessage = nil
+                    }
+                },
+            ),
         ) {
             Button("OK") {}
         } message: {
@@ -74,7 +78,7 @@ struct AddAccountView: View {
             ManualEntryForm(viewModel: viewModel)
         case .reading:
             ProgressView("読み取っています")
-        case .finished(let added, let skipped):
+        case let .finished(added, skipped):
             ContentUnavailableView {
                 Label("\(added) 件のアカウントを追加しました", systemImage: "checkmark.circle.fill")
             } description: {

@@ -5,8 +5,8 @@
 //  Created by 山田大陽 on 2026/10/18.
 //
 
-import TottoroCore
 import SwiftUI
+import TottoroCore
 
 /// 選んだアカウントの色を背景に、大きなコードと残り時間を出す。タップでコピーする。
 struct CodeHeaderView: View {
@@ -32,7 +32,7 @@ struct CodeHeaderView: View {
                 HStack(spacing: Spacing.small) {
                     CountdownRing(
                         secondsRemaining: viewModel.secondsRemaining(for: account, at: context.date),
-                        period: account.period
+                        period: account.period,
                     )
                     .frame(width: 32, height: 32)
                     Text(viewModel.copiedAccountID == account.id ? "コピーしました" : "タップしてコピー")

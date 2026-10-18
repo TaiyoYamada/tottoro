@@ -11,7 +11,7 @@ import Foundation
 public enum Base32 {
     private static let alphabet = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ234567")
     private static let values: [Character: UInt32] = Dictionary(
-        uniqueKeysWithValues: alphabet.enumerated().map { ($1, UInt32($0)) }
+        uniqueKeysWithValues: alphabet.enumerated().map { ($1, UInt32($0)) },
     )
 
     /// 大文字小文字、空白、パディングの = は無視する。アルファベット以外の文字があれば nil。

@@ -1,0 +1,4 @@
+# Tests may stop at the first nil or thrown error.
+disabled_rules:
+  - force_try
+  - force_unwrapping

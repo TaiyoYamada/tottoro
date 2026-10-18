@@ -50,7 +50,7 @@ final class OneTimeCodePickerViewModel {
         do {
             try await LAContext().evaluatePolicy(
                 .deviceOwnerAuthentication,
-                localizedReason: String(localized: "コードを入力するためにロックを解除します")
+                localizedReason: String(localized: "コードを入力するためにロックを解除します"),
             )
         } catch {
             state = .locked
@@ -66,9 +66,9 @@ final class OneTimeCodePickerViewModel {
         }
 
         switch mode {
-        case .pick(let serviceIdentifiers):
+        case let .pick(serviceIdentifiers):
             state = .unlocked(Self.sorted(accounts, for: serviceIdentifiers))
-        case .provide(let id):
+        case let .provide(id):
             guard let account = accounts.first(where: { $0.id == id }) else {
                 finish(.notFound)
                 return

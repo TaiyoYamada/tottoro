@@ -5,8 +5,8 @@
 //  Created by 山田大陽 on 2026/10/18.
 //
 
-import TottoroStorage
 import SwiftUI
+import TottoroStorage
 
 @main
 struct TottoroApp: App {

@@ -10,7 +10,7 @@ import Testing
 @testable import TottoroCore
 
 struct TOTPGeneratorTests {
-    // RFC 6238 の付録 B にある検証用の値。秘密鍵はアルゴリズムごとに長さが違う
+    /// RFC 6238 の付録 B にある検証用の値。秘密鍵はアルゴリズムごとに長さが違う
     private static let secrets: [HashAlgorithm: Data] = [
         .sha1: Data("12345678901234567890".utf8),
         .sha256: Data("12345678901234567890123456789012".utf8),
@@ -37,21 +37,21 @@ struct TOTPGeneratorTests {
         (20_000_000_000, .sha256, "77737706"),
         (20_000_000_000, .sha512, "47863826"),
     ])
-    func matchesRFCVectors(time: Int, algorithm: HashAlgorithm, expected: String) throws {
+    func `matches RFC vectors`(time: Int, algorithm: HashAlgorithm, expected: String) throws {
         let secret = try #require(Self.secrets[algorithm])
         let account = Account(issuer: "RFC", name: "test", secret: secret, algorithm: algorithm, digits: 8)
         let date = Date(timeIntervalSince1970: TimeInterval(time))
         #expect(TOTPGenerator.code(for: account, at: date) == expected)
     }
 
-    @Test func keepsLeadingZerosForSixDigits() throws {
+    @Test func `keeps leading zeros for six digits`() throws {
         // 1111111109 秒の SHA1 は 8 桁で 07081804。6 桁ではその下 6 桁になる
         let secret = try #require(Self.secrets[.sha1])
         let account = Account(issuer: "RFC", name: "test", secret: secret)
         #expect(TOTPGenerator.code(for: account, at: Date(timeIntervalSince1970: 1_111_111_109)) == "081804")
     }
 
-    @Test func countsDownWithinThePeriod() {
+    @Test func `counts down within the period`() {
         #expect(TOTPGenerator.secondsRemaining(period: 30, at: Date(timeIntervalSince1970: 60)) == 30)
         #expect(TOTPGenerator.secondsRemaining(period: 30, at: Date(timeIntervalSince1970: 89)) == 1)
     }

@@ -5,8 +5,8 @@
 //  Created by 山田大陽 on 2026/10/18.
 //
 
-import TottoroCore
 import SwiftUI
+import TottoroCore
 
 /// アカウントの色の丸に、発行元の頭文字を載せたもの。
 struct AccountAvatar: View {

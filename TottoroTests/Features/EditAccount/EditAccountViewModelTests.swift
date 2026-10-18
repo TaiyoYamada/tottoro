@@ -15,7 +15,7 @@ struct EditAccountViewModelTests {
         ("https://github.com/login", "github.com"),
         ("", nil),
     ] as [(String, String?)])
-    func keepsOnlyTheHostOfTheDomain(input: String, expected: String?) {
+    func `keeps only the host of the domain`(input: String, expected: String?) {
         #expect(EditAccountViewModel.normalizedDomain(input) == expected)
     }
 }

@@ -11,14 +11,14 @@ import SwiftUI
 /// 自動入力の拡張の入口。OS から来る要求を OneTimeCodePickerViewModel に渡し、画面は SwiftUI で出す。
 final class CredentialProviderViewController: ASCredentialProviderViewController {
     #if os(macOS)
-    // NSViewController は nib がないと view を作れないので、自分で用意する
+    /// NSViewController は nib がないと view を作れないので、自分で用意する
     override func loadView() {
         view = NSView(frame: NSRect(x: 0, y: 0, width: 380, height: 480))
     }
     #endif
 
     /// QuickType バーなどで候補が選ばれたとき。コードを出す前に必ずロックを解除させたいので、画面付きの流れに回す。
-    override func provideCredentialWithoutUserInteraction(for credentialRequest: any ASCredentialRequest) {
+    override func provideCredentialWithoutUserInteraction(for _: any ASCredentialRequest) {
         extensionContext.cancelRequest(withError: ASExtensionError(.userInteractionRequired))
     }
 
@@ -40,16 +40,16 @@ final class CredentialProviderViewController: ASCredentialProviderViewController
     private func show(mode: OneTimeCodePickerViewModel.Mode) {
         let viewModel = OneTimeCodePickerViewModel(mode: mode) { [extensionContext] result in
             switch result {
-            case .code(let code):
+            case let .code(code):
                 extensionContext.completeOneTimeCodeRequest(
                     using: ASOneTimeCodeCredential(code: code),
-                    completionHandler: nil
+                    completionHandler: nil,
                 )
             case .canceled:
                 extensionContext.cancelRequest(withError: ASExtensionError(.userCanceled))
             case .notFound:
                 extensionContext.cancelRequest(withError: ASExtensionError(.credentialIdentityNotFound))
-            case .failed(let error):
+            case let .failed(error):
                 extensionContext.cancelRequest(withError: error)
             }
         }

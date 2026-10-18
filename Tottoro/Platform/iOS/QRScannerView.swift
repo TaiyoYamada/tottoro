@@ -21,13 +21,13 @@ struct QRScannerView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> DataScannerViewController {
         let scanner = DataScannerViewController(
             recognizedDataTypes: [.barcode(symbologies: [.qr])],
-            isHighlightingEnabled: true
+            isHighlightingEnabled: true,
         )
         scanner.delegate = context.coordinator
         return scanner
     }
 
-    // Apple の案内では、カメラ画面を表示してから読み取りを始める。make の時点ではまだ表示されていない
+    /// Apple の案内では、カメラ画面を表示してから読み取りを始める。make の時点ではまだ表示されていない
     func updateUIViewController(_ uiViewController: DataScannerViewController, context: Context) {
         guard !uiViewController.isScanning, !context.coordinator.didScan else { return }
         do {
@@ -53,11 +53,11 @@ struct QRScannerView: UIViewControllerRepresentable {
         func dataScanner(
             _ dataScanner: DataScannerViewController,
             didAdd addedItems: [RecognizedItem],
-            allItems: [RecognizedItem]
+            allItems _: [RecognizedItem],
         ) {
             guard !didScan else { return }
             for item in addedItems {
-                guard case .barcode(let barcode) = item, let payload = barcode.payloadStringValue else { continue }
+                guard case let .barcode(barcode) = item, let payload = barcode.payloadStringValue else { continue }
                 didScan = true
                 dataScanner.stopScanning()
                 onScan(payload)

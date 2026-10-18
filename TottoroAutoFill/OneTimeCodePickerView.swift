@@ -39,7 +39,7 @@ struct OneTimeCodePickerView: View {
                 }
                 .buttonStyle(.borderedProminent)
             }
-        case .unlocked(let accounts):
+        case let .unlocked(accounts):
             TimelineView(.periodic(from: .now, by: 1)) { context in
                 List(accounts) { account in
                     Button {
