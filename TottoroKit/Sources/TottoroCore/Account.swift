@@ -48,6 +48,11 @@ public struct Account: Identifiable, Hashable, Codable, Sendable {
         issuer.isEmpty ? name : issuer
     }
 
+    /// 秘密鍵と計算の設定が同じなら、名前が違っても同じコードを出すので、同じアカウントとみなす。
+    public func generatesSameCodes(as other: Account) -> Bool {
+        secret == other.secret && algorithm == other.algorithm && digits == other.digits && period == other.period
+    }
+
     /// サイトのホスト名がこのアカウントのドメインか、そのサブドメインなら true。
     public func matchesService(host: String) -> Bool {
         guard let domain else { return false }

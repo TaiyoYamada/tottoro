@@ -31,4 +31,13 @@ struct AccountTests {
         let account = Account(issuer: "", name: "octocat", secret: Data([1]))
         #expect(account.displayName == "octocat")
     }
+
+    @Test func `treats accounts with the same secret and settings as the same, whatever their names`() {
+        let account = Account(issuer: "GitHub", name: "octocat", secret: Data([1]))
+        let renamed = Account(issuer: "GitHub (work)", name: "me", secret: Data([1]))
+        let otherDigits = Account(issuer: "GitHub", name: "octocat", secret: Data([1]), digits: 8)
+
+        #expect(account.generatesSameCodes(as: renamed))
+        #expect(!account.generatesSameCodes(as: otherDigits))
+    }
 }

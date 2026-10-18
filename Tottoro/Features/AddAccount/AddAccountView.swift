@@ -79,13 +79,16 @@ struct AddAccountView: View {
             ManualEntryForm(viewModel: viewModel)
         case .reading:
             ProgressView("Reading…")
-        case let .finished(added, skipped):
+        case let .finished(result):
             ContentUnavailableView {
-                Label("Added \(added) accounts", systemImage: "checkmark.circle.fill")
+                Label("Added \(result.added) accounts", systemImage: "checkmark.circle.fill")
             } description: {
-                if skipped > 0 {
+                if result.alreadyAdded > 0 {
+                    Text("\(result.alreadyAdded) accounts were already in Tottoro.")
+                }
+                if result.unsupported > 0 {
                     Text("""
-                    \(skipped) accounts were not added because Tottoro does not support them, \
+                    \(result.unsupported) accounts were not added because Tottoro does not support them, \
                     such as counter-based codes (HOTP).
                     """)
                 }

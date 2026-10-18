@@ -17,7 +17,7 @@ struct AddAccountViewModelTests {
 
         viewModel.handleScannedPayloads(["otpauth://totp/GitHub:octocat?secret=MZXW6YTBOI&issuer=GitHub"])
 
-        #expect(viewModel.phase == .finished(added: 1, skipped: 0))
+        #expect(viewModel.phase == .finished(AddResult(added: 1, alreadyAdded: 0, unsupported: 0)))
         #expect(store.accounts.map(\.issuer) == ["GitHub"])
     }
 
@@ -27,7 +27,7 @@ struct AddAccountViewModelTests {
 
         viewModel.handleScannedPayloads(["https://example.com", "otpauth://totp/GitHub:octocat?secret=MZXW6YTBOI"])
 
-        #expect(viewModel.phase == .finished(added: 1, skipped: 0))
+        #expect(viewModel.phase == .finished(AddResult(added: 1, alreadyAdded: 0, unsupported: 0)))
     }
 
     @Test func `shows an error when no account can be read`() {
@@ -49,7 +49,7 @@ struct AddAccountViewModelTests {
 
         viewModel.addManualEntry()
 
-        #expect(viewModel.phase == .finished(added: 1, skipped: 0))
+        #expect(viewModel.phase == .finished(AddResult(added: 1, alreadyAdded: 0, unsupported: 0)))
         #expect(store.accounts.first?.secret == Data("foobar".utf8))
     }
 
@@ -63,5 +63,17 @@ struct AddAccountViewModelTests {
 
         #expect(viewModel.errorMessage != nil)
         #expect(store.accounts.isEmpty)
+    }
+
+    @Test func `does not add the same account twice`() {
+        let store = AccountStore(repository: InMemoryAccountRepository())
+        let viewModel = AddAccountViewModel(store: store)
+        let uri = "otpauth://totp/GitHub:octocat?secret=MZXW6YTBOI&issuer=GitHub"
+
+        viewModel.handleScannedPayloads([uri])
+        viewModel.handleScannedPayloads([uri])
+
+        #expect(viewModel.phase == .finished(AddResult(added: 0, alreadyAdded: 1, unsupported: 0)))
+        #expect(store.accounts.count == 1)
     }
 }

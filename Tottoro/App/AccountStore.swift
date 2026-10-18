@@ -34,13 +34,23 @@ final class AccountStore {
         }
     }
 
-    func add(_ newAccounts: [Account]) {
+    /// 同じコードを出すアカウントがすでにあれば、取り込み直しても増やさない。足した件数を返す。
+    @discardableResult
+    func add(_ newAccounts: [Account]) -> Int {
+        var accountsToAdd: [Account] = []
+        for account in newAccounts {
+            let isAlreadyAdded = (accounts + accountsToAdd).contains { $0.generatesSameCodes(as: account) }
+            if !isAlreadyAdded {
+                accountsToAdd.append(account)
+            }
+        }
         perform {
-            for account in newAccounts {
+            for account in accountsToAdd {
                 try repository.save(account)
             }
             accounts = try repository.loadAll().sorted { $0.createdAt < $1.createdAt }
         }
+        return accountsToAdd.count
     }
 
     func update(_ account: Account) {

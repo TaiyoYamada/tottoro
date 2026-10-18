@@ -18,7 +18,7 @@ final class AddAccountViewModel {
         case scanningCamera
         case enteringManually
         case reading
-        case finished(added: Int, skipped: Int)
+        case finished(AddResult)
     }
 
     var phase: Phase = .choosing
@@ -70,8 +70,8 @@ final class AddAccountViewModel {
             phase = .choosing
             return
         }
-        store.add(accounts)
-        phase = .finished(added: accounts.count, skipped: skipped)
+        let added = store.add(accounts)
+        phase = .finished(AddResult(added: added, alreadyAdded: accounts.count - added, unsupported: skipped))
     }
 
     func addManualEntry() {
@@ -87,8 +87,8 @@ final class AddAccountViewModel {
             digits: manualDigits,
             period: manualPeriod,
         )
-        store.add([account])
-        phase = .finished(added: 1, skipped: 0)
+        let added = store.add([account])
+        phase = .finished(AddResult(added: added, alreadyAdded: 1 - added, unsupported: 0))
     }
 
     func readQRCode(from item: PhotosPickerItem) async {
