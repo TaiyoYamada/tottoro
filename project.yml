@@ -29,6 +29,11 @@ settings:
 packages:
   TottoroKit:
     path: TottoroKit
+  # Xcode はアプリの依存の版も TottoroKit/Package.resolved に書くが、Dependabot はそこを
+  # TottoroKit の依存としてしか見ないので、ここで版を固定し、上げるときは手で直す
+  SnapshotTesting:
+    url: https://github.com/pointfreeco/swift-snapshot-testing
+    exactVersion: 1.19.6
 
 targets:
   Tottoro:
@@ -97,6 +102,37 @@ targets:
     dependencies:
       - target: Tottoro
 
+  # 画像はシミュレータの機種と OS で変わるので、iPhone だけで撮る
+  TottoroSnapshotTests:
+    type: bundle.unit-test
+    supportedDestinations: [iOS]
+    sources:
+      - path: TottoroSnapshotTests
+        type: syncedFolder
+        excludes:
+          - "**/__Snapshots__/**"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(APP_BUNDLE_ID).snapshot-tests
+        SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: Tottoro
+      - package: SnapshotTesting
+
+  TottoroUITests:
+    type: bundle.ui-testing
+    supportedDestinations: [iOS, macOS]
+    sources:
+      - path: TottoroUITests
+        type: syncedFolder
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(APP_BUNDLE_ID).ui-tests
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: Tottoro
+
 schemes:
   Tottoro:
     build:
@@ -107,8 +143,11 @@ schemes:
       config: Debug
     test:
       config: Debug
-      targets:
-        - TottoroTests
+      testPlans:
+        - path: TestPlans/Unit.xctestplan
+          defaultPlan: true
+        - path: TestPlans/UI.xctestplan
+        - path: TestPlans/Screenshots.xctestplan
     profile:
       config: Release
     analyze:

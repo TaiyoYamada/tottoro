@@ -29,6 +29,8 @@ struct AccountListView: View {
                         Button("Add", systemImage: "plus") {
                             viewModel.sheet = .add
                         }
+                        // スクリーンショットは言語ごとに撮るので、ラベルではなくこれで探す
+                        .accessibilityIdentifier("addAccount")
                     }
                 }
         }

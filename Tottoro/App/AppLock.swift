@@ -54,4 +54,10 @@ final class AppLock {
     func lock() {
         state = .locked
     }
+
+    #if DEBUG
+    func unlockForUITesting() {
+        state = .unlocked
+    }
+    #endif
 }

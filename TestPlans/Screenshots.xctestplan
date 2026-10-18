@@ -1,0 +1,34 @@
+{
+  "configurations" : [
+    {
+      "id" : "C13B6991-699F-5DF1-BD32-43E831E2B6B8",
+      "name" : "English",
+      "options" : {
+        "language" : "en",
+        "region" : "US"
+      }
+    },
+    {
+      "id" : "81E73C82-B58A-5F77-93B4-918B793F5FD2",
+      "name" : "Japanese",
+      "options" : {
+        "language" : "ja",
+        "region" : "JP"
+      }
+    }
+  ],
+  "defaultOptions" : {},
+  "testTargets" : [
+    {
+      "selectedTests" : [
+        "AppStoreScreenshots"
+      ],
+      "target" : {
+        "containerPath" : "container:Tottoro.xcodeproj",
+        "identifier" : "6FEF7CE4AB2296750C4D97DF",
+        "name" : "TottoroUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -3,6 +3,8 @@ included:
   - Tottoro
   - TottoroAutoFill
   - TottoroTests
+  - TottoroSnapshotTests
+  - TottoroUITests
   - TottoroKit/Sources
   - TottoroKit/Tests
   - TottoroKit/Package.swift

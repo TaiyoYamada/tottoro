@@ -1,0 +1,33 @@
+{
+  "configurations" : [
+    {
+      "id" : "C13B6991-699F-5DF1-BD32-43E831E2B6B8",
+      "name" : "English",
+      "options" : {}
+    }
+  ],
+  "defaultOptions" : {
+    "language" : "en",
+    "region" : "US"
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "AppStoreScreenshots"
+      ],
+      "target" : {
+        "containerPath" : "container:Tottoro.xcodeproj",
+        "identifier" : "6FEF7CE4AB2296750C4D97DF",
+        "name" : "TottoroUITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Tottoro.xcodeproj",
+        "identifier" : "5D48CC762F3027446EACF887",
+        "name" : "TottoroSnapshotTests"
+      }
+    }
+  ],
+  "version" : 1
+}

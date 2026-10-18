@@ -10,8 +10,22 @@ import TottoroStorage
 
 @main
 struct TottoroApp: App {
-    @State private var store = AccountStore(repository: KeychainAccountRepository())
+    @State private var store: AccountStore
     @State private var lock = AppLock()
+
+    init() {
+        #if DEBUG
+        if UITesting.isEnabled {
+            let repository = InMemoryAccountRepository(accounts: UITesting.sampleAccounts)
+            _store = State(initialValue: AccountStore(repository: repository))
+            let lock = AppLock()
+            lock.unlockForUITesting()
+            _lock = State(initialValue: lock)
+            return
+        }
+        #endif
+        _store = State(initialValue: AccountStore(repository: KeychainAccountRepository()))
+    }
 
     var body: some Scene {
         // 値を決めて開くと、同じ値のウィンドウが開いていればそれを前に出す。
