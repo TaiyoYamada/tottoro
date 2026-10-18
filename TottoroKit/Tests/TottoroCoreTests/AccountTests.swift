@@ -40,4 +40,16 @@ struct AccountTests {
         #expect(account.generatesSameCodes(as: renamed))
         #expect(!account.generatesSameCodes(as: otherDigits))
     }
+
+    /// 前の版で保存したアカウントには icon がない。それでも読めて、自動で選ぶ扱いになる。
+    @Test func `reads accounts saved before icons existed`() throws {
+        let saved = Account(issuer: "GitHub", name: "octocat", secret: Data([1]))
+        var object = try #require(JSONSerialization.jsonObject(with: JSONEncoder().encode(saved)) as? [String: Any])
+        object["icon"] = nil
+
+        let account = try JSONDecoder().decode(Account.self, from: JSONSerialization.data(withJSONObject: object))
+
+        #expect(account.icon == nil)
+        #expect(account.issuer == "GitHub")
+    }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 import TottoroCore
 
-/// アカウントの色の丸に、発行元の頭文字を載せたもの。
+/// アカウントの色の丸に、サービスのロゴか、ロゴがなければ発行元の頭文字を載せたもの。
 struct AccountAvatar: View {
     enum Size {
         case regular
@@ -33,11 +33,20 @@ struct AccountAvatar: View {
     var size: Size = .regular
 
     var body: some View {
-        Text(account.displayName.first.map { String($0).uppercased() } ?? "?")
-            .font(size.font)
-            .foregroundStyle(.white)
-            .frame(width: size.diameter, height: size.diameter)
-            .background(account.color.color, in: .circle)
-            .accessibilityHidden(true)
+        Group {
+            if let entry = ServiceIcons.catalog.entry(for: account) {
+                Image(ServiceIcons.imageName(for: entry))
+                    .resizable()
+                    .scaledToFit()
+                    .padding(size.diameter * 0.24)
+            } else {
+                Text(account.displayName.first.map { String($0).uppercased() } ?? "?")
+                    .font(size.font)
+            }
+        }
+        .foregroundStyle(.white)
+        .frame(width: size.diameter, height: size.diameter)
+        .background(account.color.color, in: .circle)
+        .accessibilityHidden(true)
     }
 }

@@ -15,6 +15,7 @@ final class EditAccountViewModel {
     var name: String
     var domain: String
     var color: AccountColor
+    var icon: AccountIcon?
 
     private let original: Account
     private let store: AccountStore
@@ -25,7 +26,18 @@ final class EditAccountViewModel {
         name = account.name
         domain = account.domain ?? ""
         color = account.color
+        icon = account.icon
         self.store = store
+    }
+
+    /// 編集中の内容で作ったアカウント。丸の見た目を、保存する前に見せるのに使う。
+    var preview: Account {
+        var account = original
+        account.issuer = issuer
+        account.domain = Self.normalizedDomain(domain)
+        account.color = color
+        account.icon = icon
+        return account
     }
 
     func save() {
@@ -34,6 +46,7 @@ final class EditAccountViewModel {
         account.name = name.trimmingCharacters(in: .whitespaces)
         account.domain = Self.normalizedDomain(domain)
         account.color = color
+        account.icon = icon
         store.update(account)
     }
 

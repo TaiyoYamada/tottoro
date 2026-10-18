@@ -35,6 +35,16 @@ struct EditAccountView: View {
                 } footer: {
                     Text("Safari and other apps suggest the code on sites with this domain.")
                 }
+                Section("Icon") {
+                    NavigationLink {
+                        IconPickerView(selection: $viewModel.icon)
+                    } label: {
+                        HStack(spacing: Spacing.small) {
+                            AccountAvatar(account: viewModel.preview, size: .small)
+                            iconDescription
+                        }
+                    }
+                }
                 Section("Color") {
                     colorPicker
                 }
@@ -62,6 +72,15 @@ struct EditAccountView: View {
         .frame(minWidth: 420, minHeight: 420)
         #endif
         .privacyCover()
+    }
+
+    /// サービスの名前は訳さないので、それだけ verbatim にする。
+    private var iconDescription: Text {
+        switch viewModel.icon {
+        case nil: Text("Automatic")
+        case .initial: Text("Initial Letter")
+        case let .service(slug): Text(verbatim: ServiceIcons.catalog.entry(slug: slug)?.title ?? slug)
+        }
     }
 
     private var colorPicker: some View {

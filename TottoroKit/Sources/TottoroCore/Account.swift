@@ -18,6 +18,8 @@ public struct Account: Identifiable, Hashable, Codable, Sendable {
     /// 自動入力の候補を出すサイトのドメイン。otpauth の URL には含まれないので、ユーザーが設定する。
     public var domain: String?
     public var color: AccountColor
+    /// nil なら、発行元とドメインから合うロゴを自動で選ぶ。前の版で保存したアカウントにはこの値がない。
+    public var icon: AccountIcon?
     public var createdAt: Date
 
     public init(
@@ -30,6 +32,7 @@ public struct Account: Identifiable, Hashable, Codable, Sendable {
         period: Int = 30,
         domain: String? = nil,
         color: AccountColor? = nil,
+        icon: AccountIcon? = nil,
         createdAt: Date = Date(),
     ) {
         self.id = id
@@ -41,6 +44,7 @@ public struct Account: Identifiable, Hashable, Codable, Sendable {
         self.period = period
         self.domain = domain
         self.color = color ?? AccountColor.suggested(for: issuer)
+        self.icon = icon
         self.createdAt = createdAt
     }
 

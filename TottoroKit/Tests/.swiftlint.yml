@@ -2,3 +2,5 @@
 disabled_rules:
   - force_try
   - force_unwrapping
+  # 引数付きのテストは、入力と期待する値を 1 つの組で並べる
+  - large_tuple
