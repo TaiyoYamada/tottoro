@@ -28,7 +28,9 @@ run = [
   "scripts/check-strings.sh",
 ]
 
+# Xcode also writes the app's packages into TottoroKit/Package.resolved.
+# --force-resolved-versions keeps SwiftPM from removing those pins.
 [tasks.test-kit]
 description = "Run the TottoroKit tests"
 dir = "TottoroKit"
-run = "swift test"
+run = "swift test --force-resolved-versions"
