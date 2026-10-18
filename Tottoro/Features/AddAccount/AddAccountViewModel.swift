@@ -66,7 +66,7 @@ final class AddAccountViewModel {
         }
 
         guard !accounts.isEmpty else {
-            errorMessage = lastError ?? String(localized: "二要素認証の QR コードが見つかりませんでした")
+            errorMessage = lastError ?? String(localized: "No two-factor authentication QR code was found.")
             phase = .choosing
             return
         }
@@ -76,7 +76,7 @@ final class AddAccountViewModel {
 
     func addManualEntry() {
         guard let secret = Base32.decode(manualSecret), !secret.isEmpty else {
-            errorMessage = String(localized: "秘密鍵は A〜Z と 2〜7 の文字で入力してください")
+            errorMessage = String(localized: "Enter the setup key using only the letters A–Z and the digits 2–7.")
             return
         }
         let account = Account(
@@ -95,7 +95,7 @@ final class AddAccountViewModel {
         phase = .reading
         do {
             guard let data = try await item.loadTransferable(type: Data.self) else {
-                errorMessage = String(localized: "写真を読み込めませんでした")
+                errorMessage = String(localized: "Couldn’t load the photo.")
                 phase = .choosing
                 return
             }
@@ -112,7 +112,10 @@ final class AddAccountViewModel {
         do {
             try await handleScannedPayloads(ScreenQRReader.payloads())
         } catch {
-            errorMessage = String(localized: "画面を読み取れませんでした。システム設定の「プライバシーとセキュリティ」で、Tottoro に画面収録を許可してください。")
+            errorMessage = String(localized: """
+            Couldn’t read the screen. \
+            Allow Tottoro to record the screen in System Settings > Privacy & Security.
+            """)
             phase = .choosing
         }
     }
@@ -120,18 +123,18 @@ final class AddAccountViewModel {
 
     private static func message(for error: OTPAuthURI.ParseError) -> String {
         switch error {
-        case .invalidURL: String(localized: "QR コードの形式が正しくありません")
-        case .unsupportedType: String(localized: "回数で変わるコード（HOTP）にはまだ対応していません")
-        case .missingSecret, .invalidSecret: String(localized: "QR コードに正しい秘密鍵が入っていません")
-        case .unsupportedAlgorithm: String(localized: "対応していない計算方式です")
-        case .invalidDigits: String(localized: "コードの桁数は 6〜8 桁にだけ対応しています")
-        case .invalidPeriod: String(localized: "コードの切り替わる間隔が正しくありません")
+        case .invalidURL: String(localized: "The QR code is not in a valid format.")
+        case .unsupportedType: String(localized: "Counter-based codes (HOTP) are not supported yet.")
+        case .missingSecret, .invalidSecret: String(localized: "The QR code does not contain a valid secret key.")
+        case .unsupportedAlgorithm: String(localized: "This algorithm is not supported.")
+        case .invalidDigits: String(localized: "Only codes with 6 to 8 digits are supported.")
+        case .invalidPeriod: String(localized: "The code period is not valid.")
         }
     }
 
     private static func message(for error: GoogleMigrationParser.ParseError) -> String {
         switch error {
-        case .invalidURL, .invalidPayload: String(localized: "Google Authenticator の QR コードを読み取れませんでした")
+        case .invalidURL, .invalidPayload: String(localized: "Couldn’t read the Google Authenticator QR code.")
         }
     }
 }

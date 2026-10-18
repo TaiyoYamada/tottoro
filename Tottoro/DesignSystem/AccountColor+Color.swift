@@ -26,16 +26,16 @@ extension AccountColor {
 
     var localizedName: String {
         switch self {
-        case .red: String(localized: "赤")
-        case .orange: String(localized: "オレンジ")
-        case .green: String(localized: "緑")
-        case .teal: String(localized: "青緑")
-        case .blue: String(localized: "青")
-        case .indigo: String(localized: "藍")
-        case .purple: String(localized: "紫")
-        case .pink: String(localized: "ピンク")
-        case .brown: String(localized: "茶")
-        case .gray: String(localized: "灰")
+        case .red: String(localized: "Red")
+        case .orange: String(localized: "Orange")
+        case .green: String(localized: "Green")
+        case .teal: String(localized: "Teal")
+        case .blue: String(localized: "Blue")
+        case .indigo: String(localized: "Indigo")
+        case .purple: String(localized: "Purple")
+        case .pink: String(localized: "Pink")
+        case .brown: String(localized: "Brown")
+        case .gray: String(localized: "Gray")
         }
     }
 }

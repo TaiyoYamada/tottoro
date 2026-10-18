@@ -34,7 +34,7 @@ struct MenuBarRow: View {
                 }
                 Spacer()
                 if isCopied {
-                    Label("コピーしました", systemImage: "checkmark")
+                    Label("Copied", systemImage: "checkmark")
                         .labelStyle(.iconOnly)
                         .foregroundStyle(.green)
                 }
@@ -50,7 +50,7 @@ struct MenuBarRow: View {
         .buttonStyle(.plain)
         .padding(.horizontal, Spacing.xSmall)
         .onHover { isHovering = $0 }
-        .accessibilityHint(Text("コードをコピーします"))
+        .accessibilityHint(Text("Copies the code"))
     }
 }
 #endif

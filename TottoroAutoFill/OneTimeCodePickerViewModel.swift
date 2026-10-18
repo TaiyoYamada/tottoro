@@ -50,7 +50,7 @@ final class OneTimeCodePickerViewModel {
         do {
             try await LAContext().evaluatePolicy(
                 .deviceOwnerAuthentication,
-                localizedReason: String(localized: "コードを入力するためにロックを解除します"),
+                localizedReason: String(localized: "Unlock to enter a code"),
             )
         } catch {
             state = .locked

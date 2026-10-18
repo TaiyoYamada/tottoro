@@ -20,13 +20,13 @@ struct AddAccountView: View {
     var body: some View {
         NavigationStack {
             content
-                .navigationTitle("アカウントを追加")
+                .navigationTitle("Add Account")
                 #if os(iOS)
                 .navigationBarTitleDisplayMode(.inline)
                 #endif
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
-                        Button("キャンセル", role: .cancel) {
+                        Button("Cancel", role: .cancel) {
                             dismiss()
                         }
                     }
@@ -41,7 +41,7 @@ struct AddAccountView: View {
             Task { await viewModel.readQRCode(from: item) }
         }
         .alert(
-            "追加できませんでした",
+            "Couldn’t Add the Account",
             isPresented: Binding(
                 get: { viewModel.errorMessage != nil },
                 set: {
@@ -77,16 +77,19 @@ struct AddAccountView: View {
         case .enteringManually:
             ManualEntryForm(viewModel: viewModel)
         case .reading:
-            ProgressView("読み取っています")
+            ProgressView("Reading…")
         case let .finished(added, skipped):
             ContentUnavailableView {
-                Label("\(added) 件のアカウントを追加しました", systemImage: "checkmark.circle.fill")
+                Label("Added \(added) accounts", systemImage: "checkmark.circle.fill")
             } description: {
                 if skipped > 0 {
-                    Text("回数で変わるコード（HOTP）など、対応していない \(skipped) 件は追加していません。")
+                    Text("""
+                    \(skipped) accounts were not added because Tottoro does not support them, \
+                    such as counter-based codes (HOTP).
+                    """)
                 }
             } actions: {
-                Button("完了") {
+                Button("Done") {
                     dismiss()
                 }
                 .buttonStyle(.borderedProminent)
@@ -98,23 +101,23 @@ struct AddAccountView: View {
         Form {
             Section {
                 #if os(iOS)
-                Button("カメラで読み取る", systemImage: "qrcode.viewfinder") {
+                Button("Scan with Camera", systemImage: "qrcode.viewfinder") {
                     viewModel.phase = .scanningCamera
                 }
                 .disabled(!QRScannerView.isAvailable)
                 #elseif os(macOS)
-                Button("画面から読み取る", systemImage: "rectangle.dashed") {
+                Button("Scan from Screen", systemImage: "rectangle.dashed") {
                     Task { await viewModel.readQRCodeFromScreen() }
                 }
                 #endif
                 PhotosPicker(selection: $photoItem, matching: .images) {
-                    Label("写真から読み取る", systemImage: "photo")
+                    Label("Choose from Photos", systemImage: "photo")
                 }
-                Button("手入力する", systemImage: "keyboard") {
+                Button("Enter Manually", systemImage: "keyboard") {
                     viewModel.phase = .enteringManually
                 }
             } footer: {
-                Text("Google Authenticator の「アカウントを移行」で表示される QR コードも、そのまま読み取れます。")
+                Text("You can also scan the QR code from “Transfer accounts” in Google Authenticator.")
             }
         }
         .formStyle(.grouped)

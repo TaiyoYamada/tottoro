@@ -15,34 +15,34 @@ struct ManualEntryForm: View {
     var body: some View {
         Form {
             Section {
-                TextField("発行元（例: GitHub）", text: $viewModel.manualIssuer)
-                TextField("アカウント名（例: メールアドレス）", text: $viewModel.manualName)
+                TextField("Issuer (e.g. GitHub)", text: $viewModel.manualIssuer)
+                TextField("Account Name (e.g. email address)", text: $viewModel.manualName)
                     .textContentType(.username)
-                TextField("セットアップキー", text: $viewModel.manualSecret)
+                TextField("Setup Key", text: $viewModel.manualSecret)
                     .font(.body.monospaced())
                     .autocorrectionDisabled()
                     #if os(iOS)
                     .textInputAutocapitalization(.characters)
                     #endif
             }
-            Section("詳細") {
-                Picker("計算方式", selection: $viewModel.manualAlgorithm) {
-                    Text("SHA-1").tag(HashAlgorithm.sha1)
-                    Text("SHA-256").tag(HashAlgorithm.sha256)
-                    Text("SHA-512").tag(HashAlgorithm.sha512)
+            Section("Details") {
+                Picker("Algorithm", selection: $viewModel.manualAlgorithm) {
+                    Text(verbatim: "SHA-1").tag(HashAlgorithm.sha1)
+                    Text(verbatim: "SHA-256").tag(HashAlgorithm.sha256)
+                    Text(verbatim: "SHA-512").tag(HashAlgorithm.sha512)
                 }
-                Picker("桁数", selection: $viewModel.manualDigits) {
-                    Text("6 桁").tag(6)
-                    Text("7 桁").tag(7)
-                    Text("8 桁").tag(8)
+                Picker("Digits", selection: $viewModel.manualDigits) {
+                    Text("\(6) digits").tag(6)
+                    Text("\(7) digits").tag(7)
+                    Text("\(8) digits").tag(8)
                 }
-                Picker("間隔", selection: $viewModel.manualPeriod) {
-                    Text("30 秒").tag(30)
-                    Text("60 秒").tag(60)
+                Picker("Period", selection: $viewModel.manualPeriod) {
+                    Text("\(30) seconds").tag(30)
+                    Text("\(60) seconds").tag(60)
                 }
             }
             Section {
-                Button("追加") {
+                Button("Add") {
                     viewModel.addManualEntry()
                 }
                 .disabled(!viewModel.canSubmitManualEntry)

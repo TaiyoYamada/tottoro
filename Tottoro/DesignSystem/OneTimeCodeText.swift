@@ -14,9 +14,9 @@ struct OneTimeCodeText: View {
 
     var body: some View {
         let half = code.count / 2
-        Text("\(code.prefix(half)) \(code.dropFirst(half))")
+        Text(verbatim: "\(code.prefix(half)) \(code.dropFirst(half))")
             .font(font)
             .contentTransition(.numericText())
-            .accessibilityLabel(Text(code.map(String.init).joined(separator: " ")))
+            .accessibilityLabel(Text(verbatim: code.map(String.init).joined(separator: " ")))
     }
 }

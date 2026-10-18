@@ -21,10 +21,10 @@ struct CountdownRing: View {
                 .trim(from: 0, to: secondsRemaining / TimeInterval(period))
                 .stroke(.primary, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
                 .rotationEffect(.degrees(-90))
-            Text("\(Int(secondsRemaining.rounded(.up)))")
+            Text(verbatim: "\(Int(secondsRemaining.rounded(.up)))")
                 .font(Typography.countdown)
         }
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel(Text("残り \(Int(secondsRemaining.rounded(.up))) 秒"))
+        .accessibilityLabel(Text("\(Int(secondsRemaining.rounded(.up))) seconds left"))
     }
 }

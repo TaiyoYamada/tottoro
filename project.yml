@@ -2,7 +2,7 @@ name: Tottoro
 
 options:
   bundleIdPrefix: com.taiyo
-  developmentLanguage: ja
+  developmentLanguage: en
   deploymentTarget:
     iOS: "26.0"
     macOS: "26.0"
@@ -23,6 +23,8 @@ settings:
     CURRENT_PROJECT_VERSION: "1"
     ENABLE_USER_SCRIPT_SANDBOXING: YES
     LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+    # 新しい文字列を String Catalog に足せるよう、コンパイラに文字列を書き出させる
+    SWIFT_EMIT_LOC_STRINGS: YES
 
 packages:
   TottoroKit:
@@ -46,8 +48,8 @@ targets:
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         INFOPLIST_KEY_CFBundleDisplayName: $(APP_DISPLAY_NAME)
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
-        INFOPLIST_KEY_NSFaceIDUsageDescription: コードを表示する前に、Face ID でロックを解除します。
-        INFOPLIST_KEY_NSCameraUsageDescription: 二要素認証の QR コードを読み取るためにカメラを使います。
+        INFOPLIST_KEY_NSFaceIDUsageDescription: Unlock with Face ID before showing your codes.
+        INFOPLIST_KEY_NSCameraUsageDescription: Tottoro uses the camera to scan two-factor authentication QR codes.
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
     dependencies:
@@ -72,7 +74,7 @@ targets:
         CODE_SIGN_ENTITLEMENTS: TottoroAutoFill/TottoroAutoFill.entitlements
         ENABLE_HARDENED_RUNTIME: YES
         INFOPLIST_KEY_CFBundleDisplayName: $(APP_DISPLAY_NAME)
-        INFOPLIST_KEY_NSFaceIDUsageDescription: コードを入力する前に、Face ID でロックを解除します。
+        INFOPLIST_KEY_NSFaceIDUsageDescription: Unlock with Face ID before entering a code.
     dependencies:
       - package: TottoroKit
         product: TottoroCore

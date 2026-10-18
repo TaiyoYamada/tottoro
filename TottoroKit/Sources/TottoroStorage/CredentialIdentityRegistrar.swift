@@ -22,7 +22,7 @@ public enum CredentialIdentityRegistrar {
                 serviceIdentifier: ASCredentialServiceIdentifier(identifier: domain, type: .domain),
                 label: account.name.isEmpty || account.name == account.displayName
                     ? account.displayName
-                    : "\(account.displayName)（\(account.name)）",
+                    : "\(account.displayName) (\(account.name))",
                 recordIdentifier: account.id.uuidString,
             )
         }

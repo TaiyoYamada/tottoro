@@ -43,7 +43,7 @@ final class AppLock {
             // 生体認証に失敗したときに端末のパスコードで解除できるよう、deviceOwnerAuthentication を使う
             try await LAContext().evaluatePolicy(
                 .deviceOwnerAuthentication,
-                localizedReason: String(localized: "コードを表示するためにロックを解除します"),
+                localizedReason: String(localized: "Unlock to show your codes"),
             )
             state = .unlocked
         } catch {

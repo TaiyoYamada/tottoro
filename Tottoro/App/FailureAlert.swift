@@ -13,7 +13,7 @@ struct FailureAlert: ViewModifier {
 
     func body(content: Content) -> some View {
         content.alert(
-            "エラー",
+            "Error",
             isPresented: Binding(
                 get: { store.failure != nil },
                 set: {

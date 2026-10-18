@@ -35,7 +35,7 @@ struct CodeHeaderView: View {
                         period: account.period,
                     )
                     .frame(width: 32, height: 32)
-                    Text(viewModel.copiedAccountID == account.id ? "コピーしました" : "タップしてコピー")
+                    Text(viewModel.copiedAccountID == account.id ? "Copied" : "Tap to Copy")
                         .font(Typography.headerName)
                         .contentTransition(.opacity)
                 }
@@ -53,6 +53,6 @@ struct CodeHeaderView: View {
         }
         .sensoryFeedback(.success, trigger: viewModel.copiedAccountID) { _, new in new != nil }
         .accessibilityAddTraits(.isButton)
-        .accessibilityHint(Text("コードをコピーします"))
+        .accessibilityHint(Text("Copies the code"))
     }
 }

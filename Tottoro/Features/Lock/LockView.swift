@@ -12,11 +12,11 @@ struct LockView: View {
 
     var body: some View {
         ContentUnavailableView {
-            Label("ロック中", systemImage: "lock.fill")
+            Label("Locked", systemImage: "lock.fill")
         } description: {
-            Text("コードを表示するにはロックを解除してください")
+            Text("Unlock to see your codes.")
         } actions: {
-            Button("ロックを解除") {
+            Button("Unlock") {
                 Task { await lock.unlock() }
             }
             .buttonStyle(.borderedProminent)

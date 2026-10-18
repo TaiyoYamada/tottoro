@@ -31,12 +31,12 @@ struct MenuBarView: View {
             }
             Divider()
             HStack {
-                Button("Tottoro を開く") {
+                Button("Open Tottoro") {
                     openWindow(id: SceneID.main, value: SceneID.main)
                     NSApp.activate()
                 }
                 Spacer()
-                Button("終了") {
+                Button("Quit") {
                     NSApp.terminate(nil)
                 }
             }
@@ -53,7 +53,7 @@ struct MenuBarView: View {
 
     private var accountList: some View {
         VStack(spacing: 0) {
-            TextField("検索", text: $viewModel.searchText)
+            TextField("Search", text: $viewModel.searchText)
                 .textFieldStyle(.roundedBorder)
                 .padding(Spacing.small)
             if viewModel.accounts.isEmpty {

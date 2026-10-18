@@ -16,7 +16,7 @@ struct OneTimeCodePickerView: View {
                 .navigationTitle("Tottoro")
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
-                        Button("キャンセル", role: .cancel) {
+                        Button("Cancel", role: .cancel) {
                             viewModel.cancel()
                         }
                     }
@@ -32,9 +32,9 @@ struct OneTimeCodePickerView: View {
         switch viewModel.state {
         case .locked, .authenticating:
             ContentUnavailableView {
-                Label("ロック中", systemImage: "lock.fill")
+                Label("Locked", systemImage: "lock.fill")
             } actions: {
-                Button("ロックを解除") {
+                Button("Unlock") {
                     Task { await viewModel.unlock() }
                 }
                 .buttonStyle(.borderedProminent)

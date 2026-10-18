@@ -25,6 +25,7 @@ description = "Check formatting and lint all Swift files"
 run = [
   "swiftformat --lint .",
   "swiftlint lint --strict",
+  "scripts/check-strings.sh",
 ]
 
 [tasks.test-kit]

@@ -20,38 +20,38 @@ struct EditAccountView: View {
         NavigationStack {
             Form {
                 Section {
-                    TextField("発行元", text: $viewModel.issuer)
-                    TextField("アカウント名", text: $viewModel.name)
+                    TextField("Issuer", text: $viewModel.issuer)
+                    TextField("Account Name", text: $viewModel.name)
                 }
                 Section {
-                    TextField("ドメイン（例: github.com）", text: $viewModel.domain)
+                    TextField("Domain (e.g. github.com)", text: $viewModel.domain)
                         .autocorrectionDisabled()
                         #if os(iOS)
                         .keyboardType(.URL)
                         .textInputAutocapitalization(.never)
                         #endif
                 } header: {
-                    Text("自動入力")
+                    Text("AutoFill")
                 } footer: {
-                    Text("ここに入れたドメインのサイトで、Safari などにコードの候補が出ます。")
+                    Text("Safari and other apps suggest the code on sites with this domain.")
                 }
-                Section("色") {
+                Section("Color") {
                     colorPicker
                 }
             }
             .formStyle(.grouped)
-            .navigationTitle("アカウントを編集")
+            .navigationTitle("Edit Account")
             #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
             #endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("キャンセル", role: .cancel) {
+                    Button("Cancel", role: .cancel) {
                         dismiss()
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("保存") {
+                    Button("Save") {
                         viewModel.save()
                         dismiss()
                     }

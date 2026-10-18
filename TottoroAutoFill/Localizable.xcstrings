@@ -1,0 +1,49 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Cancel" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャンセル"
+          }
+        }
+      }
+    },
+    "Locked" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ロック中"
+          }
+        }
+      }
+    },
+    "Tottoro" : {
+      "shouldTranslate" : false
+    },
+    "Unlock" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ロックを解除"
+          }
+        }
+      }
+    },
+    "Unlock to enter a code" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コードを入力するためにロックを解除します"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

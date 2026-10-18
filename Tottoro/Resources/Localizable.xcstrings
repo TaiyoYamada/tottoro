@@ -1,7 +1,763 @@
 {
-  "sourceLanguage" : "ja",
+  "sourceLanguage" : "en",
   "strings" : {
-
+    "%lld accounts were not added because Tottoro does not support them, such as counter-based codes (HOTP)." : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld account was not added because Tottoro does not support it, such as a counter-based code (HOTP)."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld accounts were not added because Tottoro does not support them, such as counter-based codes (HOTP)."
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "回数で変わるコード（HOTP）など、対応していない %lld 件は追加していません。"
+          }
+        }
+      }
+    },
+    "%lld digits" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 桁"
+          }
+        }
+      }
+    },
+    "%lld seconds" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 秒"
+          }
+        }
+      }
+    },
+    "%lld seconds left" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld second left"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld seconds left"
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "残り %lld 秒"
+          }
+        }
+      }
+    },
+    "Account Name" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウント名"
+          }
+        }
+      }
+    },
+    "Account Name (e.g. email address)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウント名（例: メールアドレス）"
+          }
+        }
+      }
+    },
+    "Add" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "追加"
+          }
+        }
+      }
+    },
+    "Add Account" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウントを追加"
+          }
+        }
+      }
+    },
+    "Added %lld accounts" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Added %lld account"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Added %lld accounts"
+                }
+              }
+            }
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 件のアカウントを追加しました"
+          }
+        }
+      }
+    },
+    "Algorithm" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "計算方式"
+          }
+        }
+      }
+    },
+    "AutoFill" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自動入力"
+          }
+        }
+      }
+    },
+    "Blue" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "青"
+          }
+        }
+      }
+    },
+    "Brown" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "茶"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャンセル"
+          }
+        }
+      }
+    },
+    "Choose from Photos" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "写真から読み取る"
+          }
+        }
+      }
+    },
+    "Color" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "色"
+          }
+        }
+      }
+    },
+    "Copied" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コピーしました"
+          }
+        }
+      }
+    },
+    "Copies the code" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コードをコピーします"
+          }
+        }
+      }
+    },
+    "Couldn’t Add the Account" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "追加できませんでした"
+          }
+        }
+      }
+    },
+    "Couldn’t load the photo." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "写真を読み込めませんでした"
+          }
+        }
+      }
+    },
+    "Couldn’t read the Google Authenticator QR code." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Google Authenticator の QR コードを読み取れませんでした"
+          }
+        }
+      }
+    },
+    "Couldn’t read the screen. Allow Tottoro to record the screen in System Settings > Privacy & Security." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "画面を読み取れませんでした。システム設定の「プライバシーとセキュリティ」で、Tottoro に画面収録を許可してください。"
+          }
+        }
+      }
+    },
+    "Counter-based codes (HOTP) are not supported yet." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "回数で変わるコード（HOTP）にはまだ対応していません"
+          }
+        }
+      }
+    },
+    "Delete" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "削除"
+          }
+        }
+      }
+    },
+    "Delete this account?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このアカウントを削除しますか？"
+          }
+        }
+      }
+    },
+    "Details" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "詳細"
+          }
+        }
+      }
+    },
+    "Digits" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "桁数"
+          }
+        }
+      }
+    },
+    "Domain (e.g. github.com)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ドメイン（例: github.com）"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完了"
+          }
+        }
+      }
+    },
+    "Edit" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "編集"
+          }
+        }
+      }
+    },
+    "Edit Account" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウントを編集"
+          }
+        }
+      }
+    },
+    "Enter Manually" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "手入力する"
+          }
+        }
+      }
+    },
+    "Enter the setup key using only the letters A–Z and the digits 2–7." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "秘密鍵は A〜Z と 2〜7 の文字で入力してください"
+          }
+        }
+      }
+    },
+    "Error" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "エラー"
+          }
+        }
+      }
+    },
+    "Gray" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "灰"
+          }
+        }
+      }
+    },
+    "Green" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "緑"
+          }
+        }
+      }
+    },
+    "If two-factor authentication is still on for the site, you will no longer be able to sign in to it. The account is removed from all your devices connected through iCloud." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サイト側で二要素認証を外していないと、そのサイトにログインできなくなります。iCloud でつながったすべての端末から消えます。"
+          }
+        }
+      }
+    },
+    "Indigo" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "藍"
+          }
+        }
+      }
+    },
+    "Issuer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "発行元"
+          }
+        }
+      }
+    },
+    "Issuer (e.g. GitHub)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "発行元（例: GitHub）"
+          }
+        }
+      }
+    },
+    "Locked" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ロック中"
+          }
+        }
+      }
+    },
+    "No Accounts" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウントがありません"
+          }
+        }
+      }
+    },
+    "No two-factor authentication QR code was found." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "二要素認証の QR コードが見つかりませんでした"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "Only codes with 6 to 8 digits are supported." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コードの桁数は 6〜8 桁にだけ対応しています"
+          }
+        }
+      }
+    },
+    "Open Tottoro" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tottoro を開く"
+          }
+        }
+      }
+    },
+    "Orange" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オレンジ"
+          }
+        }
+      }
+    },
+    "Period" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "間隔"
+          }
+        }
+      }
+    },
+    "Pink" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ピンク"
+          }
+        }
+      }
+    },
+    "Purple" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "紫"
+          }
+        }
+      }
+    },
+    "Quit" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "終了"
+          }
+        }
+      }
+    },
+    "Reading…" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "読み取っています"
+          }
+        }
+      }
+    },
+    "Red" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赤"
+          }
+        }
+      }
+    },
+    "Safari and other apps suggest the code on sites with this domain." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ここに入れたドメインのサイトで、Safari などにコードの候補が出ます。"
+          }
+        }
+      }
+    },
+    "Save" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存"
+          }
+        }
+      }
+    },
+    "Scan a two-factor authentication QR code to add an account." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "二要素認証の QR コードを読み取って追加します"
+          }
+        }
+      }
+    },
+    "Scan from Screen" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "画面から読み取る"
+          }
+        }
+      }
+    },
+    "Scan with Camera" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラで読み取る"
+          }
+        }
+      }
+    },
+    "Search" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索"
+          }
+        }
+      }
+    },
+    "Setup Key" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "セットアップキー"
+          }
+        }
+      }
+    },
+    "Tap to Copy" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タップしてコピー"
+          }
+        }
+      }
+    },
+    "Teal" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "青緑"
+          }
+        }
+      }
+    },
+    "The QR code does not contain a valid secret key." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QR コードに正しい秘密鍵が入っていません"
+          }
+        }
+      }
+    },
+    "The QR code is not in a valid format." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QR コードの形式が正しくありません"
+          }
+        }
+      }
+    },
+    "The code period is not valid." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コードの切り替わる間隔が正しくありません"
+          }
+        }
+      }
+    },
+    "This algorithm is not supported." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "対応していない計算方式です"
+          }
+        }
+      }
+    },
+    "Tottoro" : {
+      "shouldTranslate" : false
+    },
+    "Unlock" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ロックを解除"
+          }
+        }
+      }
+    },
+    "Unlock to see your codes." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コードを表示するにはロックを解除してください"
+          }
+        }
+      }
+    },
+    "Unlock to show your codes" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コードを表示するためにロックを解除します"
+          }
+        }
+      }
+    },
+    "You can also scan the QR code from “Transfer accounts” in Google Authenticator." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Google Authenticator の「アカウントを移行」で表示される QR コードも、そのまま読み取れます。"
+          }
+        }
+      }
+    }
   },
   "version" : "1.0"
 }

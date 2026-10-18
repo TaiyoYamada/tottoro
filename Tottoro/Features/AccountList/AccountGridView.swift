@@ -38,17 +38,17 @@ struct AccountGridView: View {
                 .buttonStyle(.plain)
                 .accessibilityAddTraits(account.id == selectedID ? .isSelected : [])
                 .contextMenu {
-                    Button("編集", systemImage: "pencil") {
+                    Button("Edit", systemImage: "pencil") {
                         viewModel.sheet = .edit(account)
                     }
-                    Button("削除", systemImage: "trash", role: .destructive) {
+                    Button("Delete", systemImage: "trash", role: .destructive) {
                         accountToDelete = account
                     }
                 }
             }
         }
         .confirmationDialog(
-            "このアカウントを削除しますか？",
+            "Delete this account?",
             isPresented: Binding(get: { accountToDelete != nil }, set: {
                 if !$0 {
                     accountToDelete = nil
@@ -56,11 +56,14 @@ struct AccountGridView: View {
             }),
             presenting: accountToDelete,
         ) { account in
-            Button("削除", role: .destructive) {
+            Button("Delete", role: .destructive) {
                 viewModel.delete(account)
             }
         } message: { _ in
-            Text("サイト側で二要素認証を外していないと、そのサイトにログインできなくなります。iCloud でつながったすべての端末から消えます。")
+            Text("""
+            If two-factor authentication is still on for the site, you will no longer be able to sign in to it. \
+            The account is removed from all your devices connected through iCloud.
+            """)
         }
     }
 }

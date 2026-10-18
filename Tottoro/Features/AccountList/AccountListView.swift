@@ -26,7 +26,7 @@ struct AccountListView: View {
                 #endif
                 .toolbar {
                     ToolbarItem(placement: .primaryAction) {
-                        Button("追加", systemImage: "plus") {
+                        Button("Add", systemImage: "plus") {
                             viewModel.sheet = .add
                         }
                     }
@@ -54,11 +54,11 @@ struct AccountListView: View {
             }
         } else {
             ContentUnavailableView {
-                Label("アカウントがありません", systemImage: "key.viewfinder")
+                Label("No Accounts", systemImage: "key.viewfinder")
             } description: {
-                Text("二要素認証の QR コードを読み取って追加します")
+                Text("Scan a two-factor authentication QR code to add an account.")
             } actions: {
-                Button("アカウントを追加") {
+                Button("Add Account") {
                     viewModel.sheet = .add
                 }
                 .buttonStyle(.borderedProminent)
