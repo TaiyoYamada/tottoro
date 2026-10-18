@@ -1,0 +1,7 @@
+# XcodeGen が project.yml から生成する
+*.xcodeproj
+
+.DS_Store
+.build/
+.swiftpm/
+xcuserdata/

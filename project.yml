@@ -1,0 +1,99 @@
+name: Rokketa
+
+options:
+  bundleIdPrefix: com.taiyo
+  developmentLanguage: ja
+  deploymentTarget:
+    iOS: "26.0"
+    macOS: "26.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    SWIFT_APPROACHABLE_CONCURRENCY: YES
+    CODE_SIGN_STYLE: Automatic
+    # 自動入力の権限は有料の Apple Developer Program のチームでしか署名できない
+    DEVELOPMENT_TEAM: ""
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+
+packages:
+  RokketaKit:
+    path: RokketaKit
+
+targets:
+  Rokketa:
+    type: application
+    supportedDestinations: [iOS, macOS]
+    sources:
+      - path: Rokketa
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.taiyo.rokketa
+        SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
+        GENERATE_INFOPLIST_FILE: YES
+        CODE_SIGN_ENTITLEMENTS: Rokketa/Rokketa.entitlements
+        ENABLE_HARDENED_RUNTIME: YES
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        INFOPLIST_KEY_CFBundleDisplayName: Rokketa
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
+        INFOPLIST_KEY_NSFaceIDUsageDescription: コードを表示する前に、Face ID でロックを解除します。
+        INFOPLIST_KEY_NSCameraUsageDescription: 二要素認証の QR コードを読み取るためにカメラを使います。
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+    dependencies:
+      - target: RokketaAutoFill
+      - package: RokketaKit
+        product: RokketaCore
+      - package: RokketaKit
+        product: RokketaStorage
+
+  RokketaAutoFill:
+    type: app-extension
+    supportedDestinations: [iOS, macOS]
+    sources:
+      - path: RokketaAutoFill
+        excludes:
+          - Info.plist
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.taiyo.rokketa.AutoFill
+        SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_FILE: RokketaAutoFill/Info.plist
+        CODE_SIGN_ENTITLEMENTS: RokketaAutoFill/RokketaAutoFill.entitlements
+        ENABLE_HARDENED_RUNTIME: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Rokketa
+        INFOPLIST_KEY_NSFaceIDUsageDescription: コードを入力する前に、Face ID でロックを解除します。
+    dependencies:
+      - package: RokketaKit
+        product: RokketaCore
+      - package: RokketaKit
+        product: RokketaStorage
+
+  RokketaTests:
+    type: bundle.unit-test
+    supportedDestinations: [iOS, macOS]
+    sources:
+      - path: RokketaTests
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.taiyo.rokketa.tests
+        SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: Rokketa
+
+schemes:
+  Rokketa:
+    build:
+      targets:
+        Rokketa: all
+        RokketaAutoFill: all
+    test:
+      targets:
+        - RokketaTests
