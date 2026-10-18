@@ -1,4 +1,4 @@
-# Rokketa
+# Tottoro
 
 iPhone と Mac で使う、二要素認証のコードのアプリです。Authy の代わりとして、SwiftUI と Apple の標準フレームワークだけで作っています。
 
@@ -14,7 +14,7 @@ iPhone と Mac で使う、二要素認証のコードのアプリです。Authy
 
 ```sh
 xcodegen generate
-open Rokketa.xcodeproj
+open Tottoro.xcodeproj
 ```
 
 署名のチームの設定など、詳しい手順は [docs/development.md](docs/development.md) にあります。

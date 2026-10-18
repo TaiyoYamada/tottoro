@@ -1,4 +1,4 @@
-name: Rokketa
+name: Tottoro
 
 options:
   bundleIdPrefix: com.taiyo
@@ -21,79 +21,79 @@ settings:
     LOCALIZATION_PREFERS_STRING_CATALOGS: YES
 
 packages:
-  RokketaKit:
-    path: RokketaKit
+  TottoroKit:
+    path: TottoroKit
 
 targets:
-  Rokketa:
+  Tottoro:
     type: application
     supportedDestinations: [iOS, macOS]
     sources:
-      - path: Rokketa
+      - path: Tottoro
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.taiyo.rokketa
+        PRODUCT_BUNDLE_IDENTIFIER: com.taiyo.tottoro
         SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
         GENERATE_INFOPLIST_FILE: YES
-        CODE_SIGN_ENTITLEMENTS: Rokketa/Rokketa.entitlements
+        CODE_SIGN_ENTITLEMENTS: Tottoro/Tottoro.entitlements
         ENABLE_HARDENED_RUNTIME: YES
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
-        INFOPLIST_KEY_CFBundleDisplayName: Rokketa
+        INFOPLIST_KEY_CFBundleDisplayName: Tottoro
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
         INFOPLIST_KEY_NSFaceIDUsageDescription: コードを表示する前に、Face ID でロックを解除します。
         INFOPLIST_KEY_NSCameraUsageDescription: 二要素認証の QR コードを読み取るためにカメラを使います。
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
     dependencies:
-      - target: RokketaAutoFill
-      - package: RokketaKit
-        product: RokketaCore
-      - package: RokketaKit
-        product: RokketaStorage
+      - target: TottoroAutoFill
+      - package: TottoroKit
+        product: TottoroCore
+      - package: TottoroKit
+        product: TottoroStorage
 
-  RokketaAutoFill:
+  TottoroAutoFill:
     type: app-extension
     supportedDestinations: [iOS, macOS]
     sources:
-      - path: RokketaAutoFill
+      - path: TottoroAutoFill
         excludes:
           - Info.plist
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.taiyo.rokketa.AutoFill
+        PRODUCT_BUNDLE_IDENTIFIER: com.taiyo.tottoro.AutoFill
         SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
         GENERATE_INFOPLIST_FILE: YES
-        INFOPLIST_FILE: RokketaAutoFill/Info.plist
-        CODE_SIGN_ENTITLEMENTS: RokketaAutoFill/RokketaAutoFill.entitlements
+        INFOPLIST_FILE: TottoroAutoFill/Info.plist
+        CODE_SIGN_ENTITLEMENTS: TottoroAutoFill/TottoroAutoFill.entitlements
         ENABLE_HARDENED_RUNTIME: YES
-        INFOPLIST_KEY_CFBundleDisplayName: Rokketa
+        INFOPLIST_KEY_CFBundleDisplayName: Tottoro
         INFOPLIST_KEY_NSFaceIDUsageDescription: コードを入力する前に、Face ID でロックを解除します。
     dependencies:
-      - package: RokketaKit
-        product: RokketaCore
-      - package: RokketaKit
-        product: RokketaStorage
+      - package: TottoroKit
+        product: TottoroCore
+      - package: TottoroKit
+        product: TottoroStorage
 
-  RokketaTests:
+  TottoroTests:
     type: bundle.unit-test
     supportedDestinations: [iOS, macOS]
     sources:
-      - path: RokketaTests
+      - path: TottoroTests
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.taiyo.rokketa.tests
+        PRODUCT_BUNDLE_IDENTIFIER: com.taiyo.tottoro.tests
         SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
         GENERATE_INFOPLIST_FILE: YES
     dependencies:
-      - target: Rokketa
+      - target: Tottoro
 
 schemes:
-  Rokketa:
+  Tottoro:
     build:
       targets:
-        Rokketa: all
-        RokketaAutoFill: all
+        Tottoro: all
+        TottoroAutoFill: all
     test:
       targets:
-        - RokketaTests
+        - TottoroTests

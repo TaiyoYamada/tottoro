@@ -4,19 +4,19 @@
 
 | ターゲット | 種類 | 中身 |
 |---|---|---|
-| `Rokketa` | アプリ（iPhone と Mac） | 画面のすべて。Mac Catalyst は使わず、1 つのターゲットで両方をビルドする |
-| `RokketaAutoFill` | 自動入力の拡張（iPhone と Mac） | Safari やアプリの入力欄にコードを渡す |
-| `RokketaKit` | ローカルの Swift Package | アプリと拡張の両方が使う処理 |
-| `RokketaTests` | 単体テスト | アプリの ViewModel のテスト |
+| `Tottoro` | アプリ（iPhone と Mac） | 画面のすべて。Mac Catalyst は使わず、1 つのターゲットで両方をビルドする |
+| `TottoroAutoFill` | 自動入力の拡張（iPhone と Mac） | Safari やアプリの入力欄にコードを渡す |
+| `TottoroKit` | ローカルの Swift Package | アプリと拡張の両方が使う処理 |
+| `TottoroTests` | 単体テスト | アプリの ViewModel のテスト |
 
-`RokketaKit` は 2 つのライブラリに分かれています。
+`TottoroKit` は 2 つのライブラリに分かれています。
 
 | ライブラリ | 中身 | 副作用 |
 |---|---|---|
-| `RokketaCore` | アカウントの型、TOTP の計算、Base32、otpauth の URL と Google の書き出し形式の解析、保存のプロトコル | なし |
-| `RokketaStorage` | キーチェーンへの保存、自動入力の候補の OS への登録 | あり |
+| `TottoroCore` | アカウントの型、TOTP の計算、Base32、otpauth の URL と Google の書き出し形式の解析、保存のプロトコル | なし |
+| `TottoroStorage` | キーチェーンへの保存、自動入力の候補の OS への登録 | あり |
 
-副作用のない計算を `RokketaCore` に集めているのは、`swift test` だけでテストを回せるようにするためです。キーチェーンは entitlements がないと動かないので、`RokketaStorage` のテストはありません。実機で確かめます。
+副作用のない計算を `TottoroCore` に集めているのは、`swift test` だけでテストを回せるようにするためです。キーチェーンは entitlements がないと動かないので、`TottoroStorage` のテストはありません。実機で確かめます。
 
 ## 層
 
@@ -29,20 +29,20 @@ ViewModel（@Observable）
   ↓
 AccountStore（アプリ全体で 1 つ）
   ↓ AccountRepository のプロトコル越し
-KeychainAccountRepository（RokketaStorage）
+KeychainAccountRepository（TottoroStorage）
 ```
 
 - View は ViewModel だけを触り、ドメインの型や保存の仕組みに直接触りません。
 - `AccountStore` はアカウント一覧の唯一の持ち主です。Mac では、メインのウィンドウとメニューバーが同じものを共有します。片方で追加したアカウントは、すぐにもう片方にも出ます。
 - `AccountStore` は一覧が変わるたびに、自動入力の候補も登録し直します（`CredentialIdentityRegistrar`）。他の端末で追加されたアカウントも、読み直したときに候補に加わります。
 - テストでは、`AccountRepository` をメモリに保存する偽物（`InMemoryAccountRepository`）に差し替えます。
-- アプリと拡張のターゲットは、既定の actor を `MainActor` にしています（`SWIFT_DEFAULT_ACTOR_ISOLATION`）。`RokketaKit` は画面に依存しないので、既定のままです。
+- アプリと拡張のターゲットは、既定の actor を `MainActor` にしています（`SWIFT_DEFAULT_ACTOR_ISOLATION`）。`TottoroKit` は画面に依存しないので、既定のままです。
 
 ## フォルダ
 
 ```text
 project.yml                 XcodeGen の設定。.xcodeproj はここから生成する
-Rokketa/
+Tottoro/
   App/                      アプリの入口、AccountStore、AppLock、RootView
   Features/                 画面ごとに View と ViewModel を置く
     AccountList/            Authy と同じメインの画面
@@ -55,9 +55,9 @@ Rokketa/
     macOS/                  メニューバー、画面からの QR の読み取り
   DesignSystem/             余白、文字、色のトークンと、共通の部品
   Resources/                Assets.xcassets、Localizable.xcstrings
-RokketaAutoFill/            自動入力の拡張
-RokketaKit/                 ローカルの Swift Package
-RokketaTests/               ViewModel のテスト。Features と同じ並び
+TottoroAutoFill/            自動入力の拡張
+TottoroKit/                 ローカルの Swift Package
+TottoroTests/               ViewModel のテスト。Features と同じ並び
 docs/                       このドキュメント
 ```
 
