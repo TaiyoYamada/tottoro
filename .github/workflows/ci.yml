@@ -56,6 +56,33 @@ jobs:
         run: swift test --force-resolved-versions
 
   app:
+    # iOS and macOS run side by side, so the wait is only as long as the slower one
+    name: app (${{ matrix.platform }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: iOS
+            destination: platform=iOS Simulator,name=iPhone 17,OS=27.0
+          - platform: macOS
+            destination: platform=macOS,arch=arm64
+    runs-on: xcode-27
+    env:
+      DESTINATION: ${{ matrix.destination }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: jdx/mise-action@9b200bcecbfd6303e69a4a261b2e09e3757440a7 # v5.2.0
+      - run: sudo xcode-select --switch "/Applications/Xcode_$(cat .xcode-version).app"
+      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: build/DerivedData/SourcePackages
+          key: spm-${{ hashFiles('TottoroKit/Package.resolved', 'project.yml', '.xcode-version') }}
+      - run: mise run generate
+      - name: Test
+        run: xcodebuild test $XCODEBUILD_FLAGS -testPlan Unit -destination "$DESTINATION" -derivedDataPath "$DERIVED_DATA"
+
+  strings:
+    # Strings used only on one platform would look unused from the other one's build, so this builds both together
     runs-on: xcode-27
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -66,10 +93,10 @@ jobs:
           path: build/DerivedData/SourcePackages
           key: spm-${{ hashFiles('TottoroKit/Package.resolved', 'project.yml', '.xcode-version') }}
       - run: mise run generate
-      - name: Test on iOS
-        run: xcodebuild test $XCODEBUILD_FLAGS -testPlan Unit -destination "$IOS_DESTINATION" -derivedDataPath "$DERIVED_DATA"
-      - name: Test on macOS
-        run: xcodebuild test $XCODEBUILD_FLAGS -testPlan Unit -destination "$MACOS_DESTINATION" -derivedDataPath "$DERIVED_DATA"
+      - name: Build for iOS and macOS
+        run: |
+          xcodebuild build $XCODEBUILD_FLAGS -destination "$IOS_DESTINATION" -derivedDataPath "$DERIVED_DATA"
+          xcodebuild build $XCODEBUILD_FLAGS -destination "$MACOS_DESTINATION" -derivedDataPath "$DERIVED_DATA"
       - name: Check that the String Catalogs have every string in the code
         run: |
           scripts/sync-strings.sh "$DERIVED_DATA"
