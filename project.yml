@@ -92,6 +92,8 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: $(APP_BUNDLE_ID).tests
         SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
         GENERATE_INFOPLIST_FILE: YES
+        # XcodeGen は iPhone の形の TEST_HOST しか作らないので、Mac の .app の中の実行ファイルを指す
+        TEST_HOST[sdk=macosx*]: $(BUILT_PRODUCTS_DIR)/Tottoro.app/Contents/MacOS/Tottoro
     dependencies:
       - target: Tottoro
 
