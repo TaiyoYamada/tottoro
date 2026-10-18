@@ -39,6 +39,7 @@ struct RootView: View {
                 break
             }
         }
+        .privacyCover()
         .failureAlert(store: store)
     }
 }

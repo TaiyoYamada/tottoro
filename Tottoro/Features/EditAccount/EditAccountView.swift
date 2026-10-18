@@ -61,6 +61,7 @@ struct EditAccountView: View {
         #if os(macOS)
         .frame(minWidth: 420, minHeight: 420)
         #endif
+        .privacyCover()
     }
 
     private var colorPicker: some View {

@@ -35,6 +35,7 @@ struct AddAccountView: View {
         #if os(macOS)
         .frame(minWidth: 420, minHeight: 460)
         #endif
+        .privacyCover()
         .onChange(of: photoItem) { _, item in
             guard let item else { return }
             photoItem = nil
