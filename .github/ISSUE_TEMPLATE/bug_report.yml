@@ -1,0 +1,68 @@
+name: Bug report
+description: Something does not work as expected.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > [!WARNING]
+        > Do not paste secrets, setup keys, `otpauth://` or `otpauth-migration://` URLs, or QR code images in this issue. Anyone can read it, and anyone with a secret can generate your codes. Use a made-up secret such as `JBSWY3DPEHPK3PXP` if you need an example.
+
+        If this is a security problem, do not open an issue. Report it privately instead: https://github.com/TaiyoYamada/tottoro/security/advisories/new
+  - type: input
+    id: device
+    attributes:
+      label: Device
+      placeholder: iPhone 17, MacBook Air (M4)
+    validations:
+      required: true
+  - type: input
+    id: os-version
+    attributes:
+      label: OS version
+      placeholder: iOS 26.1, macOS 26.1
+    validations:
+      required: true
+  - type: input
+    id: app-version
+    attributes:
+      label: App version
+      description: The App Store version, or the commit if you built it yourself.
+      placeholder: 1.0 (12)
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open ...
+        2. Tap ...
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Screenshots help, but crop or blur any codes, secrets, and QR codes first.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else
+      description: Logs, how often it happens, whether it happens on both iPhone and Mac.
+  - type: checkboxes
+    id: no-secrets
+    attributes:
+      label: Before submitting
+      options:
+        - label: This issue does not contain any real secret, setup key, otpauth URL, or QR code.
+          required: true
