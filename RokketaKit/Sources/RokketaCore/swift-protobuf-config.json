@@ -1,0 +1,8 @@
+{
+    "invocations": [
+        {
+            "protoFiles": ["google_auth_migration.proto"],
+            "visibility": "internal"
+        }
+    ]
+}
