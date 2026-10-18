@@ -1,41 +1,52 @@
-# セキュリティ
+# Security
 
-Tottoro が預かるのは、二要素認証の秘密鍵です。これが漏れると、パスワードと合わせてアカウントに入られます。逆に消えると、サイト側で二要素認証を外さない限りログインできなくなります。
+What Tottoro holds is two-factor authentication secrets. If one leaks, someone who also has the password can get into the account. If one is lost, you cannot log in unless the site turns off two-factor authentication for you.
 
-## 何を何で守っているか
+## What is protected and how
 
-| 守るもの | 仕組み | 防げること |
+| What | Mechanism | What it prevents |
 |---|---|---|
-| 秘密鍵（端末の中） | キーチェーン。`kSecAttrAccessibleWhenUnlocked` | ロック中の端末からの読み出し |
-| 秘密鍵（同期） | iCloud キーチェーンのエンドツーエンド暗号化 | Apple のサーバーや通信の途中での読み出し |
-| 画面のコード | Face ID / Touch ID のロック（`AppLock`） | ロック解除された端末を他人が触ったときの盗み見 |
-| 自動入力 | 拡張でも、毎回ロックの解除を求める | ロック解除された端末で、他人がコードを入力すること |
-| コピーしたコード | iPhone は 1 分で消え、ユニバーサルクリップボードで Mac に流れない。Mac は `org.nspasteboard.ConcealedType` を付ける | クリップボードにコードが残り続けること |
+| Secrets (on the device) | Keychain, `kSecAttrAccessibleWhenUnlocked` | Reading them from a locked device |
+| Secrets (sync) | End-to-end encryption of iCloud Keychain | Reading them on Apple's servers or in transit |
+| Codes on screen | Face ID / Touch ID lock (`AppLock`) | Someone else looking at codes on an unlocked device |
+| AutoFill | The extension also asks to unlock every time | Someone else entering codes on an unlocked device |
+| The App Switcher | On iPhone, the screen and any open sheet are covered as soon as the app becomes inactive, before the system takes the App Switcher snapshot | Codes and setup keys showing in the App Switcher |
+| Copied codes | On iPhone, they expire after 1 minute and do not go to the Mac through Universal Clipboard. On Mac, they are marked with `org.nspasteboard.ConcealedType` | Codes staying on the clipboard |
 
-## 暗号で守っている部分と、画面の関門の部分
+## What is cryptographic and what is a UI gate
 
-暗号で守っているのは、秘密鍵そのものです。キーチェーンの暗号化と、iCloud キーチェーンのエンドツーエンド暗号化で守っています。暗号の鍵は、端末のパスコードと Secure Enclave に結び付いています。
+The secrets themselves are protected by cryptography: Keychain encryption and the end-to-end encryption of iCloud Keychain. The encryption keys are tied to the device passcode and the Secure Enclave.
 
-Face ID / Touch ID のロックは、画面の関門です。キーチェーンには、項目ごとに「生体認証を通らないと読めない」という保護（`SecAccessControl` の `.userPresence` など）を付ける仕組みがあります。ただ、この保護は同期する項目には付けられません。そのため Tottoro は、同期を取り、ロックはアプリの画面の関門として実装しています。
+The Face ID / Touch ID lock is a UI gate. The Keychain can protect each item so that it cannot be read without biometric authentication (for example, `.userPresence` in `SecAccessControl`). But this protection cannot be set on items that sync. So Tottoro chose sync, and implements the lock as a gate in the app's UI.
 
-そのため、端末のロックが解除されていれば、Tottoro と自動入力の拡張は Face ID なしでキーチェーンを読めます。Face ID のロックが防ぐのは、画面のコードを見られることだけです。他のアプリからは、アクセスグループが違うので読めません。
+This means that while the device is unlocked, Tottoro and the AutoFill extension can read the Keychain without Face ID. The Face ID lock only prevents codes on screen from being seen. Other apps cannot read the items because their access group is different.
 
-## 守れていないもの
+## What is not protected
 
-- ロックの解除は `deviceOwnerAuthentication` なので、生体認証に失敗するとパスコードで開けます。パスコードを知っている人はコードを見られます。
-- Apple ID のパスワードと、いずれかの端末のパスコードの両方を知られると、新しい端末に iCloud キーチェーンを同期されます。これは Apple ID の安全の問題で、Tottoro では防げません。
-- iPhone はアプリが裏に回ったとき、Mac は画面がスリープしたときとユーザーを切り替えたときにロックします。Mac で画面だけをロックした場合（スリープしない場合）は、ロックしません。
-- iPhone で裏に回った瞬間の画面が、App スイッチャーに残ることがあります。
-- `ConcealedType` を無視するクリップボード履歴のアプリには、コードが記録されます。
-- バックアップの仕組みはまだありません。iCloud キーチェーンが唯一の保存先です。消してしまうと戻せないので、削除の前に確認を出しています。
+- The lock uses `deviceOwnerAuthentication`, so if biometrics fail, it can be opened with the passcode. Anyone who knows the passcode can see the codes.
+- If someone learns both the Apple ID password and the passcode of any of your devices, they can sync iCloud Keychain to a new device. This is a matter of Apple ID security, and Tottoro cannot prevent it.
+- On iPhone, the app locks when it goes to the background. On Mac, it locks when the display sleeps and when the user is switched. If only the screen is locked on Mac (without sleeping), the app does not lock.
+- Clipboard history apps that ignore `ConcealedType` will record codes.
+- There is no backup yet. iCloud Keychain is the only place the secrets are stored. Deleted accounts cannot be restored, so the app asks for confirmation before deleting.
 
-## 自動入力の拡張
+## The AutoFill extension
 
-- 拡張は、アプリと同じキーチェーンのアクセスグループ（`$(AppIdentifierPrefix)com.taiyo.tottoro`）を読みます。
-- OS の候補が選ばれたとき（`provideCredentialWithoutUserInteraction`）も、画面を出さずにコードを返すことはしません。必ず `userInteractionRequired` を返し、ロックの解除を求める画面に回します。
-- OS に登録するのは、ドメインとアカウント名とアカウントの id だけです。秘密鍵は登録しません。
+- The extension reads the same Keychain access group as the app (`$(AppIdentifierPrefix)$(APP_BUNDLE_ID)`).
+- Even when an OS suggestion is picked (`provideCredentialWithoutUserInteraction`), it never returns a code without showing UI. It always returns `userInteractionRequired` and moves to the screen that asks to unlock.
+- Only the domain, the account name, and the account id are registered with the OS. Secrets are not registered.
 
-## 今後やること
+## Development builds
 
-- 暗号化したバックアップファイルの書き出し（パスワードから鍵を作る、PBKDF2 か scrypt）
-- App スイッチャーの画面を隠す
+- The Debug build has its own bundle ID (`….dev`), so it also has its own Keychain access group. A development build on the same device cannot read or delete the secrets of the App Store build.
+- UI tests start the app with the `-UITesting` launch argument. It replaces the Keychain with an in-memory store full of made-up accounts, and skips the lock. The code for it is inside `#if DEBUG` (`Tottoro/Debug/`), so it is not in the Release build that goes to the App Store.
+- The app collects no data and does no tracking. `PrivacyInfo.xcprivacy` declares this for the app and the extension.
+
+## Checks before code is merged
+
+- A pre-commit hook and CI run gitleaks, so secrets do not end up in Git.
+- SwiftLint rejects `print`, and asks for `privacy:` on every value in a `Logger` message, so secrets do not end up in logs.
+- Parsers for QR code contents are tested with thousands of broken inputs (`MalformedInputTests`).
+
+## Planned
+
+- Exporting an encrypted backup file (a key derived from a password, with PBKDF2 or scrypt)

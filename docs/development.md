@@ -1,62 +1,164 @@
-# 開発
+# Development
 
-## 必要なもの
+## What you need
 
-- Xcode 27 以降（Swift 6.4）
-- XcodeGen（`brew install xcodegen`）
-- 有料の Apple Developer Program のチーム。自動入力の権限（`com.apple.developer.authentication-services.autofill-credential-provider`）は、無料の Personal Team では署名できない
+- Xcode 27.1 (the version in `.xcode-version`)
+- [mise](https://mise.jdx.dev) (`brew install mise`). It installs the other tools at the versions in `mise.toml`: SwiftLint, SwiftFormat, XcodeGen, lefthook, and gitleaks.
+- A paid Apple Developer Program team, to run the app with AutoFill. The AutoFill entitlement (`com.apple.developer.authentication-services.autofill-credential-provider`) cannot be signed with a free Personal Team. You can still build without signing and run the tests in the simulator.
 
-## 準備
+## Setup
 
-1. `project.yml` の `DEVELOPMENT_TEAM` に、チームの ID を入れる。
-2. プロジェクトを生成する。
+```sh
+mise run setup
+```
 
-   ```sh
-   xcodegen generate
-   ```
+This installs the tools and the Git hooks, copies `Local.xcconfig.example` to `Local.xcconfig`, and generates `Tottoro.xcodeproj`.
 
-3. `Tottoro.xcodeproj` を開く。初回は swift-protobuf の build plugin を信頼するか聞かれるので、許可する。
+Then fill in `Local.xcconfig`. It is not in Git.
 
-`Tottoro.xcodeproj` は生成物なので、Git には入れず、手で直しません。ターゲットや設定を変えるときは `project.yml` を直して、生成し直します。
+```text
+DEVELOPMENT_TEAM = ABCDE12345
+APP_BUNDLE_ID_BASE = com.example.tottoro
+```
 
-## ビルド
+`APP_BUNDLE_ID_BASE` is only needed if you are not the maintainer, because the bundle IDs must belong to your team.
 
-コマンドラインでは、swift-protobuf の build plugin を信頼する `-skipPackagePluginValidation` が要ります。
+Open `Tottoro.xcodeproj`. The first time, Xcode asks whether to trust the swift-protobuf build plugin. Allow it.
+
+`Tottoro.xcodeproj` is generated, so it is not in Git and is never edited by hand. To change targets or settings, edit `project.yml` (or the files in `Configs/`) and run `mise run generate`. The Git hooks also generate it after a checkout or a pull when `project.yml` changed. Adding or removing source files does not need a new project, because the source folders are Xcode folders.
+
+## Configurations
+
+| | Debug | Release |
+|---|---|---|
+| Bundle ID | `com.taiyo.tottoro.dev` | `com.taiyo.tottoro` |
+| Name on the Home Screen | Tottoro Dev | Tottoro |
+| Used for | Run and Test in Xcode | Archive for the App Store |
+
+The Debug build has its own bundle ID, and so its own Keychain access group. You can install it next to the App Store build without risking your real secrets. The extensions and test targets add their own suffix to the same base.
+
+## Build
+
+On the command line, `-skipPackagePluginValidation` is needed to trust the swift-protobuf build plugin.
 
 ```sh
 # Mac
-xcb build -project Tottoro.xcodeproj -scheme Tottoro \
+xcodebuild build -project Tottoro.xcodeproj -scheme Tottoro \
   -destination 'platform=macOS,arch=arm64' -skipPackagePluginValidation
 
-# iPhone のシミュレータ
-xcb build -project Tottoro.xcodeproj -scheme Tottoro \
+# iPhone simulator
+xcodebuild build -project Tottoro.xcodeproj -scheme Tottoro \
   -destination 'platform=iOS Simulator,name=iPhone 17' -skipPackagePluginValidation
 ```
 
-swift-protobuf の build plugin は、`protoc` を C++ のソースからビルドします。そのため、まっさらな状態からの初回のビルドだけ数分かかります。
+The swift-protobuf build plugin builds `protoc` from its C++ source. Only the first build from a clean state takes a few minutes.
 
-## テスト
+## Tests
+
+The `Tottoro` scheme has three test plans.
+
+| Test plan | What runs | When CI runs it |
+|---|---|---|
+| `Unit` (default) | `TottoroTests` and `TottoroCoreTests`, with Thread Sanitizer | Every push and pull request, on iPhone and Mac |
+| `UI` | `TottoroUITests` and `TottoroSnapshotTests` | Pull requests to `main`, every night, and by hand |
+| `Screenshots` | The App Store screenshots, in English and Japanese | By hand, before a release |
 
 ```sh
-# TottoroCore（TOTP の計算や QR コードの解析）
-cd TottoroKit && swift test
+# TottoroCore only (fast, no simulator)
+mise run test-kit
 
-# アプリの ViewModel
-xcb test -project Tottoro.xcodeproj -scheme Tottoro \
-  -destination 'platform=iOS Simulator,name=iPhone 17' -skipPackagePluginValidation
+# Unit tests of the app
+xcodebuild test -project Tottoro.xcodeproj -scheme Tottoro -testPlan Unit \
+  -destination 'platform=iOS Simulator,name=iPhone 17,OS=27.0' -skipPackagePluginValidation
+
+# UI tests and snapshot tests
+xcodebuild test -project Tottoro.xcodeproj -scheme Tottoro -testPlan UI \
+  -destination 'platform=iOS Simulator,name=iPhone 17,OS=27.0' -skipPackagePluginValidation
 ```
 
-## 実機で確かめること
+UI tests start the app with `-UITesting`. The app then uses made-up accounts in memory instead of the Keychain, and starts unlocked. This only exists in Debug builds (`Tottoro/Debug/`).
 
-キーチェーンと自動入力は、シミュレータや単体テストでは確かめきれません。実機で次を見ます。
+### Snapshot tests
 
-- iPhone で追加したアカウントが、Mac にも出る（iCloud キーチェーンの同期）
-- 設定の「一般 > 自動入力とパスワード」（Mac はシステム設定の同じ項目）で Tottoro をオンにすると、ドメインを設定したサイトでコードの候補が出る
-- Mac の「画面から読み取る」で、初回に画面収録の許可を求められ、許可すると読み取れる
+Snapshot tests compare the screens with reference images in `__Snapshots__` folders. The images change with the simulator model and the OS version, so record and compare them on the same simulator as CI: iPhone 17 with iOS 27.0.
 
-## 新しいファイル
+When a screen changes on purpose, delete its reference images and run the `UI` test plan. The first run records new images and fails. Check the new images, then run again.
 
-- 画面は `Tottoro/Features/<画面名>/` に View と ViewModel を置く。
-- iPhone か Mac だけで使うものは `Tottoro/Platform/iOS/` か `Tottoro/Platform/macOS/` に置き、ファイル全体を `#if os(...)` で囲む。
-- 副作用のない計算は `TottoroKit/Sources/TottoroCore/` に置き、`TottoroKit/Tests/TottoroCoreTests/` にテストを書く。
-- 色、文字、余白は `Tottoro/DesignSystem/` のトークンを使う。
+When a snapshot test fails in CI, the result bundle is uploaded as an artifact (`ui-test-results`). It contains the image that was taken and the difference.
+
+### Test plans and targets
+
+The test plans in `TestPlans/` refer to targets by their identifiers in the generated project. XcodeGen generates the same identifiers every time, so they only need updating when a test target is added, removed, or renamed. Edit the test plan in Xcode in that case.
+
+## Lint and format
+
+```sh
+mise run format   # format all Swift files
+mise run lint     # what CI checks: SwiftFormat, SwiftLint, and the String Catalogs
+```
+
+SwiftFormat and SwiftLint use their default rules, with a few changes in `.swiftformat` and `.swiftlint.yml`. SwiftLint also has rules of its own for this app:
+
+- `print` is not allowed. Use `os.Logger`.
+- Every value interpolated into a `Logger` message needs `privacy:`. Never mark secrets, setup keys, or codes as `.public`. The rule looks for a logger named `logger` with the message on the same line, so name it that way.
+- `try!` and force unwrapping are warnings outside tests. CI treats warnings as errors.
+
+## Git hooks
+
+`mise run setup` installs these with lefthook (`lefthook.yml`).
+
+| Hook | What it does |
+|---|---|
+| pre-commit | Formats the staged Swift files and stages the result, lints them, checks the String Catalogs, and scans the staged changes for secrets with gitleaks |
+| commit-msg | Checks the Conventional Commits format (`scripts/check-commit-message.sh`) |
+| pre-push | Runs the `TottoroKit` tests when the push changes `TottoroKit` |
+| post-checkout, post-merge | Generates the Xcode project again when `project.yml` changed |
+
+## Localization
+
+The source language is English. Japanese is the only translation for now.
+
+- Write UI text in English in the code. Xcode adds new strings to the String Catalog when it builds.
+- Add the Japanese translation in the String Catalog (`Localizable.xcstrings`). Text for the permission dialogs is in `InfoPlist.xcstrings`. The AutoFill extension has its own catalogs.
+- Text that should not be translated, such as numbers or algorithm names, uses `Text(verbatim:)`.
+
+CI fails when a string has no Japanese translation, when a catalog has a string the code no longer uses, or when the code has a string that is missing from the catalogs. `xcodebuild` does not update the catalogs, so after building on the command line, run this to update them yourself:
+
+```sh
+# Build for both iPhone and Mac into the same DerivedData first
+scripts/sync-strings.sh <DerivedData path>
+```
+
+## Things to check on a real device
+
+The Keychain and AutoFill cannot be fully checked in the simulator or in unit tests. Check these on real devices:
+
+- An account added on iPhone shows up on Mac too (iCloud Keychain sync).
+- After turning on Tottoro in Settings > General > AutoFill & Passwords (System Settings on Mac), code suggestions show up on sites whose domain is set.
+- On Mac, "Scan from Screen" asks for the Screen Recording permission the first time, and reads the code after it is allowed.
+
+## Releases
+
+1. Open a pull request from `develop` to `main`. CI runs the UI tests and snapshot tests too.
+2. After it is merged, release-please opens a release pull request. It bumps `MARKETING_VERSION` in `project.yml` and updates `CHANGELOG.md` from the commit messages.
+3. Merging the release pull request tags the release. Xcode Cloud archives it, with its own build number, and uploads it to App Store Connect for TestFlight and the App Store.
+4. The release workflow opens a pull request from `main` back to `develop`. Merge it with a merge commit.
+
+Pull requests opened by GitHub Actions do not start other workflows, so CI does not run on the release pull request. It only changes the version and the changelog.
+
+Xcode Cloud runs `ci_scripts/ci_post_clone.sh` to generate the project. Set `TOTTORO_DEVELOPMENT_TEAM` in the Xcode Cloud workflow.
+
+App Store screenshots:
+
+```sh
+scripts/screenshots.sh
+```
+
+It writes the PNG files to `build/screenshots/`. The Mac screenshots are of the window only. Put them on a 16:10 background for the Mac App Store.
+
+## New files
+
+- Put each screen's View and ViewModel in `Tottoro/Features/<Screen>/`.
+- Put code used only on iPhone or only on Mac in `Tottoro/Platform/iOS/` or `Tottoro/Platform/macOS/`, and wrap the whole file in `#if os(...)`.
+- Put pure computation in `TottoroKit/Sources/TottoroCore/`, and its tests in `TottoroKit/Tests/TottoroCoreTests/`.
+- Use the tokens in `Tottoro/DesignSystem/` for colors, type, and spacing.

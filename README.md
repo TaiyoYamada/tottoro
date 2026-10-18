@@ -1,27 +1,43 @@
+English | [日本語](README.ja.md)
+
 # Tottoro
 
-iPhone と Mac で使う、二要素認証のコードのアプリです。Authy の代わりとして、SwiftUI と Apple の標準フレームワークだけで作っています。
+A two-factor authentication code app for iPhone and Mac. It is a replacement for Authy, built with SwiftUI and Apple's frameworks. The only other library is swift-protobuf, used to read Google Authenticator's export QR codes.
 
-- QR コードを読み取って、6〜8 桁のコード（TOTP）を表示する
-- iPhone はカメラか写真、Mac は画面に表示した QR コードから読み取れる
-- Google Authenticator の書き出し用 QR コードから、まとめて取り込める
-- 秘密鍵は iCloud キーチェーンで同期する。自前のサーバーはない
-- Mac はメインのウィンドウとメニューバーの両方から使える
-- Safari やアプリの入力欄に、コードを自動入力できる
-- 開くときに Face ID / Touch ID でロックを解除する
+- Scans QR codes and shows 6 to 8 digit codes (TOTP)
+- Reads QR codes from the camera or Photos on iPhone, and from the screen on Mac
+- Imports many accounts at once from Google Authenticator's export QR codes
+- Syncs secrets with iCloud Keychain. There is no server of its own
+- On Mac, works from both the main window and the menu bar
+- Fills in codes in Safari and in app text fields with AutoFill
+- Unlocks with Face ID / Touch ID when you open it
 
-## 動かす
+## Run it
+
+Install [mise](https://mise.jdx.dev) first (`brew install mise`). Then:
 
 ```sh
-xcodegen generate
+mise run setup
 open Tottoro.xcodeproj
 ```
 
-署名のチームの設定など、詳しい手順は [docs/development.md](docs/development.md) にあります。
+Setting your signing team (`Local.xcconfig`) and the other steps are in [docs/development.md](docs/development.md).
 
-## ドキュメント
+## Docs
 
-- [docs/architecture.md](docs/architecture.md): ターゲット、層、フォルダの構成とデータの流れ
-- [docs/security.md](docs/security.md): 何を何で守っているか、守れていないもの
-- [docs/one-time-codes.md](docs/one-time-codes.md): TOTP の計算と、取り込める QR コードの形式
-- [docs/development.md](docs/development.md): 開発の準備、ビルド、テスト
+- [docs/architecture.md](docs/architecture.md): targets, layers, folders, and how data flows
+- [docs/security.md](docs/security.md): what is protected and how, and what is not
+- [docs/one-time-codes.md](docs/one-time-codes.md): how TOTP codes are computed, and which QR code formats can be imported
+- [docs/development.md](docs/development.md): setup, building, and testing
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Ask questions and share ideas in [Discussions](https://github.com/TaiyoYamada/tottoro/discussions).
+
+## Security
+
+Do not report vulnerabilities in public issues. See [SECURITY.md](SECURITY.md).
+
+## License
+
+Apache License 2.0. See [LICENSE](LICENSE).
