@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- The countdown ring from the app: a faint track, and the time left as a thick arc from the top -->
+  <circle cx="512" cy="512" r="330" fill="none" stroke="#FFFFFF" stroke-opacity="0.28" stroke-width="72"/>
+  <path d="M 512 182 A 330 330 0 1 1 182 512" fill="none" stroke="#FFFFFF" stroke-width="72" stroke-linecap="round"/>
+</svg>

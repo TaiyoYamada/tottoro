@@ -4,3 +4,5 @@
 // It can sit next to the App Store build on the same device without touching its secrets.
 APP_BUNDLE_ID = $(APP_BUNDLE_ID_BASE).dev
 APP_DISPLAY_NAME = Tottoro Dev
+// 同じ端末で App Store 版と見分けられるよう、オレンジのアイコンにする
+APP_ICON_NAME = AppIcon-Dev

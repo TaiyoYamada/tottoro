@@ -58,7 +58,7 @@ targets:
         INFOPLIST_FILE: Tottoro/Info.plist
         CODE_SIGN_ENTITLEMENTS: Tottoro/Tottoro.entitlements
         ENABLE_HARDENED_RUNTIME: YES
-        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_APPICON_NAME: $(APP_ICON_NAME)
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         INFOPLIST_KEY_CFBundleDisplayName: $(APP_DISPLAY_NAME)
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
