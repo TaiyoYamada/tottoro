@@ -1,0 +1,42 @@
+# Pin the tools so that everyone and CI use the same versions.
+[tools]
+swiftlint = "0.65.1"
+swiftformat = "0.64.0"
+xcodegen = "2.46.0"
+lefthook = "2.2.2"
+gitleaks = "8.30.1"
+
+[tasks.setup]
+description = "Install the tools and Git hooks, then generate the Xcode project"
+run = [
+  "mise install",
+  "lefthook install",
+  "mise run generate",
+]
+
+# The project shows Local.xcconfig, so it has to exist before generating.
+[tasks.generate]
+description = "Generate Tottoro.xcodeproj from project.yml"
+run = [
+  "test -f Local.xcconfig || cp Local.xcconfig.example Local.xcconfig",
+  "xcodegen generate",
+]
+
+[tasks.format]
+description = "Format all Swift files"
+run = "swiftformat ."
+
+[tasks.lint]
+description = "Check formatting and lint all Swift files"
+run = [
+  "swiftformat --lint .",
+  "swiftlint lint --strict",
+  "scripts/check-strings.sh",
+]
+
+# Xcode also writes the app's packages into TottoroKit/Package.resolved.
+# --force-resolved-versions keeps SwiftPM from removing those pins.
+[tasks.test-kit]
+description = "Run the TottoroKit tests"
+dir = "TottoroKit"
+run = "swift test --force-resolved-versions"

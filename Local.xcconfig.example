@@ -1,0 +1,9 @@
+// Copy this file to Local.xcconfig (`mise run setup` does it for you) and fill in your own values.
+// Local.xcconfig is not in Git.
+
+// Your Apple Developer team ID. The AutoFill entitlement needs a paid Apple Developer Program team.
+DEVELOPMENT_TEAM =
+
+// Change this to a bundle ID prefix you own if you are not the maintainer.
+// The app uses it as is for Release, adds ".dev" for Debug, and the extensions and tests add their own suffix.
+// APP_BUNDLE_ID_BASE = com.example.tottoro

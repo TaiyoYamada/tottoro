@@ -1,0 +1,42 @@
+# Git hooks. `mise run setup` installs them with `lefthook install`.
+# The tools come from mise, so that the hooks use the same versions as CI.
+lefthook: mise exec -- lefthook
+
+pre-commit:
+  piped: true
+  jobs:
+    - name: swiftformat
+      glob: "*.swift"
+      run: mise exec -- swiftformat {staged_files}
+      stage_fixed: true
+    - name: swiftlint
+      glob: "*.swift"
+      run: mise exec -- swiftlint lint --strict --quiet {staged_files}
+    - name: string catalogs
+      glob: "*.xcstrings"
+      run: scripts/check-strings.sh
+    - name: secrets
+      run: mise exec -- gitleaks git --pre-commit --staged --redact --no-banner
+
+commit-msg:
+  jobs:
+    - name: conventional commits
+      run: scripts/check-commit-message.sh {1}
+
+pre-push:
+  jobs:
+    - name: TottoroKit tests
+      root: TottoroKit/
+      glob: "TottoroKit/**"
+      run: swift test --quiet --force-resolved-versions
+
+# A branch switch or a pull can change project.yml. --use-cache skips the work when nothing changed.
+post-checkout:
+  jobs:
+    - name: xcodegen
+      run: mise exec -- xcodegen generate --use-cache --quiet
+
+post-merge:
+  jobs:
+    - name: xcodegen
+      run: mise exec -- xcodegen generate --use-cache --quiet

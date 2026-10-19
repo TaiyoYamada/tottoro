@@ -1,0 +1,3810 @@
+{
+  "simpleIconsVersion": "16.35.0",
+  "icons": [
+    {
+      "slug": "1password",
+      "title": "1Password",
+      "names": [
+        "1Password"
+      ],
+      "domains": [
+        "1password.ca",
+        "1password.com",
+        "1password.eu"
+      ]
+    },
+    {
+      "slug": "500px",
+      "title": "500px",
+      "names": [
+        "500px"
+      ],
+      "domains": [
+        "500px.com"
+      ]
+    },
+    {
+      "slug": "activision",
+      "title": "Activision",
+      "names": [
+        "Activision"
+      ],
+      "domains": [
+        "activision.com",
+        "callofduty.com"
+      ]
+    },
+    {
+      "slug": "adafruit",
+      "title": "Adafruit",
+      "names": [
+        "Adafruit"
+      ],
+      "domains": [
+        "adafruit.com"
+      ]
+    },
+    {
+      "slug": "adguard",
+      "title": "AdGuard",
+      "names": [
+        "AdGuard"
+      ],
+      "domains": [
+        "adguard-dns.io",
+        "adguard-vpn.com",
+        "adguard.com"
+      ]
+    },
+    {
+      "slug": "adyen",
+      "title": "Adyen",
+      "names": [
+        "Adyen"
+      ],
+      "domains": [
+        "adyen.com"
+      ]
+    },
+    {
+      "slug": "airtable",
+      "title": "Airtable",
+      "names": [
+        "Airtable"
+      ],
+      "domains": [
+        "airtable.com"
+      ]
+    },
+    {
+      "slug": "algolia",
+      "title": "Algolia",
+      "names": [
+        "Algolia"
+      ],
+      "domains": [
+        "algolia.com"
+      ]
+    },
+    {
+      "slug": "alibabacloud",
+      "title": "Alibaba Cloud",
+      "names": [
+        "Alibaba Cloud"
+      ],
+      "domains": [
+        "alibabacloud.com",
+        "aliyun.com"
+      ]
+    },
+    {
+      "slug": "allegro",
+      "title": "Allegro",
+      "names": [
+        "Allegro"
+      ],
+      "domains": [
+        "allegro.pl"
+      ]
+    },
+    {
+      "slug": "anydesk",
+      "title": "AnyDesk",
+      "names": [
+        "AnyDesk"
+      ],
+      "domains": [
+        "anydesk.com"
+      ]
+    },
+    {
+      "slug": "appsignal",
+      "title": "AppSignal",
+      "names": [
+        "AppSignal"
+      ],
+      "domains": [
+        "appsignal.com"
+      ]
+    },
+    {
+      "slug": "appveyor",
+      "title": "AppVeyor",
+      "names": [
+        "AppVeyor"
+      ],
+      "domains": [
+        "appveyor.com"
+      ]
+    },
+    {
+      "slug": "appwrite",
+      "title": "Appwrite",
+      "names": [
+        "Appwrite"
+      ],
+      "domains": [
+        "appwrite.io"
+      ]
+    },
+    {
+      "slug": "arduino",
+      "title": "Arduino",
+      "names": [
+        "Arduino"
+      ],
+      "domains": [
+        "arduino.cc"
+      ]
+    },
+    {
+      "slug": "artifacthub",
+      "title": "Artifact Hub",
+      "names": [
+        "Artifact Hub"
+      ],
+      "domains": [
+        "artifacthub.io"
+      ]
+    },
+    {
+      "slug": "asana",
+      "title": "Asana",
+      "names": [
+        "Asana"
+      ],
+      "domains": [
+        "asana.com"
+      ]
+    },
+    {
+      "slug": "asus",
+      "title": "ASUS",
+      "names": [
+        "ASUS"
+      ],
+      "domains": [
+        "asus.com"
+      ]
+    },
+    {
+      "slug": "atlassian",
+      "title": "Atlassian",
+      "names": [
+        "Atlassian"
+      ],
+      "domains": [
+        "id.atlassian.com"
+      ]
+    },
+    {
+      "slug": "auth0",
+      "title": "Auth0",
+      "names": [
+        "Auth0"
+      ],
+      "domains": [
+        "auth0.com"
+      ]
+    },
+    {
+      "slug": "autodesk",
+      "title": "Autodesk",
+      "names": [
+        "Autodesk"
+      ],
+      "domains": [
+        "autodesk.com",
+        "tinkercad.com"
+      ]
+    },
+    {
+      "slug": "avast",
+      "title": "Avast",
+      "names": [
+        "Avast"
+      ],
+      "domains": [
+        "avast.com"
+      ]
+    },
+    {
+      "slug": "backblaze",
+      "title": "Backblaze",
+      "names": [
+        "Backblaze"
+      ],
+      "domains": [
+        "backblaze.com"
+      ]
+    },
+    {
+      "slug": "baidu",
+      "title": "Baidu",
+      "names": [
+        "Baidu"
+      ],
+      "domains": [
+        "cloud.baidu.com",
+        "login.bce.baidu.com"
+      ]
+    },
+    {
+      "slug": "baremetrics",
+      "title": "Baremetrics",
+      "names": [
+        "Baremetrics"
+      ],
+      "domains": [
+        "baremetrics.com"
+      ]
+    },
+    {
+      "slug": "barmenia",
+      "title": "Barmenia",
+      "names": [
+        "Barmenia"
+      ],
+      "domains": [
+        "barmenia.de",
+        "meine-barmenia.de"
+      ]
+    },
+    {
+      "slug": "basecamp",
+      "title": "Basecamp",
+      "names": [
+        "Basecamp"
+      ],
+      "domains": [
+        "basecamp.com"
+      ]
+    },
+    {
+      "slug": "basicattentiontoken",
+      "title": "Basic Attention Token",
+      "names": [
+        "BAT",
+        "Basic Attention Token"
+      ],
+      "domains": [
+        "publishers.basicattentiontoken.org"
+      ]
+    },
+    {
+      "slug": "betfair",
+      "title": "Betfair",
+      "names": [
+        "Betfair"
+      ],
+      "domains": [
+        "betfair.com"
+      ]
+    },
+    {
+      "slug": "binance",
+      "title": "Binance",
+      "names": [
+        "Binance"
+      ],
+      "domains": [
+        "binance.com"
+      ]
+    },
+    {
+      "slug": "bitbucket",
+      "title": "Bitbucket",
+      "names": [
+        "Bitbucket"
+      ],
+      "domains": [
+        "bitbucket.org"
+      ]
+    },
+    {
+      "slug": "bitcoin",
+      "title": "Bitcoin",
+      "names": [
+        "Bitcoin"
+      ],
+      "domains": [
+        "bitcoin.de"
+      ]
+    },
+    {
+      "slug": "bitdefender",
+      "title": "Bitdefender",
+      "names": [
+        "Bitdefender"
+      ],
+      "domains": [
+        "bitdefender.com"
+      ]
+    },
+    {
+      "slug": "bitrise",
+      "title": "Bitrise",
+      "names": [
+        "Bitrise"
+      ],
+      "domains": [
+        "bitrise.io"
+      ]
+    },
+    {
+      "slug": "bitwarden",
+      "title": "Bitwarden",
+      "names": [
+        "Bitwarden"
+      ],
+      "domains": [
+        "bitwarden.com"
+      ]
+    },
+    {
+      "slug": "blockchaindotcom",
+      "title": "Blockchain.com",
+      "names": [
+        "Blockchain.com"
+      ],
+      "domains": [
+        "blockchain.com",
+        "blockchain.info"
+      ]
+    },
+    {
+      "slug": "bohemiainteractive",
+      "title": "Bohemia Interactive",
+      "names": [
+        "Bohemia Interactive"
+      ],
+      "domains": [
+        "bohemia.net"
+      ]
+    },
+    {
+      "slug": "bookingdotcom",
+      "title": "Booking.com",
+      "names": [
+        "Booking.com"
+      ],
+      "domains": [
+        "booking.com"
+      ]
+    },
+    {
+      "slug": "box",
+      "title": "Box",
+      "names": [
+        "Box"
+      ],
+      "domains": [
+        "box.com"
+      ]
+    },
+    {
+      "slug": "braintree",
+      "title": "Braintree",
+      "names": [
+        "Braintree"
+      ],
+      "domains": [
+        "braintreepayments.com"
+      ]
+    },
+    {
+      "slug": "brevo",
+      "title": "Brevo",
+      "names": [
+        "Brevo"
+      ],
+      "domains": [
+        "brevo.com",
+        "sendinblue.com"
+      ]
+    },
+    {
+      "slug": "brex",
+      "title": "Brex",
+      "names": [
+        "Brex"
+      ],
+      "domains": [
+        "brex.com"
+      ]
+    },
+    {
+      "slug": "britishairways",
+      "title": "British Airways",
+      "names": [
+        "British Airways"
+      ],
+      "domains": [
+        "britishairways.com"
+      ]
+    },
+    {
+      "slug": "buddy",
+      "title": "Buddy",
+      "names": [
+        "Buddy"
+      ],
+      "domains": [
+        "buddy.works"
+      ]
+    },
+    {
+      "slug": "buffer",
+      "title": "Buffer",
+      "names": [
+        "Buffer"
+      ],
+      "domains": [
+        "buffer.com"
+      ]
+    },
+    {
+      "slug": "bugcrowd",
+      "title": "Bugcrowd",
+      "names": [
+        "Bugcrowd"
+      ],
+      "domains": [
+        "bugcrowd.com"
+      ]
+    },
+    {
+      "slug": "buhl",
+      "title": "Buhl",
+      "names": [
+        "Buhl"
+      ],
+      "domains": [
+        "buhl.de"
+      ]
+    },
+    {
+      "slug": "buildkite",
+      "title": "Buildkite",
+      "names": [
+        "Buildkite"
+      ],
+      "domains": [
+        "buildkite.com"
+      ]
+    },
+    {
+      "slug": "bunnydotnet",
+      "title": "bunny.net",
+      "names": [
+        "bunny.net"
+      ],
+      "domains": [
+        "bunny.net"
+      ]
+    },
+    {
+      "slug": "buymeacoffee",
+      "title": "Buy Me A Coffee",
+      "names": [
+        "Buy Me A Coffee"
+      ],
+      "domains": [
+        "buymeacoffee.com"
+      ]
+    },
+    {
+      "slug": "caldotcom",
+      "title": "Cal.com",
+      "names": [
+        "Cal.com"
+      ],
+      "domains": [
+        "cal.com"
+      ]
+    },
+    {
+      "slug": "calendly",
+      "title": "Calendly",
+      "names": [
+        "Calendly"
+      ],
+      "domains": [
+        "calendly.com"
+      ]
+    },
+    {
+      "slug": "campaignmonitor",
+      "title": "Campaign Monitor",
+      "names": [
+        "Campaign Monitor"
+      ],
+      "domains": [
+        "campaignmonitor.com"
+      ]
+    },
+    {
+      "slug": "canvas",
+      "title": "Canvas",
+      "names": [
+        "Canvas"
+      ],
+      "domains": [
+        "instructure.com"
+      ]
+    },
+    {
+      "slug": "cardmarket",
+      "title": "Cardmarket",
+      "names": [
+        "Cardmarket"
+      ],
+      "domains": [
+        "cardmarket.com"
+      ]
+    },
+    {
+      "slug": "carrd",
+      "title": "Carrd",
+      "names": [
+        "Carrd"
+      ],
+      "domains": [
+        "carrd.co"
+      ]
+    },
+    {
+      "slug": "cashapp",
+      "title": "Cash App",
+      "names": [
+        "Cash App"
+      ],
+      "domains": [
+        "cash.app"
+      ]
+    },
+    {
+      "slug": "circle",
+      "title": "Circle",
+      "names": [
+        "Circle"
+      ],
+      "domains": [
+        "circle.com"
+      ]
+    },
+    {
+      "slug": "cisco",
+      "title": "Cisco",
+      "names": [
+        "Cisco"
+      ],
+      "domains": [
+        "cisco.com",
+        "meraki.cisco.com"
+      ]
+    },
+    {
+      "slug": "clickup",
+      "title": "ClickUp",
+      "names": [
+        "ClickUp"
+      ],
+      "domains": [
+        "clickup.com"
+      ]
+    },
+    {
+      "slug": "cloud66",
+      "title": "Cloud 66",
+      "names": [
+        "Cloud 66"
+      ],
+      "domains": [
+        "cloud66.com"
+      ]
+    },
+    {
+      "slug": "cloudbees",
+      "title": "CloudBees",
+      "names": [
+        "CloudBees"
+      ],
+      "domains": [
+        "cloudbees.com"
+      ]
+    },
+    {
+      "slug": "cloudflare",
+      "title": "Cloudflare",
+      "names": [
+        "Cloudflare"
+      ],
+      "domains": [
+        "cloudflare.com"
+      ]
+    },
+    {
+      "slug": "cloudinary",
+      "title": "Cloudinary",
+      "names": [
+        "Cloudinary"
+      ],
+      "domains": [
+        "cloudinary.com"
+      ]
+    },
+    {
+      "slug": "cloudways",
+      "title": "Cloudways",
+      "names": [
+        "Cloudways"
+      ],
+      "domains": [
+        "cloudways.com"
+      ]
+    },
+    {
+      "slug": "cobalt",
+      "title": "cobalt",
+      "names": [
+        "cobalt"
+      ],
+      "domains": [
+        "cobalt.io"
+      ]
+    },
+    {
+      "slug": "coda",
+      "title": "Coda",
+      "names": [
+        "Coda"
+      ],
+      "domains": [
+        "coda.io"
+      ]
+    },
+    {
+      "slug": "codeberg",
+      "title": "Codeberg",
+      "names": [
+        "Codeberg"
+      ],
+      "domains": [
+        "codeberg.org"
+      ]
+    },
+    {
+      "slug": "coinbase",
+      "title": "Coinbase",
+      "names": [
+        "Coinbase"
+      ],
+      "domains": [
+        "coinbase.com"
+      ]
+    },
+    {
+      "slug": "coinmarketcap",
+      "title": "CoinMarketCap",
+      "names": [
+        "CoinMarketCap"
+      ],
+      "domains": [
+        "coinmarketcap.com"
+      ]
+    },
+    {
+      "slug": "contabo",
+      "title": "Contabo",
+      "names": [
+        "Contabo"
+      ],
+      "domains": [
+        "contabo.com"
+      ]
+    },
+    {
+      "slug": "contentful",
+      "title": "Contentful",
+      "names": [
+        "Contentful"
+      ],
+      "domains": [
+        "contentful.com"
+      ]
+    },
+    {
+      "slug": "coursera",
+      "title": "Coursera",
+      "names": [
+        "Coursera"
+      ],
+      "domains": [
+        "coursera.org"
+      ]
+    },
+    {
+      "slug": "credly",
+      "title": "Credly",
+      "names": [
+        "Credly"
+      ],
+      "domains": [
+        "credly.com"
+      ]
+    },
+    {
+      "slug": "crowdin",
+      "title": "Crowdin",
+      "names": [
+        "Crowdin"
+      ],
+      "domains": [
+        "crowdin.com"
+      ]
+    },
+    {
+      "slug": "dashlane",
+      "title": "Dashlane",
+      "names": [
+        "Dashlane"
+      ],
+      "domains": [
+        "dashlane.com"
+      ]
+    },
+    {
+      "slug": "datadog",
+      "title": "Datadog",
+      "names": [
+        "Datadog"
+      ],
+      "domains": [
+        "datadoghq.com"
+      ]
+    },
+    {
+      "slug": "datev",
+      "title": "DATEV",
+      "names": [
+        "DATEV"
+      ],
+      "domains": [
+        "datev.de"
+      ]
+    },
+    {
+      "slug": "datto",
+      "title": "Datto",
+      "names": [
+        "Datto"
+      ],
+      "domains": [
+        "datto.com"
+      ]
+    },
+    {
+      "slug": "deepl",
+      "title": "DeepL",
+      "names": [
+        "DeepL"
+      ],
+      "domains": [
+        "deepl.com"
+      ]
+    },
+    {
+      "slug": "deutschepost",
+      "title": "Deutsche Post",
+      "names": [
+        "Deutsche Post"
+      ],
+      "domains": [
+        "deutschepost.de"
+      ]
+    },
+    {
+      "slug": "deutschetelekom",
+      "title": "Deutsche Telekom",
+      "names": [
+        "Deutsche Telekom",
+        "T-Mobile"
+      ],
+      "domains": [
+        "t-mobile.com",
+        "telekom.de"
+      ]
+    },
+    {
+      "slug": "deviantart",
+      "title": "DeviantArt",
+      "names": [
+        "DeviantArt"
+      ],
+      "domains": [
+        "deviantart.com"
+      ]
+    },
+    {
+      "slug": "digitalocean",
+      "title": "DigitalOcean",
+      "names": [
+        "DigitalOcean"
+      ],
+      "domains": [
+        "digitalocean.com"
+      ]
+    },
+    {
+      "slug": "discogs",
+      "title": "Discogs",
+      "names": [
+        "Discogs"
+      ],
+      "domains": [
+        "discogs.com"
+      ]
+    },
+    {
+      "slug": "discord",
+      "title": "Discord",
+      "names": [
+        "Discord"
+      ],
+      "domains": [
+        "discord.com",
+        "discordapp.com"
+      ]
+    },
+    {
+      "slug": "disqus",
+      "title": "Disqus",
+      "names": [
+        "Disqus"
+      ],
+      "domains": [
+        "disqus.com"
+      ]
+    },
+    {
+      "slug": "dmm",
+      "title": "DMM",
+      "names": [
+        "DMM"
+      ],
+      "domains": [
+        "dmm.com"
+      ]
+    },
+    {
+      "slug": "docker",
+      "title": "Docker",
+      "names": [
+        "Docker"
+      ],
+      "domains": [
+        "docker.com"
+      ]
+    },
+    {
+      "slug": "dropbox",
+      "title": "Dropbox",
+      "names": [
+        "Dropbox"
+      ],
+      "domains": [
+        "dropbox.com",
+        "getdropbox.com"
+      ]
+    },
+    {
+      "slug": "drupal",
+      "title": "Drupal",
+      "names": [
+        "Drupal"
+      ],
+      "domains": [
+        "drupal.org"
+      ]
+    },
+    {
+      "slug": "ebay",
+      "title": "eBay",
+      "names": [
+        "eBay"
+      ],
+      "domains": [
+        "ebay.at",
+        "ebay.be",
+        "ebay.ca",
+        "ebay.ch",
+        "ebay.cn",
+        "ebay.co.jp",
+        "ebay.co.uk",
+        "ebay.com",
+        "ebay.com.au",
+        "ebay.com.hk",
+        "ebay.com.my",
+        "ebay.com.sg",
+        "ebay.com.tw",
+        "ebay.de",
+        "ebay.es",
+        "ebay.fr",
+        "ebay.ie",
+        "ebay.in",
+        "ebay.it",
+        "ebay.nl",
+        "ebay.ph",
+        "ebay.pl"
+      ]
+    },
+    {
+      "slug": "egnyte",
+      "title": "Egnyte",
+      "names": [
+        "Egnyte"
+      ],
+      "domains": [
+        "egnyte.com"
+      ]
+    },
+    {
+      "slug": "elastic",
+      "title": "Elastic",
+      "names": [
+        "Elastic"
+      ],
+      "domains": [
+        "elastic.co"
+      ]
+    },
+    {
+      "slug": "elasticcloud",
+      "title": "Elastic Cloud",
+      "names": [
+        "Elastic Cloud"
+      ],
+      "domains": [
+        "elastic.co"
+      ]
+    },
+    {
+      "slug": "element",
+      "title": "Element",
+      "names": [
+        "Element"
+      ],
+      "domains": [
+        "element.io"
+      ]
+    },
+    {
+      "slug": "ente",
+      "title": "Ente",
+      "names": [
+        "Ente"
+      ],
+      "domains": [
+        "ente.io"
+      ]
+    },
+    {
+      "slug": "envato",
+      "title": "Envato",
+      "names": [
+        "Envato"
+      ],
+      "domains": [
+        "envato.com",
+        "placeit.net"
+      ]
+    },
+    {
+      "slug": "epicgames",
+      "title": "Epic Games",
+      "names": [
+        "Epic Games"
+      ],
+      "domains": [
+        "epicgames.com",
+        "fallguys.com",
+        "fortnite.com",
+        "rocketleague.com"
+      ]
+    },
+    {
+      "slug": "equinixmetal",
+      "title": "Equinix Metal",
+      "names": [
+        "Equinix Metal"
+      ],
+      "domains": [
+        "metal.equinix.com"
+      ]
+    },
+    {
+      "slug": "esri",
+      "title": "ESRI",
+      "names": [
+        "ESRI"
+      ],
+      "domains": [
+        "esri.com"
+      ]
+    },
+    {
+      "slug": "etsy",
+      "title": "Etsy",
+      "names": [
+        "Etsy"
+      ],
+      "domains": [
+        "etsy.com"
+      ]
+    },
+    {
+      "slug": "evernote",
+      "title": "Evernote",
+      "names": [
+        "Evernote"
+      ],
+      "domains": [
+        "evernote.com"
+      ]
+    },
+    {
+      "slug": "expensify",
+      "title": "Expensify",
+      "names": [
+        "Expensify"
+      ],
+      "domains": [
+        "expensify.com"
+      ]
+    },
+    {
+      "slug": "expo",
+      "title": "Expo",
+      "names": [
+        "Expo"
+      ],
+      "domains": [
+        "expo.dev"
+      ]
+    },
+    {
+      "slug": "facebook",
+      "title": "Facebook",
+      "names": [
+        "Facebook"
+      ],
+      "domains": [
+        "facebook.com",
+        "messenger.com"
+      ]
+    },
+    {
+      "slug": "faceit",
+      "title": "FACEIT",
+      "names": [
+        "FACEIT"
+      ],
+      "domains": [
+        "faceit.com"
+      ]
+    },
+    {
+      "slug": "fandom",
+      "title": "Fandom",
+      "names": [
+        "Fandom"
+      ],
+      "domains": [
+        "fandom.com"
+      ]
+    },
+    {
+      "slug": "fastly",
+      "title": "Fastly",
+      "names": [
+        "Fastly"
+      ],
+      "domains": [
+        "fastly.com"
+      ]
+    },
+    {
+      "slug": "fathom",
+      "title": "Fathom",
+      "names": [
+        "Fathom"
+      ],
+      "domains": [
+        "fathomhq.com"
+      ]
+    },
+    {
+      "slug": "fauna",
+      "title": "Fauna",
+      "names": [
+        "Fauna"
+      ],
+      "domains": [
+        "fauna.com"
+      ]
+    },
+    {
+      "slug": "favro",
+      "title": "Favro",
+      "names": [
+        "Favro"
+      ],
+      "domains": [
+        "favro.com"
+      ]
+    },
+    {
+      "slug": "feedly",
+      "title": "Feedly",
+      "names": [
+        "Feedly"
+      ],
+      "domains": [
+        "feedly.com"
+      ]
+    },
+    {
+      "slug": "figma",
+      "title": "Figma",
+      "names": [
+        "Figma"
+      ],
+      "domains": [
+        "figma.com"
+      ]
+    },
+    {
+      "slug": "filen",
+      "title": "Filen",
+      "names": [
+        "Filen"
+      ],
+      "domains": [
+        "filen.io"
+      ]
+    },
+    {
+      "slug": "files",
+      "title": "Files",
+      "names": [
+        "Files"
+      ],
+      "domains": [
+        "files.com"
+      ]
+    },
+    {
+      "slug": "flightaware",
+      "title": "Flightaware",
+      "names": [
+        "Flightaware"
+      ],
+      "domains": [
+        "flightaware.com"
+      ]
+    },
+    {
+      "slug": "floatplane",
+      "title": "Floatplane",
+      "names": [
+        "Floatplane"
+      ],
+      "domains": [
+        "floatplane.com"
+      ]
+    },
+    {
+      "slug": "flydotio",
+      "title": "Fly.io",
+      "names": [
+        "Fly.io"
+      ],
+      "domains": [
+        "fly-metrics.net",
+        "fly.io"
+      ]
+    },
+    {
+      "slug": "formspree",
+      "title": "Formspree",
+      "names": [
+        "Formspree"
+      ],
+      "domains": [
+        "formspree.io"
+      ]
+    },
+    {
+      "slug": "formstack",
+      "title": "Formstack",
+      "names": [
+        "Formstack"
+      ],
+      "domains": [
+        "formstack.com"
+      ]
+    },
+    {
+      "slug": "frontify",
+      "title": "Frontify",
+      "names": [
+        "Frontify"
+      ],
+      "domains": [
+        "frontify.com"
+      ]
+    },
+    {
+      "slug": "g2a",
+      "title": "G2A",
+      "names": [
+        "G2A"
+      ],
+      "domains": [
+        "g2a.com"
+      ]
+    },
+    {
+      "slug": "galaxus",
+      "title": "Galaxus",
+      "names": [
+        "Galaxus"
+      ],
+      "domains": [
+        "galaxus.ch"
+      ]
+    },
+    {
+      "slug": "gamemaker",
+      "title": "Gamemaker",
+      "names": [
+        "Gamemaker"
+      ],
+      "domains": [
+        "gamemaker.io",
+        "yoyogames.com"
+      ]
+    },
+    {
+      "slug": "gandi",
+      "title": "Gandi",
+      "names": [
+        "Gandi"
+      ],
+      "domains": [
+        "gandi.net"
+      ]
+    },
+    {
+      "slug": "generalmotors",
+      "title": "General Motors",
+      "names": [
+        "General Motors"
+      ],
+      "domains": [
+        "buick.com",
+        "cadillac.com",
+        "chevrolet.com",
+        "gm.com",
+        "gmc.com"
+      ]
+    },
+    {
+      "slug": "github",
+      "title": "GitHub",
+      "names": [
+        "GitHub"
+      ],
+      "domains": [
+        "github.com"
+      ]
+    },
+    {
+      "slug": "gitlab",
+      "title": "GitLab",
+      "names": [
+        "GitLab"
+      ],
+      "domains": [
+        "gitlab.com"
+      ]
+    },
+    {
+      "slug": "glassdoor",
+      "title": "Glassdoor",
+      "names": [
+        "Glassdoor"
+      ],
+      "domains": [
+        "glassdoor.com"
+      ]
+    },
+    {
+      "slug": "gmail",
+      "title": "Gmail",
+      "names": [
+        "Gmail"
+      ],
+      "domains": [
+        "gmail.com",
+        "googlemail.com",
+        "mail.google.com"
+      ]
+    },
+    {
+      "slug": "gmx",
+      "title": "GMX",
+      "names": [
+        "GMX"
+      ],
+      "domains": [
+        "gmx.at",
+        "gmx.com",
+        "gmx.net"
+      ]
+    },
+    {
+      "slug": "godaddy",
+      "title": "GoDaddy",
+      "names": [
+        "GoDaddy"
+      ],
+      "domains": [
+        "godaddy.com"
+      ]
+    },
+    {
+      "slug": "gogdotcom",
+      "title": "GOG.com",
+      "names": [
+        "GOG.com"
+      ],
+      "domains": [
+        "gog.com"
+      ]
+    },
+    {
+      "slug": "google",
+      "title": "Google",
+      "names": [
+        "Google"
+      ],
+      "domains": [
+        "chat.google.com",
+        "cloud.google.com",
+        "drive.google.com",
+        "fi.google.com",
+        "fiber.google.com",
+        "fit.google.com",
+        "meet.google.com",
+        "nest.google.com",
+        "pay.google.com",
+        "play.google.com"
+      ]
+    },
+    {
+      "slug": "googlechat",
+      "title": "Google Chat",
+      "names": [
+        "Google Chat"
+      ],
+      "domains": [
+        "chat.google.com"
+      ]
+    },
+    {
+      "slug": "googledrive",
+      "title": "Google Drive",
+      "names": [
+        "Google Drive"
+      ],
+      "domains": [
+        "drive.google.com"
+      ]
+    },
+    {
+      "slug": "googlemeet",
+      "title": "Google Meet",
+      "names": [
+        "Google Meet"
+      ],
+      "domains": [
+        "meet.google.com"
+      ]
+    },
+    {
+      "slug": "googlepay",
+      "title": "Google Pay",
+      "names": [
+        "Google Pay"
+      ],
+      "domains": [
+        "pay.google.com"
+      ]
+    },
+    {
+      "slug": "googleplay",
+      "title": "Google Play",
+      "names": [
+        "Google Play"
+      ],
+      "domains": [
+        "play.google.com"
+      ]
+    },
+    {
+      "slug": "grammarly",
+      "title": "Grammarly",
+      "names": [
+        "Grammarly"
+      ],
+      "domains": [
+        "grammarly.com"
+      ]
+    },
+    {
+      "slug": "guilded",
+      "title": "Guilded",
+      "names": [
+        "Guilded"
+      ],
+      "domains": [
+        "guilded.gg"
+      ]
+    },
+    {
+      "slug": "gusto",
+      "title": "Gusto",
+      "names": [
+        "Gusto"
+      ],
+      "domains": [
+        "gusto.com"
+      ]
+    },
+    {
+      "slug": "hackthebox",
+      "title": "Hack The Box",
+      "names": [
+        "Hack The Box"
+      ],
+      "domains": [
+        "hackthebox.com",
+        "hackthebox.eu"
+      ]
+    },
+    {
+      "slug": "hackerone",
+      "title": "HackerOne",
+      "names": [
+        "HackerOne"
+      ],
+      "domains": [
+        "hackerone.com"
+      ]
+    },
+    {
+      "slug": "hashicorp",
+      "title": "HashiCorp",
+      "names": [
+        "HashiCorp"
+      ],
+      "domains": [
+        "auth.hashicorp.com",
+        "cloud.hashicorp.com"
+      ]
+    },
+    {
+      "slug": "helpscout",
+      "title": "Help Scout",
+      "names": [
+        "Help Scout"
+      ],
+      "domains": [
+        "helpscout.com"
+      ]
+    },
+    {
+      "slug": "hetzner",
+      "title": "Hetzner",
+      "names": [
+        "Hetzner"
+      ],
+      "domains": [
+        "hetzner.com"
+      ]
+    },
+    {
+      "slug": "hey",
+      "title": "HEY",
+      "names": [
+        "HEY"
+      ],
+      "domains": [
+        "hey.com"
+      ]
+    },
+    {
+      "slug": "homeassistant",
+      "title": "Home Assistant",
+      "names": [
+        "Home Assistant"
+      ],
+      "domains": [
+        "home-assistant.io"
+      ]
+    },
+    {
+      "slug": "honeybadger",
+      "title": "Honeybadger",
+      "names": [
+        "Honeybadger"
+      ],
+      "domains": [
+        "honeybadger.io"
+      ]
+    },
+    {
+      "slug": "hootsuite",
+      "title": "Hootsuite",
+      "names": [
+        "Hootsuite"
+      ],
+      "domains": [
+        "hootsuite.com"
+      ]
+    },
+    {
+      "slug": "hostinger",
+      "title": "Hostinger",
+      "names": [
+        "Hostinger"
+      ],
+      "domains": [
+        "hostinger.com"
+      ]
+    },
+    {
+      "slug": "hotjar",
+      "title": "Hotjar",
+      "names": [
+        "Hotjar"
+      ],
+      "domains": [
+        "hotjar.com"
+      ]
+    },
+    {
+      "slug": "hp",
+      "title": "HP",
+      "names": [
+        "HP"
+      ],
+      "domains": [
+        "hp.com"
+      ]
+    },
+    {
+      "slug": "hubspot",
+      "title": "HubSpot",
+      "names": [
+        "HubSpot"
+      ],
+      "domains": [
+        "hubspot.com"
+      ]
+    },
+    {
+      "slug": "huggingface",
+      "title": "Hugging Face",
+      "names": [
+        "Hugging Face"
+      ],
+      "domains": [
+        "huggingface.co"
+      ]
+    },
+    {
+      "slug": "humblebundle",
+      "title": "Humble Bundle",
+      "names": [
+        "Humble Bundle"
+      ],
+      "domains": [
+        "humblebundle.com"
+      ]
+    },
+    {
+      "slug": "ifttt",
+      "title": "IFTTT",
+      "names": [
+        "IFTTT"
+      ],
+      "domains": [
+        "ifttt.com"
+      ]
+    },
+    {
+      "slug": "improvmx",
+      "title": "ImprovMX",
+      "names": [
+        "ImprovMX"
+      ],
+      "domains": [
+        "improvmx.com"
+      ]
+    },
+    {
+      "slug": "infomaniak",
+      "title": "Infomaniak",
+      "names": [
+        "Infomaniak"
+      ],
+      "domains": [
+        "infomaniak.com"
+      ]
+    },
+    {
+      "slug": "instagram",
+      "title": "Instagram",
+      "names": [
+        "Instagram"
+      ],
+      "domains": [
+        "ig.me",
+        "instagram.com",
+        "threads.com",
+        "threads.net"
+      ]
+    },
+    {
+      "slug": "intercom",
+      "title": "Intercom",
+      "names": [
+        "Intercom"
+      ],
+      "domains": [
+        "intercom.com"
+      ]
+    },
+    {
+      "slug": "intigriti",
+      "title": "Intigriti",
+      "names": [
+        "Intigriti"
+      ],
+      "domains": [
+        "intigriti.com"
+      ]
+    },
+    {
+      "slug": "intuit",
+      "title": "Intuit",
+      "names": [
+        "Intuit"
+      ],
+      "domains": [
+        "intuit.com",
+        "turbotax.intuit.com"
+      ]
+    },
+    {
+      "slug": "ionos",
+      "title": "Ionos",
+      "names": [
+        "Ionos"
+      ],
+      "domains": [
+        "ionos.com"
+      ]
+    },
+    {
+      "slug": "isc2",
+      "title": "ISC2",
+      "names": [
+        "(ISC)²",
+        "ISC2"
+      ],
+      "domains": [
+        "isc2.org"
+      ]
+    },
+    {
+      "slug": "itchdotio",
+      "title": "Itch.io",
+      "names": [
+        "Itch.io"
+      ],
+      "domains": [
+        "itch.io"
+      ]
+    },
+    {
+      "slug": "jetbrains",
+      "title": "JetBrains",
+      "names": [
+        "JetBrains"
+      ],
+      "domains": [
+        "jetbrains.com"
+      ]
+    },
+    {
+      "slug": "kagi",
+      "title": "Kagi",
+      "names": [
+        "Kagi"
+      ],
+      "domains": [
+        "kagi.com"
+      ]
+    },
+    {
+      "slug": "kahoot",
+      "title": "Kahoot!",
+      "names": [
+        "Kahoot!"
+      ],
+      "domains": [
+        "kahoot.com",
+        "kahoot.it"
+      ]
+    },
+    {
+      "slug": "kaspersky",
+      "title": "Kaspersky",
+      "names": [
+        "Kaspersky"
+      ],
+      "domains": [
+        "kaspersky.com"
+      ]
+    },
+    {
+      "slug": "keeper",
+      "title": "Keeper",
+      "names": [
+        "Keeper"
+      ],
+      "domains": [
+        "keepersecurity.com"
+      ]
+    },
+    {
+      "slug": "keycdn",
+      "title": "KeyCDN",
+      "names": [
+        "KeyCDN"
+      ],
+      "domains": [
+        "keycdn.com"
+      ]
+    },
+    {
+      "slug": "kick",
+      "title": "Kick",
+      "names": [
+        "Kick"
+      ],
+      "domains": [
+        "kick.com"
+      ]
+    },
+    {
+      "slug": "kickstarter",
+      "title": "Kickstarter",
+      "names": [
+        "Kickstarter"
+      ],
+      "domains": [
+        "kickstarter.com"
+      ]
+    },
+    {
+      "slug": "kinsta",
+      "title": "Kinsta",
+      "names": [
+        "Kinsta"
+      ],
+      "domains": [
+        "kinsta.com"
+      ]
+    },
+    {
+      "slug": "kofi",
+      "title": "Ko-fi",
+      "names": [
+        "Ko-fi"
+      ],
+      "domains": [
+        "ko-fi.com"
+      ]
+    },
+    {
+      "slug": "laravel",
+      "title": "Laravel",
+      "names": [
+        "Laravel"
+      ],
+      "domains": [
+        "forge.laravel.com",
+        "vapor.laravel.com"
+      ]
+    },
+    {
+      "slug": "lastpass",
+      "title": "LastPass",
+      "names": [
+        "LastPass"
+      ],
+      "domains": [
+        "lastpass.com"
+      ]
+    },
+    {
+      "slug": "launchpad",
+      "title": "Launchpad",
+      "names": [
+        "Launchpad"
+      ],
+      "domains": [
+        "launchpad.net"
+      ]
+    },
+    {
+      "slug": "leetcode",
+      "title": "LeetCode",
+      "names": [
+        "LeetCode"
+      ],
+      "domains": [
+        "leetcode.cn",
+        "leetcode.com"
+      ]
+    },
+    {
+      "slug": "lenovo",
+      "title": "Lenovo",
+      "names": [
+        "Lenovo"
+      ],
+      "domains": [
+        "lenovo.com"
+      ]
+    },
+    {
+      "slug": "letterboxd",
+      "title": "Letterboxd",
+      "names": [
+        "Letterboxd"
+      ],
+      "domains": [
+        "letterboxd.com",
+        "ltrbxd.com"
+      ]
+    },
+    {
+      "slug": "lichess",
+      "title": "Lichess",
+      "names": [
+        "Lichess"
+      ],
+      "domains": [
+        "lichess.org"
+      ]
+    },
+    {
+      "slug": "linktree",
+      "title": "Linktree",
+      "names": [
+        "Linktree"
+      ],
+      "domains": [
+        "linktr.ee"
+      ]
+    },
+    {
+      "slug": "looker",
+      "title": "Looker",
+      "names": [
+        "Looker"
+      ],
+      "domains": [
+        "looker.com"
+      ]
+    },
+    {
+      "slug": "lufthansa",
+      "title": "Lufthansa",
+      "names": [
+        "Lufthansa"
+      ],
+      "domains": [
+        "lufthansa.com",
+        "miles-and-more.com"
+      ]
+    },
+    {
+      "slug": "maildotcom",
+      "title": "mail.com",
+      "names": [
+        "mail.com"
+      ],
+      "domains": [
+        "mail.com"
+      ]
+    },
+    {
+      "slug": "mailbox",
+      "title": "mailbox",
+      "names": [
+        "mailbox"
+      ],
+      "domains": [
+        "mailbox.org"
+      ]
+    },
+    {
+      "slug": "mailchimp",
+      "title": "MailChimp",
+      "names": [
+        "MailChimp"
+      ],
+      "domains": [
+        "mailchi.mp",
+        "mailchimp.com"
+      ]
+    },
+    {
+      "slug": "mailgun",
+      "title": "Mailgun",
+      "names": [
+        "Mailgun"
+      ],
+      "domains": [
+        "mailgun.com"
+      ]
+    },
+    {
+      "slug": "make",
+      "title": "Make",
+      "names": [
+        "Make"
+      ],
+      "domains": [
+        "make.com"
+      ]
+    },
+    {
+      "slug": "malwarebytes",
+      "title": "Malwarebytes",
+      "names": [
+        "Malwarebytes"
+      ],
+      "domains": [
+        "cloud.malwarebytes.com",
+        "oneview.malwarebytes.com"
+      ]
+    },
+    {
+      "slug": "mapbox",
+      "title": "Mapbox",
+      "names": [
+        "Mapbox"
+      ],
+      "domains": [
+        "mapbox.com"
+      ]
+    },
+    {
+      "slug": "mastodon",
+      "title": "Mastodon",
+      "names": [
+        "Mastodon"
+      ],
+      "domains": [
+        "joinmastodon.org",
+        "mastodon.social"
+      ]
+    },
+    {
+      "slug": "matomo",
+      "title": "Matomo",
+      "names": [
+        "Matomo"
+      ],
+      "domains": [
+        "matomo.org"
+      ]
+    },
+    {
+      "slug": "mattermost",
+      "title": "Mattermost",
+      "names": [
+        "Mattermost"
+      ],
+      "domains": [
+        "mattermost.com"
+      ]
+    },
+    {
+      "slug": "mega",
+      "title": "MEGA",
+      "names": [
+        "MEGA"
+      ],
+      "domains": [
+        "mega.io"
+      ]
+    },
+    {
+      "slug": "meta",
+      "title": "Meta",
+      "names": [
+        "Meta"
+      ],
+      "domains": [
+        "meta.com",
+        "oculus.com"
+      ]
+    },
+    {
+      "slug": "migadu",
+      "title": "Migadu",
+      "names": [
+        "Migadu"
+      ],
+      "domains": [
+        "migadu.com"
+      ]
+    },
+    {
+      "slug": "miro",
+      "title": "Miro",
+      "names": [
+        "Miro"
+      ],
+      "domains": [
+        "miro.com"
+      ]
+    },
+    {
+      "slug": "modrinth",
+      "title": "Modrinth",
+      "names": [
+        "Modrinth"
+      ],
+      "domains": [
+        "modrinth.com"
+      ]
+    },
+    {
+      "slug": "mongodb",
+      "title": "MongoDB",
+      "names": [
+        "MongoDB"
+      ],
+      "domains": [
+        "mongodb.com"
+      ]
+    },
+    {
+      "slug": "moqups",
+      "title": "Moqups",
+      "names": [
+        "Moqups"
+      ],
+      "domains": [
+        "moqups.com"
+      ]
+    },
+    {
+      "slug": "mozilla",
+      "title": "Mozilla",
+      "names": [
+        "Mozilla"
+      ],
+      "domains": [
+        "accounts.firefox.com"
+      ]
+    },
+    {
+      "slug": "mural",
+      "title": "Mural",
+      "names": [
+        "Mural"
+      ],
+      "domains": [
+        "mural.co"
+      ]
+    },
+    {
+      "slug": "myanimelist",
+      "title": "MyAnimeList",
+      "names": [
+        "MAL",
+        "MyAnimeList"
+      ],
+      "domains": [
+        "myanimelist.net"
+      ]
+    },
+    {
+      "slug": "myob",
+      "title": "MYOB",
+      "names": [
+        "MYOB"
+      ],
+      "domains": [
+        "myob.co.nz",
+        "myob.com",
+        "myob.com.au"
+      ]
+    },
+    {
+      "slug": "n8n",
+      "title": "n8n",
+      "names": [
+        "n8n"
+      ],
+      "domains": [
+        "n8n.cloud",
+        "n8n.io"
+      ]
+    },
+    {
+      "slug": "namebase",
+      "title": "Namebase",
+      "names": [
+        "Namebase"
+      ],
+      "domains": [
+        "namebase.io"
+      ]
+    },
+    {
+      "slug": "namecheap",
+      "title": "Namecheap",
+      "names": [
+        "Namecheap"
+      ],
+      "domains": [
+        "namecheap.com"
+      ]
+    },
+    {
+      "slug": "namesilo",
+      "title": "NameSilo",
+      "names": [
+        "NameSilo"
+      ],
+      "domains": [
+        "namesilo.com"
+      ]
+    },
+    {
+      "slug": "netcup",
+      "title": "netcup",
+      "names": [
+        "netcup"
+      ],
+      "domains": [
+        "customercontrolpanel.de",
+        "netcup.de",
+        "netcup.eu"
+      ]
+    },
+    {
+      "slug": "netim",
+      "title": "Netim",
+      "names": [
+        "Netim"
+      ],
+      "domains": [
+        "netim.com"
+      ]
+    },
+    {
+      "slug": "netlify",
+      "title": "Netlify",
+      "names": [
+        "Netlify",
+        "Netlify CMS"
+      ],
+      "domains": [
+        "netlify.com"
+      ]
+    },
+    {
+      "slug": "newegg",
+      "title": "Newegg",
+      "names": [
+        "Newegg"
+      ],
+      "domains": [
+        "newegg.com"
+      ]
+    },
+    {
+      "slug": "newgrounds",
+      "title": "Newgrounds",
+      "names": [
+        "Newgrounds"
+      ],
+      "domains": [
+        "newgrounds.com"
+      ]
+    },
+    {
+      "slug": "nexon",
+      "title": "NEXON",
+      "names": [
+        "NEXON"
+      ],
+      "domains": [
+        "nexon.com"
+      ]
+    },
+    {
+      "slug": "nextdns",
+      "title": "NextDNS",
+      "names": [
+        "NextDNS"
+      ],
+      "domains": [
+        "nextdns.io"
+      ]
+    },
+    {
+      "slug": "ngrok",
+      "title": "ngrok",
+      "names": [
+        "ngrok"
+      ],
+      "domains": [
+        "ngrok.com"
+      ]
+    },
+    {
+      "slug": "nicehash",
+      "title": "NiceHash",
+      "names": [
+        "NiceHash"
+      ],
+      "domains": [
+        "nicehash.com"
+      ]
+    },
+    {
+      "slug": "niconico",
+      "title": "niconico",
+      "names": [
+        "niconico"
+      ],
+      "domains": [
+        "nicovideo.jp"
+      ]
+    },
+    {
+      "slug": "nordvpn",
+      "title": "NordVPN",
+      "names": [
+        "NordVPN"
+      ],
+      "domains": [
+        "nordaccount.com",
+        "nordvpn.com"
+      ]
+    },
+    {
+      "slug": "norton",
+      "title": "Norton",
+      "names": [
+        "Norton"
+      ],
+      "domains": [
+        "norton.com"
+      ]
+    },
+    {
+      "slug": "notesnook",
+      "title": "Notesnook",
+      "names": [
+        "Notesnook"
+      ],
+      "domains": [
+        "notesnook.com"
+      ]
+    },
+    {
+      "slug": "notion",
+      "title": "Notion",
+      "names": [
+        "Notion"
+      ],
+      "domains": [
+        "notion.so"
+      ]
+    },
+    {
+      "slug": "nuget",
+      "title": "NuGet",
+      "names": [
+        "NuGet"
+      ],
+      "domains": [
+        "nuget.org"
+      ]
+    },
+    {
+      "slug": "obsidian",
+      "title": "Obsidian",
+      "names": [
+        "Obsidian"
+      ],
+      "domains": [
+        "obsidian.md"
+      ]
+    },
+    {
+      "slug": "odoo",
+      "title": "Odoo",
+      "names": [
+        "Odoo"
+      ],
+      "domains": [
+        "odoo.com"
+      ]
+    },
+    {
+      "slug": "okta",
+      "title": "Okta",
+      "names": [
+        "Okta"
+      ],
+      "domains": [
+        "okta.com"
+      ]
+    },
+    {
+      "slug": "okx",
+      "title": "OKX",
+      "names": [
+        "OKX"
+      ],
+      "domains": [
+        "okx.com"
+      ]
+    },
+    {
+      "slug": "opencollective",
+      "title": "Open Collective",
+      "names": [
+        "Open Collective"
+      ],
+      "domains": [
+        "opencollective.com"
+      ]
+    },
+    {
+      "slug": "opensea",
+      "title": "OpenSea",
+      "names": [
+        "OpenSea"
+      ],
+      "domains": [
+        "opensea.io"
+      ]
+    },
+    {
+      "slug": "opera",
+      "title": "Opera",
+      "names": [
+        "Opera"
+      ],
+      "domains": [
+        "auth.opera.com"
+      ]
+    },
+    {
+      "slug": "orcid",
+      "title": "ORCID",
+      "names": [
+        "ORCID"
+      ],
+      "domains": [
+        "orcid.org"
+      ]
+    },
+    {
+      "slug": "osu",
+      "title": "osu!",
+      "names": [
+        "osu!"
+      ],
+      "domains": [
+        "osu.ppy.sh"
+      ]
+    },
+    {
+      "slug": "ovh",
+      "title": "OVH",
+      "names": [
+        "OVH"
+      ],
+      "domains": [
+        "ovh.com"
+      ]
+    },
+    {
+      "slug": "paddle",
+      "title": "Paddle",
+      "names": [
+        "Paddle"
+      ],
+      "domains": [
+        "paddle.com"
+      ]
+    },
+    {
+      "slug": "patreon",
+      "title": "Patreon",
+      "names": [
+        "Patreon"
+      ],
+      "domains": [
+        "patreon.com"
+      ]
+    },
+    {
+      "slug": "paypal",
+      "title": "PayPal",
+      "names": [
+        "PayPal"
+      ],
+      "domains": [
+        "paypal-search.com",
+        "paypal.com"
+      ]
+    },
+    {
+      "slug": "philipshue",
+      "title": "Philips Hue",
+      "names": [
+        "Philips Hue"
+      ],
+      "domains": [
+        "account.meethue.com",
+        "auth.meethue.com",
+        "philips-hue.com"
+      ]
+    },
+    {
+      "slug": "pivotaltracker",
+      "title": "Pivotal Tracker",
+      "names": [
+        "Pivotal Tracker"
+      ],
+      "domains": [
+        "pivotaltracker.com"
+      ]
+    },
+    {
+      "slug": "pixiv",
+      "title": "pixiv",
+      "names": [
+        "pixiv"
+      ],
+      "domains": [
+        "pixiv.net"
+      ]
+    },
+    {
+      "slug": "planetscale",
+      "title": "PlanetScale",
+      "names": [
+        "PlanetScale"
+      ],
+      "domains": [
+        "planetscale.com"
+      ]
+    },
+    {
+      "slug": "plausibleanalytics",
+      "title": "Plausible Analytics",
+      "names": [
+        "Plausible Analytics"
+      ],
+      "domains": [
+        "plausible.io"
+      ]
+    },
+    {
+      "slug": "playstation",
+      "title": "PlayStation",
+      "names": [
+        "PlayStation"
+      ],
+      "domains": [
+        "playstation.com"
+      ]
+    },
+    {
+      "slug": "plesk",
+      "title": "Plesk",
+      "names": [
+        "Plesk"
+      ],
+      "domains": [
+        "my.plesk.com"
+      ]
+    },
+    {
+      "slug": "plex",
+      "title": "Plex",
+      "names": [
+        "Plex"
+      ],
+      "domains": [
+        "plex.tv"
+      ]
+    },
+    {
+      "slug": "pluralsight",
+      "title": "Pluralsight",
+      "names": [
+        "Pluralsight"
+      ],
+      "domains": [
+        "pluralsight.com"
+      ]
+    },
+    {
+      "slug": "plurk",
+      "title": "Plurk",
+      "names": [
+        "Plurk"
+      ],
+      "domains": [
+        "plurk.com"
+      ]
+    },
+    {
+      "slug": "porkbun",
+      "title": "Porkbun",
+      "names": [
+        "Porkbun"
+      ],
+      "domains": [
+        "porkbun.com"
+      ]
+    },
+    {
+      "slug": "postman",
+      "title": "Postman",
+      "names": [
+        "Postman"
+      ],
+      "domains": [
+        "postman.com"
+      ]
+    },
+    {
+      "slug": "privateinternetaccess",
+      "title": "Private Internet Access",
+      "names": [
+        "PIA",
+        "Private Internet Access"
+      ],
+      "domains": [
+        "privateinternetaccess.com"
+      ]
+    },
+    {
+      "slug": "proton",
+      "title": "Proton",
+      "names": [
+        "Proton"
+      ],
+      "domains": [
+        "pm.me",
+        "proton.me",
+        "protonmail.com",
+        "protonvpn.com"
+      ]
+    },
+    {
+      "slug": "pusher",
+      "title": "Pusher",
+      "names": [
+        "Pusher"
+      ],
+      "domains": [
+        "pusher.com"
+      ]
+    },
+    {
+      "slug": "pypi",
+      "title": "PyPI",
+      "names": [
+        "PyPI"
+      ],
+      "domains": [
+        "pypi.org"
+      ]
+    },
+    {
+      "slug": "pythonanywhere",
+      "title": "PythonAnywhere",
+      "names": [
+        "PythonAnywhere"
+      ],
+      "domains": [
+        "pythonanywhere.com"
+      ]
+    },
+    {
+      "slug": "qantas",
+      "title": "Qantas",
+      "names": [
+        "Qantas"
+      ],
+      "domains": [
+        "qantas.com"
+      ]
+    },
+    {
+      "slug": "qlik",
+      "title": "Qlik",
+      "names": [
+        "Qlik"
+      ],
+      "domains": [
+        "qlik.com",
+        "talend.com"
+      ]
+    },
+    {
+      "slug": "qnap",
+      "title": "QNAP",
+      "names": [
+        "QNAP",
+        "Quality Network Appliance Provider"
+      ],
+      "domains": [
+        "qnap.com"
+      ]
+    },
+    {
+      "slug": "railway",
+      "title": "Railway",
+      "names": [
+        "Railway"
+      ],
+      "domains": [
+        "railway.app"
+      ]
+    },
+    {
+      "slug": "raspberrypi",
+      "title": "Raspberry Pi",
+      "names": [
+        "Raspberry Pi"
+      ],
+      "domains": [
+        "raspberrypi.com"
+      ]
+    },
+    {
+      "slug": "raycast",
+      "title": "Raycast",
+      "names": [
+        "Raycast"
+      ],
+      "domains": [
+        "raycast.com"
+      ]
+    },
+    {
+      "slug": "razer",
+      "title": "Razer",
+      "names": [
+        "Razer"
+      ],
+      "domains": [
+        "razer.com"
+      ]
+    },
+    {
+      "slug": "readme",
+      "title": "ReadMe",
+      "names": [
+        "ReadMe"
+      ],
+      "domains": [
+        "readme.com",
+        "readme.io"
+      ]
+    },
+    {
+      "slug": "redhat",
+      "title": "Red Hat",
+      "names": [
+        "Red Hat"
+      ],
+      "domains": [
+        "redhat.com"
+      ]
+    },
+    {
+      "slug": "reddit",
+      "title": "Reddit",
+      "names": [
+        "Reddit"
+      ],
+      "domains": [
+        "reddit.com"
+      ]
+    },
+    {
+      "slug": "redis",
+      "title": "Redis",
+      "names": [
+        "Redis"
+      ],
+      "domains": [
+        "redis.com"
+      ]
+    },
+    {
+      "slug": "render",
+      "title": "Render",
+      "names": [
+        "Render"
+      ],
+      "domains": [
+        "render.com"
+      ]
+    },
+    {
+      "slug": "resend",
+      "title": "Resend",
+      "names": [
+        "Resend"
+      ],
+      "domains": [
+        "resend.com"
+      ]
+    },
+    {
+      "slug": "revenuecat",
+      "title": "RevenueCat",
+      "names": [
+        "RevenueCat"
+      ],
+      "domains": [
+        "revenuecat.com"
+      ]
+    },
+    {
+      "slug": "ring",
+      "title": "Ring",
+      "names": [
+        "Ring"
+      ],
+      "domains": [
+        "ring.com"
+      ]
+    },
+    {
+      "slug": "roblox",
+      "title": "Roblox",
+      "names": [
+        "Roblox"
+      ],
+      "domains": [
+        "roblox.com"
+      ]
+    },
+    {
+      "slug": "rockstargames",
+      "title": "Rockstar Games",
+      "names": [
+        "Rockstar Games"
+      ],
+      "domains": [
+        "rockstargames.com"
+      ]
+    },
+    {
+      "slug": "rollbar",
+      "title": "Rollbar",
+      "names": [
+        "Rollbar"
+      ],
+      "domains": [
+        "rollbar.com"
+      ]
+    },
+    {
+      "slug": "rubygems",
+      "title": "RubyGems",
+      "names": [
+        "RubyGems"
+      ],
+      "domains": [
+        "rubygems.org"
+      ]
+    },
+    {
+      "slug": "samsung",
+      "title": "Samsung",
+      "names": [
+        "Samsung"
+      ],
+      "domains": [
+        "samsung.com",
+        "smartthings.com"
+      ]
+    },
+    {
+      "slug": "scaleway",
+      "title": "Scaleway",
+      "names": [
+        "Scaleway"
+      ],
+      "domains": [
+        "scaleway.com"
+      ]
+    },
+    {
+      "slug": "schneiderelectric",
+      "title": "Schneider Electric",
+      "names": [
+        "Schneider Electric"
+      ],
+      "domains": [
+        "schneider-electric.cn",
+        "schneider-electric.com",
+        "se.com"
+      ]
+    },
+    {
+      "slug": "seatgeek",
+      "title": "SeatGeek",
+      "names": [
+        "SeatGeek"
+      ],
+      "domains": [
+        "seatgeek.com"
+      ]
+    },
+    {
+      "slug": "sentry",
+      "title": "Sentry",
+      "names": [
+        "Sentry"
+      ],
+      "domains": [
+        "sentry.io"
+      ]
+    },
+    {
+      "slug": "shadow",
+      "title": "Shadow",
+      "names": [
+        "Shadow"
+      ],
+      "domains": [
+        "shadow.tech"
+      ]
+    },
+    {
+      "slug": "shopify",
+      "title": "Shopify",
+      "names": [
+        "Shopify"
+      ],
+      "domains": [
+        "shopify.com"
+      ]
+    },
+    {
+      "slug": "shortcut",
+      "title": "Shortcut",
+      "names": [
+        "Shortcut"
+      ],
+      "domains": [
+        "clubhouse.io",
+        "shortcut.com"
+      ]
+    },
+    {
+      "slug": "sidequest",
+      "title": "SideQuest",
+      "names": [
+        "SideQuest"
+      ],
+      "domains": [
+        "sidequestvr.com"
+      ]
+    },
+    {
+      "slug": "simplelogin",
+      "title": "SimpleLogin",
+      "names": [
+        "SimpleLogin"
+      ],
+      "domains": [
+        "simplelogin.io"
+      ]
+    },
+    {
+      "slug": "sketch",
+      "title": "Sketch",
+      "names": [
+        "Sketch"
+      ],
+      "domains": [
+        "sketch.com"
+      ]
+    },
+    {
+      "slug": "sketchup",
+      "title": "SketchUp",
+      "names": [
+        "SketchUp"
+      ],
+      "domains": [
+        "sketchup.com"
+      ]
+    },
+    {
+      "slug": "smugmug",
+      "title": "SmugMug",
+      "names": [
+        "SmugMug"
+      ],
+      "domains": [
+        "smugmug.com"
+      ]
+    },
+    {
+      "slug": "snapchat",
+      "title": "Snapchat",
+      "names": [
+        "Snapchat"
+      ],
+      "domains": [
+        "snapchat.com"
+      ]
+    },
+    {
+      "slug": "soundcloud",
+      "title": "SoundCloud",
+      "names": [
+        "SoundCloud"
+      ],
+      "domains": [
+        "soundcloud.com"
+      ]
+    },
+    {
+      "slug": "sourceforge",
+      "title": "SourceForge",
+      "names": [
+        "SourceForge"
+      ],
+      "domains": [
+        "sourceforge.net"
+      ]
+    },
+    {
+      "slug": "spaceship",
+      "title": "Spaceship",
+      "names": [
+        "Spaceship"
+      ],
+      "domains": [
+        "spaceship.com"
+      ]
+    },
+    {
+      "slug": "sparkpost",
+      "title": "SparkPost",
+      "names": [
+        "SparkPost"
+      ],
+      "domains": [
+        "sparkpost.com"
+      ]
+    },
+    {
+      "slug": "spotify",
+      "title": "Spotify",
+      "names": [
+        "Spotify"
+      ],
+      "domains": [
+        "artists.spotify.com"
+      ]
+    },
+    {
+      "slug": "spring",
+      "title": "Spring",
+      "names": [
+        "Spring"
+      ],
+      "domains": [
+        "spri.ng",
+        "teespring.com"
+      ]
+    },
+    {
+      "slug": "spring_creators",
+      "title": "Spring",
+      "names": [
+        "Spring"
+      ],
+      "domains": [
+        "spri.ng",
+        "teespring.com"
+      ]
+    },
+    {
+      "slug": "square",
+      "title": "Square",
+      "names": [
+        "Square"
+      ],
+      "domains": [
+        "square.com",
+        "square.site",
+        "squareup.com",
+        "weebly.com"
+      ]
+    },
+    {
+      "slug": "squareenix",
+      "title": "Square Enix",
+      "names": [
+        "Square Enix"
+      ],
+      "domains": [
+        "square-enix-games.com",
+        "square-enix.com"
+      ]
+    },
+    {
+      "slug": "squarespace",
+      "title": "Squarespace",
+      "names": [
+        "Squarespace"
+      ],
+      "domains": [
+        "squarespace.com"
+      ]
+    },
+    {
+      "slug": "statamic",
+      "title": "Statamic",
+      "names": [
+        "Statamic"
+      ],
+      "domains": [
+        "statamic.com"
+      ]
+    },
+    {
+      "slug": "statuspage",
+      "title": "Statuspage",
+      "names": [
+        "Statuspage"
+      ],
+      "domains": [
+        "statuspage.io"
+      ]
+    },
+    {
+      "slug": "stripe",
+      "title": "Stripe",
+      "names": [
+        "Stripe"
+      ],
+      "domains": [
+        "stripe.com"
+      ]
+    },
+    {
+      "slug": "stubhub",
+      "title": "StubHub",
+      "names": [
+        "StubHub"
+      ],
+      "domains": [
+        "stubhub.com"
+      ]
+    },
+    {
+      "slug": "substack",
+      "title": "Substack",
+      "names": [
+        "Substack"
+      ],
+      "domains": [
+        "substack.com"
+      ]
+    },
+    {
+      "slug": "sumologic",
+      "title": "Sumo Logic",
+      "names": [
+        "Sumo Logic"
+      ],
+      "domains": [
+        "sumologic.com"
+      ]
+    },
+    {
+      "slug": "supabase",
+      "title": "Supabase",
+      "names": [
+        "Supabase"
+      ],
+      "domains": [
+        "supabase.com"
+      ]
+    },
+    {
+      "slug": "surfshark",
+      "title": "Surfshark",
+      "names": [
+        "Surfshark"
+      ],
+      "domains": [
+        "surfshark.com"
+      ]
+    },
+    {
+      "slug": "synology",
+      "title": "Synology",
+      "names": [
+        "Synology"
+      ],
+      "domains": [
+        "synology.com"
+      ]
+    },
+    {
+      "slug": "system76",
+      "title": "System76",
+      "names": [
+        "System76"
+      ],
+      "domains": [
+        "system76.com"
+      ]
+    },
+    {
+      "slug": "teamviewer",
+      "title": "TeamViewer",
+      "names": [
+        "TeamViewer"
+      ],
+      "domains": [
+        "teamviewer.com"
+      ]
+    },
+    {
+      "slug": "termius",
+      "title": "Termius",
+      "names": [
+        "Termius"
+      ],
+      "domains": [
+        "termius.com"
+      ]
+    },
+    {
+      "slug": "tesla",
+      "title": "Tesla",
+      "names": [
+        "Tesla"
+      ],
+      "domains": [
+        "tesla.com",
+        "teslamotors.com"
+      ]
+    },
+    {
+      "slug": "ticktick",
+      "title": "TickTick",
+      "names": [
+        "TickTick"
+      ],
+      "domains": [
+        "ticktick.com"
+      ]
+    },
+    {
+      "slug": "tiktok",
+      "title": "TikTok",
+      "names": [
+        "TikTok"
+      ],
+      "domains": [
+        "tiktok.com"
+      ]
+    },
+    {
+      "slug": "todoist",
+      "title": "Todoist",
+      "names": [
+        "Todoist"
+      ],
+      "domains": [
+        "todoist.com"
+      ]
+    },
+    {
+      "slug": "tplink",
+      "title": "TP-Link",
+      "names": [
+        "TP-Link"
+      ],
+      "domains": [
+        "tp-link.com",
+        "tplinkcloud.com"
+      ]
+    },
+    {
+      "slug": "tradingview",
+      "title": "TradingView",
+      "names": [
+        "TradingView"
+      ],
+      "domains": [
+        "tradingview.com"
+      ]
+    },
+    {
+      "slug": "transifex",
+      "title": "Transifex",
+      "names": [
+        "Transifex"
+      ],
+      "domains": [
+        "transifex.com"
+      ]
+    },
+    {
+      "slug": "transportforlondon",
+      "title": "Transport for London",
+      "names": [
+        "Transport for London"
+      ],
+      "domains": [
+        "tfl.gov.uk"
+      ]
+    },
+    {
+      "slug": "trello",
+      "title": "Trello",
+      "names": [
+        "Trello"
+      ],
+      "domains": [
+        "trello.com"
+      ]
+    },
+    {
+      "slug": "trendmicro",
+      "title": "Trend Micro",
+      "names": [
+        "Trend Micro"
+      ],
+      "domains": [
+        "trendmicro.com"
+      ]
+    },
+    {
+      "slug": "tresorit",
+      "title": "Tresorit",
+      "names": [
+        "Tresorit"
+      ],
+      "domains": [
+        "tresorit.com"
+      ]
+    },
+    {
+      "slug": "trimble",
+      "title": "Trimble",
+      "names": [
+        "Trimble"
+      ],
+      "domains": [
+        "trimble.com"
+      ]
+    },
+    {
+      "slug": "tryhackme",
+      "title": "TryHackMe",
+      "names": [
+        "TryHackMe"
+      ],
+      "domains": [
+        "tryhackme.com"
+      ]
+    },
+    {
+      "slug": "tumblr",
+      "title": "Tumblr",
+      "names": [
+        "Tumblr"
+      ],
+      "domains": [
+        "tumblr.com"
+      ]
+    },
+    {
+      "slug": "tuta",
+      "title": "Tuta",
+      "names": [
+        "Tuta",
+        "Tutanota"
+      ],
+      "domains": [
+        "tuta.com",
+        "tutanota.com"
+      ]
+    },
+    {
+      "slug": "twitch",
+      "title": "Twitch",
+      "names": [
+        "Twitch"
+      ],
+      "domains": [
+        "twitch.tv"
+      ]
+    },
+    {
+      "slug": "uber",
+      "title": "Uber",
+      "names": [
+        "Uber"
+      ],
+      "domains": [
+        "uber.com"
+      ]
+    },
+    {
+      "slug": "ubereats",
+      "title": "Uber Eats",
+      "names": [
+        "Uber Eats"
+      ],
+      "domains": [
+        "ubereats.com"
+      ]
+    },
+    {
+      "slug": "ubisoft",
+      "title": "Ubisoft",
+      "names": [
+        "Ubisoft"
+      ],
+      "domains": [
+        "ubisoft.com"
+      ]
+    },
+    {
+      "slug": "unity",
+      "title": "Unity",
+      "names": [
+        "Unity"
+      ],
+      "domains": [
+        "unity.com",
+        "unity3d.com"
+      ]
+    },
+    {
+      "slug": "upcloud",
+      "title": "UpCloud",
+      "names": [
+        "UpCloud"
+      ],
+      "domains": [
+        "upcloud.com"
+      ]
+    },
+    {
+      "slug": "uphold",
+      "title": "Uphold",
+      "names": [
+        "Uphold"
+      ],
+      "domains": [
+        "uphold.com"
+      ]
+    },
+    {
+      "slug": "ups",
+      "title": "UPS",
+      "names": [
+        "UPS"
+      ],
+      "domains": [
+        "ups.com"
+      ]
+    },
+    {
+      "slug": "upwork",
+      "title": "Upwork",
+      "names": [
+        "Upwork"
+      ],
+      "domains": [
+        "upwork.com"
+      ]
+    },
+    {
+      "slug": "veeam",
+      "title": "Veeam",
+      "names": [
+        "Veeam"
+      ],
+      "domains": [
+        "veeam.com"
+      ]
+    },
+    {
+      "slug": "vimeo",
+      "title": "Vimeo",
+      "names": [
+        "Vimeo"
+      ],
+      "domains": [
+        "vimeo.com"
+      ]
+    },
+    {
+      "slug": "virustotal",
+      "title": "VirusTotal",
+      "names": [
+        "VirusTotal"
+      ],
+      "domains": [
+        "virustotal.com"
+      ]
+    },
+    {
+      "slug": "vk",
+      "title": "VK",
+      "names": [
+        "VK"
+      ],
+      "domains": [
+        "vk.com"
+      ]
+    },
+    {
+      "slug": "voipdotms",
+      "title": "VoIP.ms",
+      "names": [
+        "VoIP.ms"
+      ],
+      "domains": [
+        "voip.ms"
+      ]
+    },
+    {
+      "slug": "vrchat",
+      "title": "VRChat",
+      "names": [
+        "VRChat"
+      ],
+      "domains": [
+        "hello.vrchat.com"
+      ]
+    },
+    {
+      "slug": "vultr",
+      "title": "Vultr",
+      "names": [
+        "Vultr"
+      ],
+      "domains": [
+        "vultr.com"
+      ]
+    },
+    {
+      "slug": "wasabi",
+      "title": "Wasabi",
+      "names": [
+        "Wasabi"
+      ],
+      "domains": [
+        "wasabi.com"
+      ]
+    },
+    {
+      "slug": "wazirx",
+      "title": "WazirX",
+      "names": [
+        "WazirX"
+      ],
+      "domains": [
+        "wazirx.com"
+      ]
+    },
+    {
+      "slug": "webdotde",
+      "title": "WEB.DE",
+      "names": [
+        "WEB.DE"
+      ],
+      "domains": [
+        "web.de"
+      ]
+    },
+    {
+      "slug": "webflow",
+      "title": "Webflow",
+      "names": [
+        "Webflow"
+      ],
+      "domains": [
+        "webflow.com"
+      ]
+    },
+    {
+      "slug": "wellfound",
+      "title": "Wellfound",
+      "names": [
+        "Wellfound"
+      ],
+      "domains": [
+        "angel.co",
+        "wellfound.com"
+      ]
+    },
+    {
+      "slug": "wetransfer",
+      "title": "WeTransfer",
+      "names": [
+        "WeTransfer"
+      ],
+      "domains": [
+        "wetransfer.com"
+      ]
+    },
+    {
+      "slug": "wheniwork",
+      "title": "When I Work",
+      "names": [
+        "When I Work"
+      ],
+      "domains": [
+        "wheniwork.com"
+      ]
+    },
+    {
+      "slug": "wikipedia",
+      "title": "Wikipedia",
+      "names": [
+        "Wikipedia"
+      ],
+      "domains": [
+        "wikimedia.org",
+        "wikipedia.org"
+      ]
+    },
+    {
+      "slug": "wise",
+      "title": "Wise",
+      "names": [
+        "Wise"
+      ],
+      "domains": [
+        "transferwise.com",
+        "wise.com"
+      ]
+    },
+    {
+      "slug": "wix",
+      "title": "Wix",
+      "names": [
+        "Wix"
+      ],
+      "domains": [
+        "wix.com"
+      ]
+    },
+    {
+      "slug": "wordpress",
+      "title": "WordPress",
+      "names": [
+        "WordPress"
+      ],
+      "domains": [
+        "wordpress.com"
+      ]
+    },
+    {
+      "slug": "wpengine",
+      "title": "WP Engine",
+      "names": [
+        "WP Engine"
+      ],
+      "domains": [
+        "wpengine.com"
+      ]
+    },
+    {
+      "slug": "wykop",
+      "title": "Wykop",
+      "names": [
+        "Wykop"
+      ],
+      "domains": [
+        "wykop.pl"
+      ]
+    },
+    {
+      "slug": "wyze",
+      "title": "Wyze",
+      "names": [
+        "Wyze"
+      ],
+      "domains": [
+        "wyze.com"
+      ]
+    },
+    {
+      "slug": "x",
+      "title": "X",
+      "names": [
+        "Twitter",
+        "X"
+      ],
+      "domains": [
+        "x.com"
+      ]
+    },
+    {
+      "slug": "xero",
+      "title": "Xero",
+      "names": [
+        "Xero"
+      ],
+      "domains": [
+        "xero.com"
+      ]
+    },
+    {
+      "slug": "xing",
+      "title": "Xing",
+      "names": [
+        "Xing"
+      ],
+      "domains": [
+        "xing.com"
+      ]
+    },
+    {
+      "slug": "youhodler",
+      "title": "YouHodler",
+      "names": [
+        "YouHodler"
+      ],
+      "domains": [
+        "youhodler.com"
+      ]
+    },
+    {
+      "slug": "youtube",
+      "title": "YouTube",
+      "names": [
+        "YouTube"
+      ],
+      "domains": [
+        "youtube.com"
+      ]
+    },
+    {
+      "slug": "zapier",
+      "title": "Zapier",
+      "names": [
+        "Zapier"
+      ],
+      "domains": [
+        "zapier.com"
+      ]
+    },
+    {
+      "slug": "zendesk",
+      "title": "Zendesk",
+      "names": [
+        "Zendesk"
+      ],
+      "domains": [
+        "zendesk.com"
+      ]
+    },
+    {
+      "slug": "zerodha",
+      "title": "Zerodha",
+      "names": [
+        "Zerodha"
+      ],
+      "domains": [
+        "zerodha.com"
+      ]
+    },
+    {
+      "slug": "zerotier",
+      "title": "ZeroTier",
+      "names": [
+        "ZeroTier"
+      ],
+      "domains": [
+        "zerotier.com"
+      ]
+    },
+    {
+      "slug": "zoho",
+      "title": "Zoho",
+      "names": [
+        "Zoho"
+      ],
+      "domains": [
+        "zoho.com"
+      ]
+    },
+    {
+      "slug": "zoom",
+      "title": "Zoom",
+      "names": [
+        "Zoom"
+      ],
+      "domains": [
+        "zoom.us"
+      ]
+    }
+  ]
+}

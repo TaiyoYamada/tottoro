@@ -1,0 +1,12 @@
+// Values shared by Debug and Release. Per-contributor values go in Local.xcconfig,
+// which is not in Git. Copy Local.xcconfig.example to start.
+
+APP_BUNDLE_ID_BASE = com.taiyo.tottoro
+DEVELOPMENT_TEAM =
+
+// CI passes TOTTORO_WARNINGS_AS_ERRORS=YES. Setting SWIFT_TREAT_WARNINGS_AS_ERRORS on the command line
+// would also reach the Swift packages, whose warnings are not ours to fix.
+TOTTORO_WARNINGS_AS_ERRORS = NO
+SWIFT_TREAT_WARNINGS_AS_ERRORS = $(TOTTORO_WARNINGS_AS_ERRORS)
+
+#include? "../Local.xcconfig"

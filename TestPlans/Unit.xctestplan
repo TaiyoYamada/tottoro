@@ -1,0 +1,31 @@
+{
+  "configurations" : [
+    {
+      "id" : "B2E4BEB1-7239-5D80-94EE-A46739494038",
+      "name" : "Default",
+      "options" : {}
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : true
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Tottoro.xcodeproj",
+        "identifier" : "B9CDF6EC8095ACC001D95984",
+        "name" : "TottoroTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:TottoroKit",
+        "identifier" : "TottoroCoreTests",
+        "name" : "TottoroCoreTests"
+      }
+    }
+  ],
+  "version" : 1
+}

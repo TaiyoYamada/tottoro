@@ -1,0 +1,89 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Cancel" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャンセル"
+          }
+        }
+      }
+    },
+    "Couldn’t confirm it’s you. Try again." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本人であることを確かめられませんでした。もう一度試してください。"
+          }
+        }
+      }
+    },
+    "Locked" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ロック中"
+          }
+        }
+      }
+    },
+    "Set a Passcode" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パスコードを設定してください"
+          }
+        }
+      }
+    },
+    "Tottoro" : {
+      "shouldTranslate" : false
+    },
+    "Tottoro needs a passcode on this device to protect your codes." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コードを守るために、この端末にパスコードが必要です。"
+          }
+        }
+      }
+    },
+    "Unlock" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ロックを解除"
+          }
+        }
+      }
+    },
+    "Unlock to enter a code" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コードを入力するためにロックを解除します"
+          }
+        }
+      }
+    },
+    "Unlocking was canceled." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ロックの解除が取り消されました。"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

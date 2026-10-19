@@ -1,0 +1,6 @@
+# Rules and options are SwiftFormat's defaults, except for the ones below.
+--swiftversion 6.4
+--exclude TottoroKit/.build,build,*.xcodeproj
+
+# Do not indent code inside #if, the same as Xcode
+--ifdef no-indent

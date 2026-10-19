@@ -1,0 +1,40 @@
+name: Feature request
+description: Suggest a new feature or a change.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For open-ended ideas or questions, start a discussion first: https://github.com/TaiyoYamada/tottoro/discussions
+
+        Do not paste secrets, setup keys, `otpauth://` or `otpauth-migration://` URLs, or QR code images.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What are you trying to do, and what gets in the way?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: What should Tottoro do?
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      multiple: true
+      options:
+        - iPhone
+        - Mac
+        - AutoFill extension
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives
+      description: Other ways to solve it, or how other apps handle it.

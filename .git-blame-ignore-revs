@@ -1,0 +1,5 @@
+# git blame skips these commits. Set it up once with:
+#   git config blame.ignoreRevsFile .git-blame-ignore-revs
+
+# style: SwiftFormat と SwiftLint を入れて全体を整形する
+f4eb5328ae65239169a833c86adaada9d8ddcee5
