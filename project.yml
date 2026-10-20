@@ -68,6 +68,7 @@ targets:
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
         # iPad で Split View に対応するアプリは、4つの向きすべてを宣言しないと App Store の検査で落ちる
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
     dependencies:
       - target: TottoroAutoFill
       - package: TottoroKit
