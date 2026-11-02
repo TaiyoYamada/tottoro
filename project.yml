@@ -54,7 +54,7 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: $(APP_BUNDLE_ID)
         SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
         GENERATE_INFOPLIST_FILE: YES
-        # INFOPLIST_KEY_ で書けない NSUserActivityTypes だけを、このファイルに置く
+        # INFOPLIST_KEY_ で書けない NSUserActivityTypes と ITSAppUsesNonExemptEncryption を、このファイルに置く
         INFOPLIST_FILE: Tottoro/Info.plist
         CODE_SIGN_ENTITLEMENTS: Tottoro/Tottoro.entitlements
         ENABLE_HARDENED_RUNTIME: YES
