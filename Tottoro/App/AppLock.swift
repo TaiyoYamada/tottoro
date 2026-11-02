@@ -64,6 +64,12 @@ final class AppLock {
     }
 
     func lock() {
+        #if DEBUG
+        // スクリーンショットの撮影中は、起動直後に裏に回った扱いになってロック画面が写ることがある
+        if UITesting.isEnabled {
+            return
+        }
+        #endif
         backgroundedAt = nil
         state = .locked
     }
