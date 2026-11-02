@@ -19,6 +19,9 @@ enum UITesting {
         ProcessInfo.processInfo.arguments.contains(launchArgument)
     }
 
+    /// スクリーンショットのコードと残り時間が毎回同じになるよう、画面の時計をこの時刻で止める。残り 20 秒になる
+    static let frozenDate = Date(timeIntervalSince1970: 1_700_000_020)
+
     /// スクリーンショットに出す架空のアカウント。秘密鍵も意味のない固定の値にしている。
     static let sampleAccounts: [Account] = [
         ("Mail", "you@example.com", AccountColor.blue),
