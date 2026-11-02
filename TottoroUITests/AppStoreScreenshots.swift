@@ -13,6 +13,13 @@ final class AppStoreScreenshots: XCTestCase {
     @MainActor
     func testTakeScreenshots() {
         let app = XCUIApplication.launchForUITesting(language: nil)
+        #if os(macOS)
+        // 起動直後にウィンドウが出ないことがあるので、出ていなければ File > New Window で開く
+        if !app.windows.firstMatch.waitForExistence(timeout: 5) {
+            app.activate()
+            app.typeKey("n", modifierFlags: .command)
+        }
+        #endif
         XCTAssertTrue(app.buttons["Mail"].waitForExistence(timeout: 5))
         attachScreenshot(of: app, named: "1-codes")
 
