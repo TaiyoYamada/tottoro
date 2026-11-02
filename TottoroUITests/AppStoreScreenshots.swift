@@ -28,6 +28,8 @@ final class AppStoreScreenshots: XCTestCase {
 
     @MainActor
     private func attachScreenshot(of app: XCUIApplication, named name: String) {
+        // タップの直後はコードの切り替えや画面の遷移のアニメーションが残っているので、終わるまで待つ
+        Thread.sleep(forTimeInterval: 1)
         #if os(iOS)
         let screenshot = app.screenshot()
         #else

@@ -17,7 +17,8 @@ struct CodeHeaderView: View {
     var body: some View {
         // 円が滑らかに減るよう、1 秒ごとではなく画面の描き直しに合わせて更新する
         TimelineView(.animation(minimumInterval: 1.0 / 30)) { context in
-            let code = viewModel.code(for: account, at: context.date)
+            let date = displayDate(context.date)
+            let code = viewModel.code(for: account, at: date)
             VStack(spacing: Spacing.medium) {
                 VStack(spacing: Spacing.xSmall) {
                     Text(account.displayName)
@@ -32,7 +33,7 @@ struct CodeHeaderView: View {
                     .animation(.snappy, value: code)
                 HStack(spacing: Spacing.small) {
                     CountdownRing(
-                        secondsRemaining: viewModel.secondsRemaining(for: account, at: context.date),
+                        secondsRemaining: viewModel.secondsRemaining(for: account, at: date),
                         period: account.period,
                     )
                     .frame(width: 32, height: 32)
@@ -55,6 +56,15 @@ struct CodeHeaderView: View {
         .sensoryFeedback(.success, trigger: viewModel.copiedAccountID) { _, new in new != nil }
         .accessibilityAddTraits(.isButton)
         .accessibilityHint(isHidden ? Text("Shows the code") : Text("Copies the code"))
+    }
+
+    private func displayDate(_ date: Date) -> Date {
+        #if DEBUG
+        if UITesting.isEnabled {
+            return UITesting.frozenDate
+        }
+        #endif
+        return date
     }
 
     private var isHidden: Bool {
